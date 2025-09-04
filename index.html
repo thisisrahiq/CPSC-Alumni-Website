@@ -1,0 +1,2633 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CPSC Alumni Association</title>
+    <link rel="icon" type="image/png" href="assests/logo.png" />
+    <link rel="shortcut icon" type="image/png" href="assests/logo.png" />
+    <link rel="apple-touch-icon" href="assests/logo.png" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Simple smooth scrolling for anchor links */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Favicon border removal */
+      link[rel="icon"] {
+        border-radius: 0;
+        background: transparent;
+      }
+
+      /* Loading and error states for images */
+      .image-loading {
+        background: linear-gradient(
+          90deg,
+          #f0f0f0 25%,
+          #e0e0e0 50%,
+          #f0f0f0 75%
+        );
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+        position: relative;
+      }
+
+      .image-loading::after {
+        content: "Loading...";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #6b7280;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      @keyframes loading {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
+      }
+
+      .image-error {
+        opacity: 0.8;
+        filter: grayscale(50%);
+        position: relative;
+      }
+
+      .image-error::after {
+        content: "Photo Unavailable";
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 10px;
+        white-space: nowrap;
+      }
+
+      /* Modal specific image styles */
+      #modal-image.image-loading::after {
+        content: "Loading Photo...";
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      #modal-image.image-error::after {
+        content: "Photo Unavailable";
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      /* Dark theme styles */
+      [data-theme="dark"] {
+        --bg-primary: #1a1a1a;
+        --bg-secondary: #2d2d2d;
+        --text-primary: #ffffff;
+        --text-secondary: #e0e0e0;
+        --accent-color: #6366f1;
+        --border-color: #404040;
+      }
+
+      [data-theme="dark"] body {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+      }
+
+      [data-theme="dark"] .bg-base-100 {
+        background-color: var(--bg-secondary);
+      }
+
+      [data-theme="dark"] .bg-base-200 {
+        background-color: var(--bg-primary);
+      }
+
+      [data-theme="dark"] .text-gray-600 {
+        color: var(--text-secondary);
+      }
+
+      [data-theme="dark"] .border-gray-200 {
+        border-color: var(--border-color);
+      }
+
+      [data-theme="dark"] .shadow-md {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+      }
+
+      [data-theme="dark"] .shadow-lg {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+      }
+
+      [data-theme="dark"] .shadow-2xl {
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Theme toggle button styles */
+      #theme-toggle {
+        transition: all 0.3s ease;
+      }
+
+      #theme-toggle:hover {
+        transform: scale(1.1);
+      }
+
+      [data-theme="dark"] #sun-icon,
+      [data-theme="dark"] #mobile-sun-icon,
+      [data-theme="dark"] #mobile-sun-icon-btn {
+        display: none !important;
+      }
+
+      [data-theme="dark"] #moon-icon,
+      [data-theme="dark"] #mobile-moon-icon,
+      [data-theme="dark"] #mobile-moon-icon-btn {
+        display: block !important;
+      }
+
+      [data-theme="light"] #sun-icon,
+      [data-theme="light"] #mobile-sun-icon,
+      [data-theme="light"] #mobile-sun-icon-btn {
+        display: block !important;
+      }
+
+      [data-theme="light"] #moon-icon,
+      [data-theme="light"] #mobile-moon-icon,
+      [data-theme="light"] #mobile-moon-icon-btn {
+        display: none !important;
+      }
+
+      /* Responsive navbar fixes */
+      @media (max-width: 1023px) {
+        .navbar-end .hidden.lg\\:flex {
+          display: none !important;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .navbar-end .lg\\:hidden {
+          display: none !important;
+        }
+      }
+
+      /* Ensure proper responsive behavior */
+      .navbar {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      @media (min-width: 640px) {
+        .navbar {
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .navbar {
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+      }
+
+      /* Additional responsive fixes */
+      @media (max-width: 639px) {
+        .container {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+
+        .hero-content {
+          padding: 1rem;
+        }
+
+        .text-4xl {
+          font-size: 1.875rem;
+          line-height: 2.25rem;
+        }
+
+        .text-5xl {
+          font-size: 2.25rem;
+          line-height: 2.5rem;
+        }
+      }
+
+      /* Ensure dropdown menu works properly */
+      .dropdown-content {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+      }
+
+      /* Fix for mobile theme toggle button */
+      @media (max-width: 1023px) {
+        #mobile-theme-toggle-btn {
+          display: flex !important;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        #mobile-theme-toggle-btn {
+          display: none !important;
+        }
+      }
+
+      /* Typing animation styles */
+      .typing-cursor {
+        animation: blink 1s infinite;
+        color: #ffffff;
+        font-weight: bold;
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      #typing-text {
+        color: #ffffff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        white-space: pre-line;
+      }
+
+      /* Carousel Styles */
+      .carousel-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .carousel-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+      }
+
+      .carousel-slide.active {
+        opacity: 1;
+      }
+
+      .carousel-indicators {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 20;
+      }
+
+      .carousel-indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .carousel-indicator.active {
+        background-color: rgba(255, 255, 255, 0.9);
+      }
+    </style>
+  </head>
+  <body class="bg-base-200">
+    <header class="bg-base-100 shadow-md sticky top-0 z-50">
+      <div class="navbar container mx-auto">
+        <div class="navbar-start">
+          <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </div>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li><a href="#home">Home</a></li>
+              <li><a href="#members">Members</a></li>
+              <li><a href="#gallery">Gallery</a></li>
+              <li class="divider"></li>
+              <li>
+                <button
+                  id="mobile-theme-toggle"
+                  class="w-full flex items-center justify-between"
+                >
+                  <span>Theme</span>
+                  <div class="flex items-center gap-2">
+                    <svg
+                      id="mobile-sun-icon"
+                      class="w-4 h-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                    <svg
+                      id="mobile-moon-icon"
+                      class="w-4 h-4 hidden"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+                      ></path>
+                    </svg>
+                  </div>
+                </button>
+              </li>
+            </ul>
+          </div>
+          <a class="btn btn-ghost text-xl font-bold flex items-center gap-2">
+            <img
+              src="assests/logo.png"
+              alt="CPSC Logo"
+              class="w-8 h-8 rounded-full object-cover"
+            />
+            CPSC Alumni Association
+          </a>
+        </div>
+        <div class="navbar-end">
+          <!-- Desktop Navigation -->
+          <div class="hidden lg:flex">
+            <ul class="menu menu-horizontal px-1 font-semibold">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#members">Members</a></li>
+              <li><a href="#gallery">Gallery</a></li>
+            </ul>
+            <!-- Desktop Theme Toggle Button -->
+            <button id="theme-toggle" class="btn btn-ghost btn-circle ml-2">
+              <svg
+                id="sun-icon"
+                class="w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <svg
+                id="moon-icon"
+                class="w-5 h-5 hidden"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Mobile/Tablet Theme Toggle Button -->
+          <button
+            id="mobile-theme-toggle-btn"
+            class="btn btn-ghost btn-circle lg:hidden"
+          >
+            <svg
+              id="mobile-sun-icon-btn"
+              class="w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <svg
+              id="mobile-moon-icon-btn"
+              class="w-5 h-5 hidden"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero min-h-screen relative overflow-hidden">
+        <!-- Carousel Container -->
+        <div class="carousel-container">
+          <div
+            class="carousel-slide active"
+            style="background-image: url(assests/image1.jpg)"
+          ></div>
+          <div
+            class="carousel-slide"
+            style="background-image: url(assests/image2.jpg)"
+          ></div>
+          <div
+            class="carousel-slide"
+            style="background-image: url(assests/image3.jpg)"
+          ></div>
+          <div
+            class="carousel-slide"
+            style="background-image: url(assests/image4.jpg)"
+          ></div>
+          <div
+            class="carousel-slide"
+            style="background-image: url(assests/image5.jpg)"
+          ></div>
+          <div
+            class="carousel-slide"
+            style="background-image: url(assests/image6.jpg)"
+          ></div>
+        </div>
+
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators">
+          <div class="carousel-indicator active" data-slide="0"></div>
+          <div class="carousel-indicator" data-slide="1"></div>
+          <div class="carousel-indicator" data-slide="2"></div>
+          <div class="carousel-indicator" data-slide="3"></div>
+          <div class="carousel-indicator" data-slide="4"></div>
+          <div class="carousel-indicator" data-slide="5"></div>
+        </div>
+
+        <div class="absolute inset-0 bg-black bg-opacity-60 z-5"></div>
+        <div
+          class="hero-content text-center text-neutral-content relative z-10"
+        >
+          <div class="max-w-2xl mx-auto px-4">
+            <h1 class="mb-5 text-4xl md:text-5xl font-bold">
+              <span id="typing-text" class="text-white"></span>
+              <span class="typing-cursor">|</span>
+            </h1>
+            <p class="mb-5 text-white text-sm md:text-base">
+              Reconnecting with old friends, celebrating our shared history, and
+              building a stronger future together. Explore our community,
+              discover upcoming events, and cherish the memories that bind us.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="#members" class="btn btn-primary text-sm md:text-base">
+                <svg
+                  class="w-4 h-4 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  ></path>
+                </svg>
+                Meet the Committee
+              </a>
+              <a
+                href="https://www.facebook.com/groups/165608534055395"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary text-sm md:text-base"
+              >
+                <svg
+                  class="w-4 h-4 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"
+                  />
+                </svg>
+                Join Our Facebook Group
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="members" class="py-12 md:py-20 px-4 bg-base-100">
+        <div class="container mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-2">
+            Our Esteemed Committee Members
+          </h2>
+          <p class="text-center text-base md:text-lg mb-6 text-gray-600 px-4">
+            The dedicated individuals leading our association forward.
+          </p>
+          <div class="text-center mb-8">
+            <div class="badge badge-primary badge-lg text-base px-6 py-3">
+              <svg
+                class="w-5 h-5 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                ></path>
+              </svg>
+              Validity: July 2025 - June 2028
+            </div>
+          </div>
+
+          <!-- Search and Filter Section -->
+          <div class="mb-8 p-6 bg-base-200 rounded-lg shadow-md">
+            <div
+              class="flex flex-col md:flex-row gap-4 items-center justify-center"
+            >
+              <!-- Search Input -->
+              <div class="form-control w-full md:w-80">
+                <label class="label">
+                  <span class="label-text font-semibold">Search by Name</span>
+                </label>
+                <input
+                  type="text"
+                  id="search-input"
+                  placeholder="Type member name..."
+                  class="input input-bordered w-full"
+                />
+              </div>
+
+              <!-- Designation Filter -->
+              <div class="form-control w-full md:w-64">
+                <label class="label">
+                  <span class="label-text font-semibold"
+                    >Filter by Designation</span
+                  >
+                </label>
+                <select
+                  id="designation-filter"
+                  class="select select-bordered w-full"
+                >
+                  <option value="">All Designations</option>
+                  <option value="সভাপতি – President">সভাপতি – President</option>
+                  <option value="সহ-সভাপতি – Vice President">
+                    সহ-সভাপতি – Vice President
+                  </option>
+                  <option value="সাধারণ সম্পাদক – General Secretary">
+                    সাধারণ সম্পাদক – General Secretary
+                  </option>
+                  <option value="সাংগঠনিক সম্পাদক – Organizational Secretary">
+                    সাংগঠনিক সম্পাদক – Organizational Secretary
+                  </option>
+                  <option value="অর্থ সম্পাদক – Finance Secretary">
+                    অর্থ সম্পাদক – Finance Secretary
+                  </option>
+                  <option value="আইন বিষয়ক সম্পাদক – Legal Affairs Secretary">
+                    আইন বিষয়ক সম্পাদক – Legal Affairs Secretary
+                  </option>
+                  <option
+                    value="যুগ্ম সাধারণ সম্পাদক – Joint General Secretary"
+                  >
+                    যুগ্ম সাধারণ সম্পাদক – Joint General Secretary
+                  </option>
+                  <option value="দপ্তর সম্পাদক – Office Secretary">
+                    দপ্তর সম্পাদক – Office Secretary
+                  </option>
+                  <option
+                    value="সহ-সাংগঠনিক সম্পাদক – Assistant Organizational Secretary"
+                  >
+                    সহ-সাংগঠনিক সম্পাদক – Assistant Organizational Secretary
+                  </option>
+                  <option value="সহ-অর্থ সম্পাদক – Assistant Finance Secretary">
+                    সহ-অর্থ সম্পাদক – Assistant Finance Secretary
+                  </option>
+                  <option value="প্রচার সম্পাদক – Publicity Secretary">
+                    প্রচার সম্পাদক – Publicity Secretary
+                  </option>
+                  <option value="সাংস্কৃতিক সম্পাদক – Cultural Secretary">
+                    সাংস্কৃতিক সম্পাদক – Cultural Secretary
+                  </option>
+                  <option value="সহ-দপ্তর সম্পাদক – Assistant Office Secretary">
+                    সহ-দপ্তর সম্পাদক – Assistant Office Secretary
+                  </option>
+                  <option value="শিক্ষা বিষয়ক সম্পাদক – Education Secretary">
+                    শিক্ষা বিষয়ক সম্পাদক – Education Secretary
+                  </option>
+                  <option value="ক্রীড়া সম্পাদক – Sports Secretary">
+                    ক্রীড়া সম্পাদক – Sports Secretary
+                  </option>
+                  <option
+                    value="সহ-সাংগঠনিক সম্পাদক – Assistant Organizational Secretary"
+                  >
+                    সহ-সাংগঠনিক সম্পাদক – Assistant Organizational Secretary
+                  </option>
+                  <option
+                    value="সহ-প্রচার সম্পাদক – Assistant Publicity Secretary"
+                  >
+                    সহ-প্রচার সম্পাদক – Assistant Publicity Secretary
+                  </option>
+                  <option value="সহ সম্পাদক – Assistant Secretary">
+                    সহ সম্পাদক – Assistant Secretary
+                  </option>
+                  <option
+                    value="তথ্য ও যোগাযোগ বিষয়ক সম্পাদক – Information and Communication Secretary"
+                  >
+                    তথ্য ও যোগাযোগ বিষয়ক সম্পাদক – Information and
+                    Communication Secretary
+                  </option>
+                  <option
+                    value="ধর্ম বিষয়ক সম্পাদক – Religious Affairs Secretary"
+                  >
+                    ধর্ম বিষয়ক সম্পাদক – Religious Affairs Secretary
+                  </option>
+                  <option
+                    value="গ্রন্থ ও প্রকাশনা বিষয়ক সম্পাদক – Books and Publications Secretary"
+                  >
+                    গ্রন্থ ও প্রকাশনা বিষয়ক সম্পাদক – Books and Publications
+                    Secretary
+                  </option>
+                  <option
+                    value="সহ-সাংস্কৃতিক সম্পাদক – Assistant Cultural Secretary"
+                  >
+                    সহ-সাংস্কৃতিক সম্পাদক – Assistant Cultural Secretary
+                  </option>
+                  <option value="কার্যকরী সদস্য - Executive Member">
+                    কার্যকরী সদস্য - Executive Member
+                  </option>
+                </select>
+              </div>
+
+              <!-- Batch Filter -->
+              <div class="form-control w-full md:w-48">
+                <label class="label">
+                  <span class="label-text font-semibold">Filter by Batch</span>
+                </label>
+                <select id="batch-filter" class="select select-bordered w-full">
+                  <option value="">All Batches</option>
+                  <option value="4th / (SSC 2015)">4th / (SSC 2015)</option>
+                  <option value="5th / (SSC 2016)">5th / (SSC 2016)</option>
+                  <option value="6th / (SSC 2017)">6th / (SSC 2017)</option>
+                  <option value="7th / (SSC 2018)">7th / (SSC 2018)</option>
+                  <option value="8th / (SSC 2019)">8th / (SSC 2019)</option>
+                  <option value="9th / (SSC 2020)">9th / (SSC 2020)</option>
+                  <option value="10th / (SSC 2021)">10th / (SSC 2021)</option>
+                  <option value="11th / (SSC 2022)">11th / (SSC 2022)</option>
+                  <option value="12th / (SSC 2023)">12th / (SSC 2023)</option>
+                  <option value="13th / (SSC 2024)">13th / (SSC 2024)</option>
+                </select>
+              </div>
+
+              <!-- Validity Filter -->
+              <div class="form-control w-full md:w-48">
+                <label class="label">
+                  <span class="label-text font-semibold"
+                    >Filter by Validity</span
+                  >
+                </label>
+                <select
+                  id="validity-filter"
+                  class="select select-bordered w-full"
+                >
+                  <option value="">All Members</option>
+                  <option value="active">Active (Current Term)</option>
+                  <option value="expired">Expired</option>
+                </select>
+              </div>
+
+              <!-- Clear Filters Button -->
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text">&nbsp;</span>
+                </label>
+                <button id="clear-filters" class="btn btn-outline btn-sm">
+                  Clear Filters
+                </button>
+              </div>
+            </div>
+
+            <!-- Results Count -->
+            <div class="text-center mt-4">
+              <span id="results-count" class="text-sm text-gray-600">
+                Showing all members
+              </span>
+            </div>
+          </div>
+
+          <div
+            id="members-container"
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+          ></div>
+        </div>
+      </section>
+
+      <section id="gallery" class="py-12 md:py-20 px-4">
+        <div class="container mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-2">
+            Glimpses of Our Journey
+          </h2>
+          <p
+            class="text-center text-base md:text-lg mb-8 md:mb-12 text-gray-600 px-4"
+          >
+            A collection of moments from our school activities and events.
+          </p>
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+            <div
+              class="h-64 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
+              onclick="openGalleryModal('assests/image1.jpg', 'CPSC Alumni Event')"
+            >
+              <img
+                alt="CPSC Alumni Event"
+                class="h-full w-full object-cover object-center"
+                src="assests/image1.jpg"
+              />
+            </div>
+            <div
+              class="h-64 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
+              onclick="openGalleryModal('assests/image2.jpg', 'CPSC Alumni Gathering')"
+            >
+              <img
+                alt="CPSC Alumni Gathering"
+                class="h-full w-full object-cover object-center"
+                src="assests/image2.jpg"
+              />
+            </div>
+            <div
+              class="h-64 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
+              onclick="openGalleryModal('assests/image3.jpg', 'CPSC Alumni Meeting')"
+            >
+              <img
+                alt="CPSC Alumni Meeting"
+                class="h-full w-full object-cover object-center"
+                src="assests/image3.jpg"
+              />
+            </div>
+            <div
+              class="h-64 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
+              onclick="openGalleryModal('assests/image4.jpg', 'CPSC Alumni Function')"
+            >
+              <img
+                alt="CPSC Alumni Function"
+                class="h-full w-full object-cover object-center"
+                src="assests/image4.jpg"
+              />
+            </div>
+            <div
+              class="h-64 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
+              onclick="openGalleryModal('assests/image5.jpg', 'CPSC Alumni Celebration')"
+            >
+              <img
+                alt="CPSC Alumni Celebration"
+                class="h-full w-full object-cover object-center"
+                src="assests/image5.jpg"
+              />
+            </div>
+            <div
+              class="h-64 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
+              onclick="openGalleryModal('assests/image6.jpg', 'CPSC Alumni Reunion')"
+            >
+              <img
+                alt="CPSC Alumni Reunion"
+                class="h-full w-full object-cover object-center"
+                src="assests/image6.jpg"
+              />
+            </div>
+          </div>
+
+          <!-- YouTube Video Section -->
+          <div class="mt-16">
+            <h3 class="text-2xl font-bold text-center mb-8">
+              Watch Our Latest Event Highlights
+            </h3>
+            <div class="flex justify-center">
+              <div class="w-full max-w-4xl">
+                <div class="relative" style="padding-bottom: 56.25%">
+                  <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/qwljs5z4F10?si=TlvZvK0olEIV0A7e&autoplay=1&mute=1"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                    class="absolute top-0 left-0 w-full h-full rounded-lg shadow-2xl"
+                  ></iframe>
+                </div>
+                <p class="text-center text-sm text-gray-500 mt-4">
+                  Experience the energy and excitement of our CPSC Alumni events
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="member_modal" class="modal">
+      <div class="modal-box w-11/12 max-w-3xl">
+        <div id="modal-content" class="flex flex-col md:flex-row gap-6"></div>
+        <div class="modal-action">
+          <form method="dialog">
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
+
+    <!-- Gallery Image Modal -->
+    <dialog id="gallery_modal" class="modal">
+      <div class="modal-box w-11/12 max-w-5xl">
+        <div class="text-center">
+          <h3 id="gallery-image-title" class="font-bold text-xl mb-4"></h3>
+          <img
+            id="gallery-modal-image"
+            src=""
+            alt=""
+            class="w-full h-auto max-h-96 object-contain rounded-lg shadow-lg"
+          />
+        </div>
+        <div class="modal-action">
+          <form method="dialog">
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
+
+    <footer class="bg-neutral text-neutral-content">
+      <div class="container mx-auto p-6 md:p-10">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center text-center"
+        >
+          <!-- Logo and Association Info -->
+          <div class="flex flex-col items-center">
+            <div class="flex items-center gap-3 mb-4">
+              <img
+                src="assests/logo.png"
+                alt="CPSC Logo"
+                class="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover"
+              />
+              <div>
+                <h3 class="text-lg md:text-xl font-bold">
+                  CPSC Alumni Association
+                </h3>
+                <p class="text-xs md:text-sm opacity-80">
+                  Building bridges, creating memories
+                </p>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <p class="flex items-center gap-2 text-sm">
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  ></path>
+                </svg>
+                <span>+880 1790584856</span>
+              </p>
+              <p class="flex items-center gap-2 text-sm">
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+                <span>info@cpscalumni.org</span>
+              </p>
+              <p class="flex items-center gap-2 text-sm">
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  ></path>
+                </svg>
+                <span>Chandgaon R/A, Chattogram, Bangladesh</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Social Media -->
+          <div class="flex flex-col">
+            <h6 class="footer-title text-base font-semibold mb-4">
+              Social Media
+            </h6>
+            <div class="grid grid-flow-col gap-4 mb-4">
+              <a
+                href="https://www.facebook.com/CPSCAlumniAssociation"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:scale-110 transition-transform duration-200"
+                title="Visit our Facebook Page"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  class="fill-current"
+                >
+                  <path
+                    d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616v.064c0 2.293 1.634 4.21 3.803 4.649-.665.18-1.37.227-2.083.186.618 1.953 2.423 3.374 4.564 3.414-2.033 1.59-4.59 2.39-7.252 2.023 2.193 1.408 4.817 2.23 7.629 2.23 9.16 0 14.162-7.59 14.162-14.162 0-.213-.005-.426-.015-.637.973-.703 1.82-1.575 2.492-2.585z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="https://www.facebook.com/CPSCAlumniAssociation"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:scale-110 transition-transform duration-200"
+                title="Join our Facebook Group"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  class="fill-current"
+                >
+                  <path
+                    d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/cpsc_alumni_association_/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:scale-110 transition-transform duration-200"
+                title="Follow us on Instagram"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  class="fill-current"
+                >
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <!-- Join Facebook Group Button -->
+            <a
+              href="https://www.facebook.com/groups/165608534055395"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary text-sm md:text-base"
+            >
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"
+                />
+              </svg>
+              Join with us!
+            </a>
+          </div>
+
+          <!-- Location Map -->
+          <div class="flex flex-col">
+            <h6 class="footer-title text-base font-semibold mb-4">Location</h6>
+            <div class="w-full">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1103.7467564276062!2d91.84727566570291!3d22.378250676038153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30ad2799439fc657%3A0x812ee6ac4a7d7631!2sCDA%20Public%20School%20%26%20College%20play%20ground!5e0!3m2!1sen!2sbd!4v1756671040656!5m2!1sen!2sbd"
+                width="100%"
+                height="200"
+                style="border: 0; border-radius: 8px"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              >
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // --- EMBEDDED JSON DATA ---
+      const alumniData = {
+        data: [
+          {
+            ID: "4001",
+            Name: "Rahiq Al Makhtum",
+            Batch: "4th / (SSC 2015)",
+            Designation: "সভাপতি – President",
+            Contact: "+8801790584856",
+            "Blood Group": "A (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/uc?export=view&id=19P1GyLdBnnsaWO8-cdoctgfc4cUU932T",
+            Profession: "Business Development Engineer",
+            "Institutions/Company/Organisation": "MAMTech Limited",
+            "Current Address":
+              "Chandgaon R/A B-block, 14 No. Road , 341 No. House, 4th floor, flat-D2, Chittagong 4212, Bangladesh ",
+            "Permanent Address": "CHUNTI, LOHAGARA, CHUNTI- 4398, CHATTOGRAM ",
+            "Social Media": "fb/thisisrahiq",
+          },
+          {
+            ID: "4002",
+            Name: "Mohammed Hasanur Rahman Chowdhury",
+            Batch: "4th / (SSC 2015)",
+            Designation: "সহ-সভাপতি – Vice President",
+            Contact: "+8801521532616",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/uc?export=view&id=1KmJe5o_7Y8v2Y7sVNroEAyeAT6lXpoSj",
+            Profession: "Doctor ",
+            "Institutions/Company/Organisation":
+              "People's Hospital Chittagong, Holy Health Chittagong ",
+            "Current Address":
+              "House:301,road:13 block :B Chandgoan Residential Area ",
+            "Permanent Address": "Oshkain Anwara Chittagong ",
+            "Social Media": "https://www.facebook.com/share/16u8ZSh1Lv/",
+          },
+          {
+            ID: "4003",
+            Name: "Md Mainul Hasan ",
+            Batch: "4th / (SSC 2015)",
+            Designation: "সাধারণ সম্পাদক – General Secretary",
+            Contact: "+8801959883061",
+            "Blood Group": "O (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=178n6x3SROh8jKZXFKqcT1e-_fv8TBt_s",
+            Profession: "Engineer (Service) ",
+            "Institutions/Company/Organisation": "CEAS Limited ",
+            "Current Address": "Chandgaon R/A",
+            "Permanent Address": "Raozan Chattogram Bangladesh ",
+            "Social Media": "Mainul Hasan",
+          },
+          {
+            ID: "4004",
+            Name: "Azmain Adon",
+            Batch: "4th / (SSC 2015)",
+            Designation: "সাংগঠনিক সম্পাদক – Organizational Secretary",
+            Contact: "+8801611760766",
+            "Blood Group": "AB (- Negative)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1TZuZP29lD6jFS8288X0ec9PqMtm-_dfj",
+            Profession: "Engineer",
+            "Institutions/Company/Organisation": "Unilever",
+            "Current Address":
+              "X-16, Laila Manjil, Road 2, Block A, Chandgaon r/a, Chattogram",
+            "Permanent Address":
+              "X-16, Laila Manjil, Road 2, Block A, Chandgaon r/a, Chattogram",
+            "Social Media":
+              "https://www.facebook.com/share/1RpvDBjVeb/?mibextid=wwXIfr",
+          },
+          {
+            ID: "4005",
+            Name: "Shafial Azam",
+            Batch: "4th / (SSC 2015)",
+            Designation: "অর্থ সম্পাদক – Finance Secretary",
+            Contact: "+8801936702346",
+            "Blood Group": "O (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1XiOqc7cKSJy7VZaF1oW6ZT0hM-cMCXYi",
+            Profession: "Businessman ",
+            "Institutions/Company/Organisation":
+              "National University - MBA (Accounting)",
+            "Current Address":
+              "Professor Yakub Ali Residence, Hazipara, Bayzid Bostami-4213, Chattogram ",
+            "Permanent Address":
+              "Professor Yakub Ali Residence, Hazipara, Bayzid Bostami-4213, Chattogram",
+            "Social Media": "fb/shafial.azam",
+          },
+          {
+            ID: "4006",
+            Name: "Mohammad Shoyeb Chowdhury",
+            Batch: "4th / (SSC 2015)",
+            Designation: "আইন বিষয়ক সম্পাদক – Legal Affairs Secretary",
+            Contact: "+8801640621669",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/uc?export=view&id=1bIh4263uC8kpEwD0xVUzmgmtNc6t0dFC",
+            Profession: "Lawyer",
+            "Institutions/Company/Organisation":
+              " Session and Judge Court, Chattogram ",
+            "Current Address": "Nondonkanan, Kotwali, Chattogram ",
+            "Permanent Address": "Sathkania, Chattogram ",
+            "Social Media": "https://www.facebook.com/share/1E2kGqRzPs/",
+          },
+          {
+            ID: "4007",
+            Name: "Aqmam Atiq Ullah Muhd Chy Sean ",
+            Batch: "5th / (SSC 2016)",
+            Designation: "সহ-সভাপতি – Vice President",
+            Contact: "+8801314304868",
+            "Blood Group": "A (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/uc?export=view&id=1iDYut9BvhEjTehYoxUqL9crWpOBeswVy",
+            Profession: "University ",
+            "Institutions/Company/Organisation":
+              "World University of Bangladesh ",
+            "Current Address":
+              "Chandgaon R/A, BLOCK - B, ROAD NO -13, House - 314",
+            "Permanent Address": "Rashid bari, North Burishchar, Hathazari.",
+            "Social Media": "Aqmam Atiq Ullah Sean",
+          },
+          {
+            ID: "4008",
+            Name: "Tanvir Irfan",
+            Batch: "5th / (SSC 2016)",
+            Designation: "সহ-সভাপতি – Vice President",
+            Contact: "+8801879722664",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1lcqhteE08M9EURgHvmXZ1eZzz9s9UMNs",
+            Profession: "Officer",
+            "Institutions/Company/Organisation":
+              "Unimoni exchange company (Qatar)",
+            "Current Address": "Changaon R/A road-4 block-b",
+            "Permanent Address": "Hathazari,katirhat",
+            "Social Media": "Fb/Tanvir irfan",
+          },
+          {
+            ID: "4009",
+            Name: "Jannatun Nadia Nur",
+            Batch: "5th / (SSC 2016)",
+            Designation: "সহ-সভাপতি – Vice President",
+            Contact: "+8801537631737",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1fNY2EQU5B2XI8wIuFZs0BW-04-tEWCna",
+            Profession: "Journalist ",
+            "Institutions/Company/Organisation": "Ctg News ",
+            "Current Address":
+              "House-173, Road-08, Block-B, Chandgaon,R/A, Ctg.",
+            "Permanent Address":
+              "Village-North Pomora, Thana-Rangunia, Post-pomora, Ctg. ",
+            "Social Media": "Fb ID: Nadia Nur Erin ",
+          },
+          {
+            ID: "4010",
+            Name: "Ishfaqul Wazed",
+            Batch: "5th / (SSC 2016)",
+            Designation: "যুগ্ম সাধারণ সম্পাদক – Joint General Secretary",
+            Contact: "+880966591587275",
+            "Blood Group": "O (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/uc?export=view&id=1CVqupinp5dYmhSnAFo0XT3Wj8jrL227H",
+            Profession: "Service holder",
+            "Institutions/Company/Organisation":
+              "Interior Firm of Saudi Arabia",
+            "Current Address": "Suadi Arab ",
+            "Permanent Address": "Bashkhali.",
+            "Social Media": "https://www.facebook.com/share/1CWf63EPU9/",
+          },
+          {
+            ID: "4011",
+            Name: "Hasan Mahmud Al Zaber",
+            Batch: "5th / (SSC 2016)",
+            Designation: "দপ্তর সম্পাদক – Office Secretary",
+            Contact: "+8801627273386",
+            "Blood Group": "O (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1C8Ee6BSRj7XJRkBOa3YUkmJJv-hB-fEg",
+            Profession: "Junior Engineer (Ex. BUET WRE'18)",
+            "Institutions/Company/Organisation":
+              "Institute of Water Modelling (IWM)",
+            "Current Address":
+              "Flat 11-A , Dominno Eldorado, 6/7, Topkhana Road, Segunbagicha, Shahbag, Dhaka.",
+            "Permanent Address":
+              "Peyar Mohammed boro bari , Dewan Mohsin Road, Purba Mohora",
+            "Social Media": "",
+          },
+          {
+            ID: "4012",
+            Name: "Sidratul Muntaha",
+            Batch: "5th / (SSC 2016)",
+            Designation:
+              "সহ-সাংগঠনিক সম্পাদক – Assistant Organizational Secretary",
+            Contact: "+8801810148443",
+            "Blood Group": "O (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/uc?export=view&id=161xI4xdzD9ayG9B3Ns1_M289Z1MeFtM9",
+            Profession: "Accounting- 2019/2020",
+            "Institutions/Company/Organisation": "National university ",
+            "Current Address":
+              "Chandgaon abashik road no 7 b block Chittagong ",
+            "Permanent Address":
+              "Chandgaon abashik road no 7 b block Chittagong ",
+            "Social Media": "",
+          },
+          {
+            ID: "4013",
+            Name: "MD. Minhajul Islam",
+            Batch: "6th / (SSC 2017)",
+            Designation: "সহ-সভাপতি – Vice President",
+            Contact: "+8801867648695",
+            "Blood Group": "A (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1B78_MbBJmyGc4hUQ2VMBVgzJFM0ub1vG",
+            Profession: "National University - Economics - 4th Year",
+            "Institutions/Company/Organisation": "Islamia Degree College",
+            "Current Address":
+              "House no: 46, Road no: 03, Block: B, Chandgaon R/A, Chattogram.",
+            "Permanent Address": "Nanupur, Fatikchari, Chattogram.",
+            "Social Media": "Mohammed Minhajul Islam",
+          },
+          {
+            ID: "4014",
+            Name: "MD Nadim Abdullah",
+            Batch: "6th / (SSC 2017)",
+            Designation: "সহ-সভাপতি – Vice President",
+            Contact: "+8801832359940",
+            "Blood Group": "A (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1mx02TW3ZKCgLSdAvbmw1vCuVqFSDO6Hz",
+            Profession: "University - Textile Engineering -4th year",
+            "Institutions/Company/Organisation":
+              "Textile Engineering College Zorarganj Chittagong ",
+            "Current Address":
+              "House -173,road-8,block-B,Chandgoan R/A Chittagong. ",
+            "Permanent Address":
+              "Thana-rangunia,village -pomora,post office -pomora,jila -Chittagong ",
+            "Social Media": "",
+          },
+          {
+            ID: "4015",
+            Name: "Farman Hasnat Chy",
+            Batch: "6th / (SSC 2017)",
+            Designation: "যুগ্ম সাধারণ সম্পাদক – Joint General Secretary",
+            Contact: "+8801830645137",
+            "Blood Group": "A (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1OZXcZ2azTv9wu98Hs5Oqdd1I7rXTg8x9",
+            Profession: "Territory Officer ",
+            "Institutions/Company/Organisation": "Robi Axiata PLC.",
+            "Current Address": "Link Road, Cox's Bazar ",
+            "Permanent Address": "Chandgaon Residential Area, Chattogram",
+            "Social Media": "Farman Hasnat Chowdhury ",
+          },
+          {
+            ID: "4016",
+            Name: "Sarwar Jamal Rian",
+            Batch: "6th / (SSC 2017)",
+            Designation: "যুগ্ম সাধারণ সম্পাদক – Joint General Secretary",
+            Contact: "+8801749180123",
+            "Blood Group": "A (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1_-8IfiovzRHnnO_vX53y3xLpl0pbXXZm",
+            Profession: "Businessmen",
+            "Institutions/Company/Organisation": "Gold Shop",
+            "Current Address":
+              "House No: 72, Road No: 8, Block: B, Chandgoan R/A, Chattogram",
+            "Permanent Address": "Shilok, Rangunia, Chattogram.",
+            "Social Media": "Rian Sarwar",
+          },
+          {
+            ID: "4017",
+            Name: "MD. Shafayat Hossain",
+            Batch: "6th / (SSC 2017)",
+            Designation:
+              "সহ-সাংগঠনিক সম্পাদক – Assistant Organizational Secretary",
+            Contact: "+8801862832014",
+            "Blood Group": "A (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1gpQv3kOENPp87Ix8mQ8YtiI_Zh7VTNCM",
+            Profession: "Student -Statistics -4th year",
+            "Institutions/Company/Organisation":
+              "Chittagong college (National University) ",
+            "Current Address": "Muradpur, Panchlaish, Chattogram. ",
+            "Permanent Address": "Raozan,Chattogram. ",
+            "Social Media": "fb/Shafayat. Hossain.",
+          },
+          {
+            ID: "4018",
+            Name: "MD. Samiul Hoda Babu",
+            Batch: "6th / (SSC 2017)",
+            Designation: "সহ-অর্থ সম্পাদক – Assistant Finance Secretary",
+            Contact: "+8801875646779",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1BTfRwIIv_n90NsxKS8zow1D0I6vGekjM",
+            Profession: "Student ",
+            "Institutions/Company/Organisation": "University of Chittagong ",
+            "Current Address": "Chandgaon R/A, Block-B, Road No-10 ",
+            "Permanent Address": "South maliara, patiya, Chittagong",
+            "Social Media": "https://www.facebook.com/crazysami99",
+          },
+          {
+            ID: "4019",
+            Name: "Kazi Robiul Hassan",
+            Batch: "7th / (SSC 2018)",
+            Designation: "যুগ্ম সাধারণ সম্পাদক – Joint General Secretary",
+            Contact: "+8801829630220",
+            "Blood Group": "O (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1xxHyNnh_PG7K7HGg3bsnHYaSjFGHvj8v",
+            Profession: " Electrical and Electronic Engineering-4year",
+            "Institutions/Company/Organisation":
+              "International Islamic University ",
+            "Current Address": "Chandgoan R/A B-Block",
+            "Permanent Address": "Uttar Rangunia,Dhamairhat",
+            "Social Media": "fb/Robiul Hassan",
+          },
+          {
+            ID: "4020",
+            Name: "Armanul Alam Tamim",
+            Batch: "7th / (SSC 2018)",
+            Designation: "যুগ্ম সাধারণ সম্পাদক – Joint General Secretary",
+            Contact: "+8801633032844",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=14Rxbhe5jLAKJi8zlcTTo6ws5NeN2BgO9",
+            Profession:
+              "Ex:omar gani mes college /omar gani mes college /Med student - accounting - 4th Year  ",
+            "Institutions/Company/Organisation": "Omar gani mes college ",
+            "Current Address":
+              "East Fariderpara, Hazi Fazlul Rahaman Shawdagar Baril,Chandgaon, Chattogram. ",
+            "Permanent Address":
+              "East Fariderpara, Hazi Fazlul Rahaman Shawdagar Baril,Chandgaon, Chattogram. ",
+            "Social Media":
+              "https://www.facebook.com/arman.tamim.369142?mibextid=ZbWKwL",
+          },
+          {
+            ID: "4021",
+            Name: "Fahmidul Islam",
+            Batch: "7th / (SSC 2018)",
+            Designation:
+              "সহ-সাংগঠনিক সম্পাদক – Assistant Organizational Secretary",
+            Contact: "+8801871567213",
+            "Blood Group": "O (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1zg6UdLrn5vt56HRaAfxAzRTiY5FBdcM9",
+            Profession: "EEE - 4th Year",
+            "Institutions/Company/Organisation": "IIUC",
+            "Current Address": "Chandgaon Abashik , B block - Road -13",
+            "Permanent Address": "Ranguniya, pomra",
+            "Social Media":
+              "https://www.facebook.com/share/1AbYLJmzzD/?mibextid=wwXIfr",
+          },
+          {
+            ID: "4022",
+            Name: "MD EYASIR IRFAN",
+            Batch: "7th / (SSC 2018)",
+            Designation: "সহ-অর্থ সম্পাদক – Assistant Finance Secretary",
+            Contact: "+8801974283416",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1K5Jp1sMjgxcoaVtrMHtSzFX_XHs9usF4",
+            Profession: "Business ",
+            "Institutions/Company/Organisation": "Sultana Green Farm ",
+            "Current Address":
+              "Doctor hamid bari, Aman bazar, hathazari road,Chittagong.",
+            "Permanent Address":
+              "Doctor hamid bari, Aman bazar, hathazari road,Chittagong.",
+            "Social Media": "",
+          },
+          {
+            ID: "4023",
+            Name: "Wahidul Alam",
+            Batch: "7th / (SSC 2018)",
+            Designation: "প্রচার সম্পাদক – Publicity Secretary",
+            Contact: "+8801869797465",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1lb2xTnvj5OPIrEAaetMjCsmgzjFIF_Lq",
+            Profession: "Management hons 3rd year",
+            "Institutions/Company/Organisation": "City college ",
+            "Current Address": "Nurul islam BSC bari puran chandgaon ",
+            "Permanent Address": "Chowdhury bari bengura boalkhali ",
+            "Social Media": "",
+          },
+          {
+            ID: "4024",
+            Name: "Adiba Nur Afroj",
+            Batch: "7th / (SSC 2018)",
+            Designation: "সাংস্কৃতিক সম্পাদক – Cultural Secretary",
+            Contact: "+8801792595055",
+            "Blood Group": "A (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=17okgCBXSCK8p23GT3L0IUAWHlRJJHkpN",
+            Profession: "BBA in accounting,4th year",
+            "Institutions/Company/Organisation": "Govt.Commerce College, ctg",
+            "Current Address": "Ss Khaled road, jamal khan, ctg",
+            "Permanent Address": "Satkania, Ctg",
+            "Social Media": "Fb/ Adiba Nur",
+          },
+          {
+            ID: "4025",
+            Name: "Tasnova Tasnim Aurpa",
+            Batch: "7th / (SSC 2018)",
+            Designation: "সহ-দপ্তর সম্পাদক – Assistant Office Secretary",
+            Contact: "+8801834104277",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/uc?export=view&id=1Mv6_YzTCv-Y0SNWQx_JhhHtJOa36HdAO",
+            Profession: "4th year (IHC)",
+            "Institutions/Company/Organisation": "Dhaka University ",
+            "Current Address":
+              "Bangamata sheik Fazitulnessa mujib hall,Dhaka University ",
+            "Permanent Address": "MURADPUR",
+            "Social Media": "Tasnova Tasnim",
+          },
+          {
+            ID: "4026",
+            Name: "Md. Ariful Islam",
+            Batch: "8th / (SSC 2019)",
+            Designation: "যুগ্ম সাধারণ সম্পাদক – Joint General Secretary",
+            Contact: "+8801764745068",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/uc?export=view&id=13mynA-VgDspwUtLhmwp2ijFkqhkZbg8Q",
+            Profession: "BBA 3rd",
+            "Institutions/Company/Organisation": "Student ",
+            "Current Address": "Muslim mia ba,ri akolia, boalkhali Chittagong ",
+            "Permanent Address": "Chandgaon R/A,a a- block ,road no -6",
+            "Social Media": "MUHAMMAD ARIFUL ISLAM TAYYIP ",
+          },
+          {
+            ID: "4027",
+            Name: "Tanjila Akther ",
+            Batch: "8th / (SSC 2019)",
+            Designation: "যুগ্ম সাধারণ সম্পাদক – Joint General Secretary",
+            Contact: "+8801887985878",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1VYr011Pt4EQGdYDQ_pFSpIrA8s9hYzRi",
+            Profession: "DUET-CSE-2nd year ",
+            "Institutions/Company/Organisation":
+              "Dhaka University of Engineering and Technology (DUET)",
+            "Current Address": "Madam currie hall,duet, joydebpur,gazipur ",
+            "Permanent Address": "Shamsher para, chandgaon r/a, Chittagong.",
+            "Social Media": "https://www.facebook.com/share/18Wnc4nWnX/",
+          },
+          {
+            ID: "4028",
+            Name: "Mohammed Nurul Azam Khan",
+            Batch: "8th / (SSC 2019)",
+            Designation: "শিক্ষা বিষয়ক সম্পাদক – Education Secretary",
+            Contact: "+8801995871551",
+            "Blood Group": "A (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1QMIhABiB3VfggEK34WleT9D8tCloxqPs",
+            Profession: "Student-Mathematics -3rd Year ",
+            "Institutions/Company/Organisation": "Govt. Patiya College ",
+            "Current Address": "Jalal khan chy bari ,chandgao,chattogram",
+            "Permanent Address": "Jalal khan chy bari ,chandgao,chattogram",
+            "Social Media": "nuwan0011",
+          },
+          {
+            ID: "4029",
+            Name: "Mohammed Tahsin Samin",
+            Batch: "8th / (SSC 2019)",
+            Designation: "ক্রীড়া সম্পাদক – Sports Secretary",
+            Contact: "+8801882773919",
+            "Blood Group": "A (- Negative)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1_evoWm4f7jAuW5aKDFOgDiyLJx3cq9EA",
+            Profession: "Student-BBA-3rd year",
+            "Institutions/Company/Organisation": "East Delta University ",
+            "Current Address":
+              "292,green lychee hanif,haji chand mia road,Bohoddar hat",
+            "Permanent Address": "Same ",
+            "Social Media": "Fb-Tahsin Samin ",
+          },
+          {
+            ID: "4030",
+            Name: "Md. Tazdik Ayub Sazil",
+            Batch: "8th / (SSC 2019)",
+            Designation:
+              "সহ-সাংগঠনিক সম্পাদক – Assistant Organizational Secretary",
+            Contact: "+8801851787794",
+            "Blood Group": "AB (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1rwKD63Zq1uX736I-ToThgQvyrwCQt6ev",
+            Profession: "CSE - 4th semester ",
+            "Institutions/Company/Organisation": "East Delta University ",
+            "Current Address":
+              "Osmania Puler Gora, Mohora, Chandgaon, Chittagong ",
+            "Permanent Address":
+              "Osmania Puler Gora, Mohora, Chandgaon, Chittagong",
+            "Social Media": "",
+          },
+          {
+            ID: "4031",
+            Name: "Sharar Fahmed Ahmed ",
+            Batch: "8th / (SSC 2019)",
+            Designation: "সহ-প্রচার সম্পাদক – Assistant Publicity Secretary",
+            Contact: "+8801704915629",
+            "Blood Group": "O (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1866N22nZmZwKHSlqOOoCtRrJ0RKizYdZ",
+            Profession: "Uni/Student-BBA-3rd Year",
+            "Institutions/Company/Organisation": "BRAC University",
+            "Current Address":
+              "Ta-168 Badda High School Road Opposite of Badda high school mosjid Middle Badda Gulshan",
+            "Permanent Address": "198 Khatunganj Boxir Hut Kotowali Chattogram",
+            "Social Media":
+              "(facebook.com/shararfahmedahmed) (linkedin.com/in/sharar-fahmed-ahmed/",
+          },
+          {
+            ID: "4032",
+            Name: "Ayman Subah",
+            Batch: "8th / (SSC 2019)",
+            Designation: "সহ সম্পাদক – Assistant Secretary",
+            Contact: "+8801974543786",
+            "Blood Group": "A (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/uc?export=view&id=1qzB-EGMDT3Iw7w1tcRc3v4jlIWFzng3u",
+            Profession:
+              "Chittagong Government Women College - English Language & Literature - honours 3rd year ",
+            "Institutions/Company/Organisation":
+              "Chittagong Government Women College ",
+            "Current Address": "West khulshi R/A, Chittagong ",
+            "Permanent Address": "West khulshi R/A, Chittagong ",
+            "Social Media": "Fb: Ayman Subah ",
+          },
+          {
+            ID: "4033",
+            Name: "Saidur Rahman",
+            Batch: "9th / (SSC 2020)",
+            Designation:
+              "তথ্য ও যোগাযোগ বিষয়ক সম্পাদক – Information and Communication Secretary",
+            Contact: "+8801764745500",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1fnvRe2OpEhCzbVoERP6XaGX1pnk6fft6",
+            Profession: "University Student - BBA - 6th Semester",
+            "Institutions/Company/Organisation": "East Delta University ",
+            "Current Address":
+              "Chandgaon abasik, Block: B, Road: 09, Building: 234",
+            "Permanent Address": "Lohagara, Amirabad, Hajarbigha",
+            "Social Media": "Facebook - Saidur Rahman",
+          },
+          {
+            ID: "4034",
+            Name: "Nafisa Tabassum",
+            Batch: "9th / (SSC 2020)",
+            Designation: "ধর্ম বিষয়ক সম্পাদক – Religious Affairs Secretary",
+            Contact: "+8801975401230",
+            "Blood Group": "O (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/uc?export=view&id=1ldQYJUiYf_JPB7T-wEn60rYdKlr7PziX",
+            Profession: "Uni student -Accounting Dept-2nd year",
+            "Institutions/Company/Organisation": "GHM Mohsin College ",
+            "Current Address": "Chandgoan residential area, Chattogram ",
+            "Permanent Address": "Mirsarai, Chattogram ",
+            "Social Media": "Fb/Nafisa Tabassum ",
+          },
+          {
+            ID: "4035",
+            Name: "Marwa Alam",
+            Batch: "9th / (SSC 2020)",
+            Designation:
+              "গ্রন্থ ও প্রকাশনা বিষয়ক সম্পাদক – Books and Publications Secretary",
+            Contact: "+8801940784149",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1geSJeRA8VPFMMp-qB3apO-bzg_Gi3AsV",
+            Profession: " Bachelor Business of Administration - 2 year",
+            "Institutions/Company/Organisation":
+              "Chittagong Independent University ",
+            "Current Address":
+              "Chandgaon residential area, Block -B, road 1,home 477",
+            "Permanent Address":
+              "Chandgaon residential area, Block -B, road 1,home 477",
+            "Social Media": "Marwa Alam",
+          },
+          {
+            ID: "4036",
+            Name: "Jabir khan",
+            Batch: "9th / (SSC 2020)",
+            Designation: "সহ সম্পাদক – Assistant Secretary",
+            Contact: "+8801999408406",
+            "Blood Group": "AB (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/uc?export=view&id=1qrs7cYJ1guDjscA96KAmb3_--4i44Ypy",
+            Profession: "Department of law ",
+            "Institutions/Company/Organisation": "Jagannath University ",
+            "Current Address": "Dhaka",
+            "Permanent Address": "Chattogram ",
+            "Social Media": "Jabir khan",
+          },
+          {
+            ID: "4037",
+            Name: "HM Arshad",
+            Batch: "9th / (SSC 2020)",
+            Designation:
+              "সহ-সাংগঠনিক সম্পাদক – Assistant Organizational Secretary",
+            Contact: "+8801879230612",
+            "Blood Group": "A (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/uc?export=view&id=1P11RhqoiWxHK6yZXg_xhOEKDpGsBsCro",
+            Profession: "IIUC BBA 4th semester ",
+            "Institutions/Company/Organisation": "IIUC",
+            "Current Address": "Chandgaon abashik",
+            "Permanent Address": "1km",
+            "Social Media":
+              "https://www.facebook.com/share/14G2hH888zm/?mibextid=wwXIfr",
+          },
+          {
+            ID: "4038",
+            Name: "Syed Saobanul Islam",
+            Batch: "9th / (SSC 2020)",
+            Designation:
+              "সহ ক্রীড়া বিষয়ক সম্পাদক – Assistant Sports Affairs Secretary",
+            Contact: "+8801734270151",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/uc?export=view&id=1XCS0UHqVFEfhXcYFW710SzpXRevKQepK",
+            Profession: "IIUC-BBA-2year",
+            "Institutions/Company/Organisation":
+              "international Islamic University of Chittagong ",
+            "Current Address": "Chandgaon r/a,Chittagong,Block-B,road no-1",
+            "Permanent Address": "Chandgaon r/a, Chittagong,block-B,road no-1",
+            "Social Media": "Linkdin-Saoban Islam,Facebook-Syed Saobanul Islam",
+          },
+          {
+            ID: "4039",
+            Name: "Touki Tahmid Chowdhury",
+            Batch: "9th / (SSC 2020)",
+            Designation: "সহ-সাংস্কৃতিক সম্পাদক – Assistant Cultural Secretary",
+            Contact: "+8801608284399",
+            "Blood Group": "A (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1ypE1vc_VoR4JJ15oWuOFjeCfYZz8w63U",
+            Profession:
+              "Studied Bachelor of Apparel Merchandising and Management(AMM) -2nd year ",
+            "Institutions/Company/Organisation":
+              "Chattogram BGMEA University O of Fashion & Technology - CBUFT ",
+            "Current Address": "Chandrima abasik, Road-06. chittagong ",
+            "Permanent Address": "Boalkali,west khudorkil, chittagong ",
+            "Social Media": "Chowdhury Touki",
+          },
+          {
+            ID: "4040",
+            Name: "Emdadul Haq",
+            Batch: "10th / (SSC 2021)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801897837098",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=15bhSwWu_5YD7QnaLC42-Bv0v40PJSHlA",
+            Profession: "BBA-Finance-2nd Year ",
+            "Institutions/Company/Organisation":
+              "Save Our Women Bangladesh(Chittagong Division),Bangladesh Red Creseant Socity-Chottwgram City Red Creseant youth",
+            "Current Address":
+              "Mowlana Monjil Green View R/A Sunnia Madrasha Rd, Road No 01 Bibirhat,Chattogram. Thana:- Panchlaish. Zilla:- Chattagram. P.O:- Amin Zut Mills",
+            "Permanent Address":
+              "Mowlana Monjil Green View R/A Sunnia Madrasha Rd, Road No 01 Bibirhat,Chattogram. Thana:- Panchlaish. Zilla:- Chattagram. P.O:- Amin Zut Mills",
+            "Social Media": "https://www.facebook.com/ariyanmontashir.taimun/",
+          },
+          {
+            ID: "4041",
+            Name: "Sadiatut Arif",
+            Batch: "10th / (SSC 2021)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801886181106",
+            "Blood Group": "O (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1V39nXCFUIKEz-FM_rFz7G4esBI1gqDac",
+            Profession: "BBA-Finance-2nd Year",
+            "Institutions/Company/Organisation":
+              "Bangladesh Red Creseant Socity",
+            "Current Address": "Chandgaon R/A B-Block Road-8A House no. 543",
+            "Permanent Address": "Chandgaon R/A B-Block Road-8A House no. 543",
+            "Social Media": "https://www.facebook.com/taibaarif.taiba#",
+          },
+          {
+            ID: "4042",
+            Name: "Miskatul Islam",
+            Batch: "10th / (SSC 2021)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801880682850",
+            "Blood Group": "O (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1MMN-_1bJ_hp0rzgrfbRVJNU-GT7S06QZ",
+            Profession: "BBA Accounting Dept @nd Year",
+            "Institutions/Company/Organisation":
+              "Quaish Budishchar Sheikh Mohammed City Corporation College",
+            "Current Address": "Chandgaon Abasik A Block Road No 2",
+            "Permanent Address": "Chandgaon Abasik A Block Road No 2",
+            "Social Media": "https://www.facebook.com/miskatul.islam.510787",
+          },
+          {
+            ID: "4043",
+            Name: "Mohammed Mirajur Rahman",
+            Batch: "10th / (SSC 2021)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801886704996",
+            "Blood Group": "A (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/uc?export=view&id=1dE0Vt91kT1Qy1DJctq0W1JVmj0xWuDmo",
+            Profession: "management , honurs 1st yaar ",
+            "Institutions/Company/Organisation": "Govt.Commarce College ",
+            "Current Address": "Chandgao R/A chottogram, block A",
+            "Permanent Address": "Fatikchori, Azadi Bazar, Dharmopur",
+            "Social Media": "https://www.facebook.com/share/1Ax8NiQjQp/",
+          },
+          {
+            ID: "4044",
+            Name: "Hasiba Sharif",
+            Batch: "10th / (SSC 2021)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801404763243",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/uc?export=view&id=1PZ1SScs9IW2It2p-12t5AW2GJ6SqIDEq",
+            Profession: "BBA- 1st year",
+            "Institutions/Company/Organisation":
+              "International Islamic University Chittagong ",
+            "Current Address":
+              "House - 375, Road- 14, Block- B, Chandgaon R/A, Chattogram",
+            "Permanent Address": "Shahbazpur, Thana- Sarail, Brahmanbaria",
+            "Social Media": "fb/hasiba.sharif.2025",
+          },
+          {
+            ID: "4045",
+            Name: "Samin Yeasar Sakib",
+            Batch: "10th / (SSC 2021)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801401281204",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=14hvz_9PTBQ4YmwBJ14CiKxR7gC6LvSOn",
+            Profession: "NA",
+            "Institutions/Company/Organisation": "NA",
+            "Current Address": "Dinajpur, Bangladesh",
+            "Permanent Address": "Dinajpur, Bangladesh",
+            "Social Media": "",
+          },
+          {
+            ID: "4046",
+            Name: "Shafkat Rahman ",
+            Batch: "11th / (SSC 2022)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801826071720",
+            "Blood Group": "O (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=11yKvO0IOJhInKzFMWwT5grMfDZKmxvzO",
+            Profession: "Uni Student- Management 38(session 24-25) ",
+            "Institutions/Company/Organisation": "University of Chittagong",
+            "Current Address": "Chandgoan R/A Chittagong",
+            "Permanent Address": " Anuwara, Chittagong ",
+            "Social Media": " https://www.facebook.com/share/1Wdwboimtd/",
+          },
+          {
+            ID: "4047",
+            Name: "Nahidul Alam Alvi",
+            Batch: "11th / (SSC 2022)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801327133447",
+            "Blood Group": "A (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1yHd38h69WPUf_Gp6ql2O_Zn9RwCce9AM",
+            Profession: "East delta university-BBA-1st year",
+            "Institutions/Company/Organisation": "Institutions ",
+            "Current Address": "Chandgaon abashik,B-block,13 number road,",
+            "Permanent Address": "Raozan Chittagong ",
+            "Social Media": "",
+          },
+          {
+            ID: "4048",
+            Name: "Soummo Barua",
+            Batch: "11th / (SSC 2022)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801972706498",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1qhk0jRfrrY3DeyMKb8TEJFmIg9Drov-W",
+            Profession: " Civil Engineering - 1st year",
+            "Institutions/Company/Organisation": "Macquarie University",
+            "Current Address": "Paragon City, Anderkillah",
+            "Permanent Address": "Paragon City,Anderkillah",
+            "Social Media": "",
+          },
+          {
+            ID: "4049",
+            Name: "Ibnun Sultan khan",
+            Batch: "11th / (SSC 2022)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801604094115",
+            "Blood Group": "A (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1veCMJ-bPMhTgobNIFwsRW2j4-fs6sfp2",
+            Profession: "Student Unistudent -(1st year)",
+            "Institutions/Company/Organisation": "North south university ",
+            "Current Address": "Chadgaon Residential Area b block road no 3",
+            "Permanent Address": "Chowkoria bodorkhali,3no ward",
+            "Social Media": "Ibnun Sultan",
+          },
+          {
+            ID: "4050",
+            Name: "Anindya Dewanjee",
+            Batch: "11th / (SSC 2022)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801830221441",
+            "Blood Group": "O (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=14RANOTr21wxCOIWHB4rAIjpqTnvOi7kx",
+            Profession: "University Student- B.B.A- 1st year",
+            "Institutions/Company/Organisation":
+              "Government College of Commerce",
+            "Current Address": "Road-09, Block-B, Chandgaon R/A, Chattogram",
+            "Permanent Address": "Quaish, Hathazari ",
+            "Social Media": "Fb/Anindya Dewanjee ",
+          },
+          {
+            ID: "4051",
+            Name: "Mehreen Nargis Chowdhury ",
+            Batch: "11th / (SSC 2022)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801826071720",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1UIIR0r0RRwUMshxS4E_MkVBnAGmGDaR7",
+            Profession: "Electronic Telecommunication Engineering -1st year",
+            "Institutions/Company/Organisation":
+              "Chittagong independent university ",
+            "Current Address": "House no 11, road no 1, Block A, Chandgaon R/A",
+            "Permanent Address":
+              "House no 11, road no 1, Block A, Chandgaon R/A",
+            "Social Media": "N/A",
+          },
+          {
+            ID: "4052",
+            Name: "Tasdia Binte Jafar",
+            Batch: "12th / (SSC 2023)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801870782686",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1S0ADDNEm1x7klihlaJSNe0bxmuKKEDkc",
+            Profession: "College student- group science-hsc candidate ",
+            "Institutions/Company/Organisation":
+              "Aparna charan city corporation school and college ",
+            "Current Address": "Chandgaon abashik #Block-B#road-3# house no-41",
+            "Permanent Address":
+              "Chandgaon abashik #Block-B #road- 140# house no-380",
+            "Social Media": "Fb/Tas Dia",
+          },
+          {
+            ID: "4053",
+            Name: "Tajrian Tanvin",
+            Batch: "12th / (SSC 2023)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801973443429",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=150h6Xe9fSJrVP5gJ2H8FmKgXCxpQ6swM",
+            Profession: "Hsc candidate ",
+            "Institutions/Company/Organisation":
+              "Chittagong Govt. Women's College ",
+            "Current Address": "Sholokbohor, chottragram ",
+            "Permanent Address": "Sholokbohor, chottragram ",
+            "Social Media": "https://www.facebook.com/share/19dAjzftWb/",
+          },
+          {
+            ID: "4054",
+            Name: "Fabliha Rumaisa",
+            Batch: "12th / (SSC 2023)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801857669270",
+            "Blood Group": "O (- Negative)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1WbkGL2PElZLCiXN4c7gMvHalyUTaAu6N",
+            Profession: "Hsc candidate ",
+            "Institutions/Company/Organisation":
+              "Govt city college, chattragram ",
+            "Current Address": "B-block ,chandgaon R/A , chattragram ",
+            "Permanent Address": "B-block ,chandgao R/A , chattragram",
+            "Social Media": "",
+          },
+          {
+            ID: "4055",
+            Name: "Abrar Bin Manzur",
+            Batch: "12th / (SSC 2023)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801601029156",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1fos2pjoeY7zLKf_hN86Xp90eo9q5IhUy",
+            Profession: "student",
+            "Institutions/Company/Organisation":
+              "Halishahar Cantonment Public School & College ",
+            "Current Address":
+              "House no:209,road no:09,block:b,Chandgaon Residential Area",
+            "Permanent Address": " Uttar Dhurung,baghkhali,kutubdia",
+            "Social Media":
+              "https://www.facebook.com/share/17Aw5BRqis/?mibextid=wwXIfr",
+          },
+          {
+            ID: "4056",
+            Name: "Syed Mifta",
+            Batch: "12th / (SSC 2023)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801797677167",
+            "Blood Group": "A (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/uc?export=view&id=1fLXndc45lLOtbNoA1HJq0yBhmCfkV305",
+            Profession: "Hsc candidate (businness studies)",
+            "Institutions/Company/Organisation": "Kazem Ali School and College",
+            "Current Address": "Hazi Chand Mia Road, Bohoddarhat. ",
+            "Permanent Address": "Hazi Chand Mia Road, Bohoddarhat.",
+            "Social Media":
+              "https://www.facebook.com/share/14JoVNGc6Vr/?mibextid=wwXIfr",
+          },
+          {
+            ID: "4057",
+            Name: "Yeamin Sadekin",
+            Batch: "13th / (SSC 2024)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801793109778",
+            "Blood Group": "O (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/uc?export=view&id=1TIvEX5FsyFsmxn_9Sxe4UsA9Ik0z7tW1",
+            Profession: "Intermediate 2nd year - business studies ",
+            "Institutions/Company/Organisation": "Hajera taju degree college ",
+            "Current Address":
+              "Cda residential area ,2 no, b-block, chandgaon.",
+            "Permanent Address": "Potiya upozilla.",
+            "Social Media": "Yeamin Sadekin ",
+          },
+          {
+            ID: "4058",
+            Name: "Md.Minhaz Uddin Ridhom",
+            Batch: "13th / (SSC 2024)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801815562053",
+            "Blood Group": "A (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1kPKR8jPxSyloGNFkuzkXlTaEmep5sUH5",
+            Profession:
+              "STUDENT (INTERMEDIATE -26-2ND YEAR - BUSINESS STUDIES)",
+            "Institutions/Company/Organisation":
+              "CDA public school and college ",
+            "Current Address": "Khawza road, chandgaon, chattogram.",
+            "Permanent Address": "Khawza road, chandgaon, chattogram.",
+            "Social Media": "Minhaz Uddin ",
+          },
+          {
+            ID: "4059",
+            Name: "Joinuddin Chowdhury Jidan",
+            Batch: "13th / (SSC 2024)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801533455404",
+            "Blood Group": "A (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/uc?export=view&id=1dkOe5ouRvgfVyq2dMoploo1wQW2A74yW",
+            Profession: "Student",
+            "Institutions/Company/Organisation": "Omorgani mes college",
+            "Current Address": "Chandgaon abashik/RA",
+            "Permanent Address": "Boalkhali,west kadhurkil",
+            "Social Media": "https://www.facebook.com/joynuddin.jidan",
+          },
+          {
+            ID: "4060",
+            Name: "Tasnia Marzan",
+            Batch: "13th / (SSC 2024)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801973879893",
+            "Blood Group": "B (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=1CPZlso6Xbx_7Xj-djfOLDp56RV_FjNrK",
+            Profession: "College student-science-2nd Year",
+            "Institutions/Company/Organisation": "Omorgoni MES College",
+            "Current Address":
+              "Chandgaon Abashik R/A,B-block,road-5,Chottogram",
+            "Permanent Address":
+              "Chandgaon Abashik R/A, B-block,road 5, Chottogram ",
+            "Social Media": "Tasnia Marzan ",
+          },
+          {
+            ID: "4061",
+            Name: "Subahee Anwar Maisha ",
+            Batch: "13th / (SSC 2024)",
+            Designation: "কার্যকরী সদস্য - Executive Member",
+            Contact: "+8801884066300",
+            "Blood Group": "O (+ Positive)",
+            "ID Photo":
+              "https://drive.google.com/open?id=17E9iKoQDneTZvx22CNJYpfhRs7A5WL4F",
+            Profession: "Business Studies-2nd Year",
+            "Institutions/Company/Organisation":
+              "Government College of Commerce ",
+            "Current Address":
+              "5th floor,Mosmera Mension,Momenbag Abasik,Hamgarbag,Muradpur,Chattogram ",
+            "Permanent Address":
+              "House of Foruk Chairman, Kanchana,Satkania, Chattogram ",
+            "Social Media": "https://www.facebook.com/share/16dbi3aU2x/",
+          },
+        ],
+      };
+
+      // --- JAVASCRIPT LOGIC ---
+
+      /**
+       * Converts a Google Drive sharing URL into a direct image link.
+       * @param {string} url The original Google Drive URL.
+       * @returns {string} The direct image URL.
+       */
+      function getDirectGoogleDriveLink(url) {
+        // Placeholder image in case the URL is invalid
+        const placeholder =
+          "https://via.placeholder.com/150/CCCCCC/FFFFFF?text=No+Image";
+        if (typeof url !== "string" || url.trim() === "") {
+          console.warn("Invalid URL provided:", url);
+          return placeholder;
+        }
+
+        let fileId = "";
+
+        // Handle different Google Drive URL formats
+        if (url.includes("drive.google.com/uc?export=view&id=")) {
+          // Already in correct format
+          return url;
+        } else if (url.includes("drive.google.com/open?id=")) {
+          // Extract ID from open format
+          const match = url.match(/id=([a-zA-Z0-9_-]+)/);
+          if (match && match[1]) {
+            fileId = match[1];
+          }
+        } else if (url.includes("drive.google.com/file/d/")) {
+          // Extract ID from file format
+          const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+          if (match && match[1]) {
+            fileId = match[1];
+          }
+        } else if (url.includes("id=")) {
+          // Generic ID extraction
+          const match = url.match(/id=([a-zA-Z0-9_-]+)/);
+          if (match && match[1]) {
+            fileId = match[1];
+          }
+        }
+
+        if (fileId) {
+          // Try multiple Google Drive URL formats for better compatibility
+          const urls = [
+            `https://drive.google.com/uc?export=view&id=${fileId}`,
+            `https://drive.google.com/file/d/${fileId}/preview`,
+            `https://drive.google.com/thumbnail?id=${fileId}&sz=w400`,
+            `https://drive.google.com/uc?id=${fileId}&export=download`,
+          ];
+
+          console.log(`Converted URL: ${url} -> ${urls[0]}`);
+          return urls[0]; // Return the first format, but we'll test all
+        }
+
+        // Return placeholder if no ID was found
+        console.warn("Could not extract file ID from URL:", url);
+        return placeholder;
+      }
+
+      /**
+       * Handles image loading errors by replacing with placeholder
+       * @param {HTMLImageElement} img The image element that failed to load
+       */
+      function handleImageError(img) {
+        // Create a better placeholder with initials or avatar
+        const name = img.alt.replace("Photo of ", "");
+        const initials = name
+          .split(" ")
+          .map((n) => n[0])
+          .join("")
+          .toUpperCase()
+          .substring(0, 2);
+
+        // Create SVG placeholder with initials
+        const svgPlaceholder = `data:image/svg+xml,${encodeURIComponent(`
+            <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
+              <rect width="160" height="160" fill="#e5e7eb"/>
+              <circle cx="80" cy="60" r="30" fill="#9ca3af"/>
+              <text x="80" y="70" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle">${initials}</text>
+              <text x="80" y="140" font-family="Arial, sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Photo Unavailable</text>
+            </svg>
+          `)}`;
+
+        img.src = svgPlaceholder;
+        img.alt = "Photo not available for " + name;
+        img.classList.add("image-error");
+        console.warn(`Image failed to load for: ${name}`);
+      }
+
+      /**
+       * Preloads an image and shows loading state with multiple fallback URLs
+       * @param {string} originalUrl The original Google Drive URL
+       * @param {HTMLImageElement} imgElement The image element to update
+       */
+      function preloadImage(originalUrl, imgElement) {
+        const fileId = extractFileId(originalUrl);
+        if (!fileId) {
+          handleImageError(imgElement);
+          return;
+        }
+
+        // Try multiple Google Drive URL formats
+        const urls = [
+          `https://drive.google.com/uc?export=view&id=${fileId}`,
+          `https://drive.google.com/file/d/${fileId}/preview`,
+          `https://drive.google.com/thumbnail?id=${fileId}&sz=w400`,
+          `https://drive.google.com/uc?id=${fileId}&export=download`,
+        ];
+
+        let currentIndex = 0;
+
+        function tryNextUrl() {
+          if (currentIndex >= urls.length) {
+            // All URLs failed, show placeholder
+            handleImageError(imgElement);
+            return;
+          }
+
+          const testImg = new Image();
+          testImg.onload = function () {
+            // Success! Update the actual image
+            imgElement.src = urls[currentIndex];
+            imgElement.classList.remove("image-loading");
+            console.log(
+              `Image loaded successfully from: ${urls[currentIndex]}`
+            );
+          };
+          testImg.onerror = function () {
+            // Try next URL
+            currentIndex++;
+            tryNextUrl();
+          };
+          testImg.src = urls[currentIndex];
+        }
+
+        tryNextUrl();
+      }
+
+      /**
+       * Extracts file ID from Google Drive URL
+       * @param {string} url The Google Drive URL
+       * @returns {string|null} The file ID or null if not found
+       */
+      function extractFileId(url) {
+        if (url.includes("drive.google.com/uc?export=view&id=")) {
+          const match = url.match(/id=([a-zA-Z0-9_-]+)/);
+          return match ? match[1] : null;
+        } else if (url.includes("drive.google.com/open?id=")) {
+          const match = url.match(/id=([a-zA-Z0-9_-]+)/);
+          return match ? match[1] : null;
+        } else if (url.includes("drive.google.com/file/d/")) {
+          const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+          return match ? match[1] : null;
+        } else if (url.includes("id=")) {
+          const match = url.match(/id=([a-zA-Z0-9_-]+)/);
+          return match ? match[1] : null;
+        }
+        return null;
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // Start typing animation for hero text
+        const typingElement = document.getElementById("typing-text");
+        if (typingElement) {
+          typeWriter(typingElement, "Welcome to\nCPSC Alumni Association", 80);
+        }
+
+        const membersContainer = document.getElementById("members-container");
+        const modal = document.getElementById("member_modal");
+        const modalContent = document.getElementById("modal-content");
+        const members = alumniData.data;
+
+        // Function to generate member cards on the main page
+        function generateMemberCards() {
+          let cardsHTML = "";
+          members.forEach((member) => {
+            const directPhotoUrl = getDirectGoogleDriveLink(member["ID Photo"]);
+            cardsHTML += `
+                        <div class="card bg-base-100 shadow-xl border border-gray-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer" onclick="showMemberDetails('${member.ID}')">
+                            <figure class="px-10 pt-10">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Crect width='160' height='160' fill='%23f0f0f0'/%3E%3C/svg%3E" 
+                                     alt="Photo of ${member.Name}" 
+                                     class="rounded-xl h-40 w-40 object-cover image-loading" 
+                                     onerror="handleImageError(this)"
+                                     loading="lazy" />
+                            </figure>
+                                                        <div class="card-body items-center text-center">
+                              <h2 class="card-title text-lg">${member.Name}</h2>
+                              <p class="text-sm text-gray-500">${member.Designation}</p>
+                              <p class="text-xs text-gray-400">${member.Batch}</p>
+                            </div>
+                        </div>
+                    `;
+          });
+          membersContainer.innerHTML = cardsHTML;
+        }
+
+        // Function to show detailed portfolio in a modal
+        window.showMemberDetails = function (memberId) {
+          const member = members.find((m) => m.ID === memberId);
+          if (member) {
+            modalContent.innerHTML = `
+                          <div class="flex-shrink-0 w-full md:w-1/3">
+                               <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%23f0f0f0'/%3E%3C/svg%3E" 
+                                    alt="Photo of ${member.Name}" 
+                                    class="rounded-lg w-full h-auto object-cover shadow-lg image-loading" 
+                                    id="modal-image" />
+                          </div>
+                          <div class="flex-grow">
+                               <h3 class="font-bold text-2xl">${member.Name}</h3>
+                               <p class="py-1 text-lg text-primary">${member.Designation}</p>
+                               <div class="divider my-2"></div>
+                               <div class="space-y-2 text-sm">
+                                  <p><strong>ID:</strong> ${member.ID}</p>
+                                  <p><strong>Batch:</strong> ${member.Batch}</p>
+                                  <p><strong>Profession:</strong> ${member.Profession}</p>
+                                  <p><strong>Organisation:</strong> ${member["Institutions/Company/Organisation"]}</p>
+                                  <p><strong>Blood Group:</strong> <span class="badge badge-secondary">${member["Blood Group"]}</span></p>
+                                  <p><strong>Contact:</strong> ${member.Contact}</p>
+                                  <p><strong>Current Address:</strong> ${member["Current Address"]}</p>
+                                  <p><strong>Permanent Address:</strong> ${member["Permanent Address"]}</p>
+                               </div>
+                          </div>
+                      `;
+
+            // Show modal first
+            modal.showModal();
+
+            // Then load the image using the improved system
+            const modalImg = document.getElementById("modal-image");
+            if (modalImg) {
+              // Add a small delay to show loading state
+              setTimeout(() => {
+                preloadImage(member["ID Photo"], modalImg);
+              }, 100);
+            }
+          }
+        };
+
+        // Initial call to populate the page
+        generateMemberCards();
+
+        // Preload all images after cards are generated
+        setTimeout(() => {
+          const memberCards = document.querySelectorAll(
+            "#members-container .card img"
+          );
+          let loadedCount = 0;
+          let totalCount = memberCards.length;
+
+          // Loading status is now hidden - removed for cleaner UI
+
+          memberCards.forEach((img, index) => {
+            const member = members[index];
+            if (member) {
+              preloadImage(member["ID Photo"], img);
+
+              // Image loading events (status updates removed for cleaner UI)
+            }
+          });
+        }, 100);
+
+        // Search and Filter Functionality
+        function filterMembers() {
+          const searchTerm = document
+            .getElementById("search-input")
+            .value.toLowerCase();
+          const designationFilter =
+            document.getElementById("designation-filter").value;
+          const batchFilter = document.getElementById("batch-filter").value;
+          const validityFilter =
+            document.getElementById("validity-filter").value;
+
+          const filteredMembers = members.filter((member) => {
+            const matchesSearch =
+              member.Name.toLowerCase().includes(searchTerm);
+            const matchesDesignation =
+              !designationFilter || member.Designation === designationFilter;
+            const matchesBatch = !batchFilter || member.Batch === batchFilter;
+
+            // Validity filtering logic
+            let matchesValidity = true;
+            if (validityFilter === "active") {
+              // All current members are considered active for the term 2025-2028
+              matchesValidity = true;
+            } else if (validityFilter === "expired") {
+              // This would be used for future expired members
+              matchesValidity = false;
+            }
+
+            return (
+              matchesSearch &&
+              matchesDesignation &&
+              matchesBatch &&
+              matchesValidity
+            );
+          });
+
+          // Update results count
+          const resultsCount = document.getElementById("results-count");
+          if (filteredMembers.length === members.length) {
+            resultsCount.textContent = "Showing all members";
+          } else {
+            resultsCount.textContent = `Showing ${filteredMembers.length} of ${members.length} members`;
+          }
+
+          // Generate filtered cards
+          generateFilteredMemberCards(filteredMembers);
+        }
+
+        function generateFilteredMemberCards(filteredMembers) {
+          const membersContainer = document.getElementById("members-container");
+          let cardsHTML = "";
+
+          if (filteredMembers.length === 0) {
+            cardsHTML = `
+              <div class="col-span-full text-center py-12">
+                <div class="text-gray-500">
+                  <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.47-.881-6.08-2.33" />
+                  </svg>
+                  <h3 class="mt-2 text-sm font-medium text-gray-900">No members found</h3>
+                  <p class="mt-1 text-sm text-gray-500">Try adjusting your search or filter criteria.</p>
+                </div>
+              </div>
+            `;
+          } else {
+            filteredMembers.forEach((member) => {
+              const directPhotoUrl = getDirectGoogleDriveLink(
+                member["ID Photo"]
+              );
+              cardsHTML += `
+                <div class="card bg-base-100 shadow-xl border border-gray-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer" onclick="showMemberDetails('${member.ID}')">
+                  <figure class="px-10 pt-10">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Crect width='160' height='160' fill='%23f0f0f0'/%3E%3C/svg%3E" 
+                         alt="Photo of ${member.Name}" 
+                         class="rounded-xl h-40 w-40 object-cover image-loading" 
+                         onerror="handleImageError(this)"
+                         loading="lazy" />
+                  </figure>
+                  <div class="card-body items-center text-center">
+                    <h2 class="card-title text-lg">${member.Name}</h2>
+                    <p class="text-sm text-gray-500">${member.Designation}</p>
+                    <p class="text-xs text-gray-400">${member.Batch}</p>
+                  </div>
+                </div>
+              `;
+            });
+          }
+
+          membersContainer.innerHTML = cardsHTML;
+
+          // Preload images for filtered results
+          setTimeout(() => {
+            const memberCards = document.querySelectorAll(
+              "#members-container .card img"
+            );
+            memberCards.forEach((img, index) => {
+              const member = filteredMembers[index];
+              if (member) {
+                preloadImage(member["ID Photo"], img);
+              }
+            });
+          }, 100);
+        }
+
+        // Theme toggle functionality
+        function initTheme() {
+          const savedTheme = localStorage.getItem("theme") || "light";
+          document.documentElement.setAttribute("data-theme", savedTheme);
+          updateThemeIcon(savedTheme);
+        }
+
+        function toggleTheme() {
+          const currentTheme =
+            document.documentElement.getAttribute("data-theme");
+          const newTheme = currentTheme === "light" ? "dark" : "light";
+
+          document.documentElement.setAttribute("data-theme", newTheme);
+          localStorage.setItem("theme", newTheme);
+          updateThemeIcon(newTheme);
+        }
+
+        function updateThemeIcon(theme) {
+          // Desktop theme icons
+          const sunIcon = document.getElementById("sun-icon");
+          const moonIcon = document.getElementById("moon-icon");
+
+          // Mobile theme icons
+          const mobileSunIcon = document.getElementById("mobile-sun-icon");
+          const mobileMoonIcon = document.getElementById("mobile-moon-icon");
+
+          // Mobile button icons
+          const mobileSunIconBtn = document.getElementById(
+            "mobile-sun-icon-btn"
+          );
+          const mobileMoonIconBtn = document.getElementById(
+            "mobile-moon-icon-btn"
+          );
+
+          if (theme === "dark") {
+            // Hide sun icons, show moon icons
+            [sunIcon, mobileSunIcon, mobileSunIconBtn].forEach((icon) => {
+              if (icon) icon.classList.add("hidden");
+            });
+            [moonIcon, mobileMoonIcon, mobileMoonIconBtn].forEach((icon) => {
+              if (icon) icon.classList.remove("hidden");
+            });
+          } else {
+            // Show sun icons, hide moon icons
+            [sunIcon, mobileSunIcon, mobileSunIconBtn].forEach((icon) => {
+              if (icon) icon.classList.remove("hidden");
+            });
+            [moonIcon, mobileMoonIcon, mobileMoonIconBtn].forEach((icon) => {
+              if (icon) icon.classList.add("hidden");
+            });
+          }
+        }
+
+        // Initialize theme
+        initTheme();
+
+        // Typing animation for hero text
+        function typeWriter(element, text, speed = 100) {
+          let i = 0;
+          element.innerHTML = "";
+
+          function type() {
+            if (i < text.length) {
+              element.innerHTML += text.charAt(i);
+              i++;
+              setTimeout(type, speed);
+            }
+          }
+
+          type();
+        }
+
+        // Event listeners for search and filters
+        document
+          .getElementById("search-input")
+          .addEventListener("input", filterMembers);
+        document
+          .getElementById("designation-filter")
+          .addEventListener("change", filterMembers);
+        document
+          .getElementById("batch-filter")
+          .addEventListener("change", filterMembers);
+        document
+          .getElementById("validity-filter")
+          .addEventListener("change", filterMembers);
+
+        document
+          .getElementById("clear-filters")
+          .addEventListener("click", () => {
+            document.getElementById("search-input").value = "";
+            document.getElementById("designation-filter").value = "";
+            document.getElementById("batch-filter").value = "";
+            document.getElementById("validity-filter").value = "";
+            filterMembers();
+          });
+
+        // Gallery modal functionality
+        window.openGalleryModal = function (imageSrc, imageTitle) {
+          const modal = document.getElementById("gallery_modal");
+          const modalImage = document.getElementById("gallery-modal-image");
+          const modalTitle = document.getElementById("gallery-image-title");
+
+          modalImage.src = imageSrc;
+          modalImage.alt = imageTitle;
+          modalTitle.textContent = imageTitle;
+
+          modal.showModal();
+        };
+
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".carousel-slide");
+        const indicators = document.querySelectorAll(".carousel-indicator");
+        const totalSlides = slides.length;
+        let carouselInterval;
+
+        function showSlide(index) {
+          // Remove active class from all slides and indicators
+          slides.forEach((slide) => slide.classList.remove("active"));
+          indicators.forEach((indicator) =>
+            indicator.classList.remove("active")
+          );
+
+          // Add active class to current slide and indicator
+          slides[index].classList.add("active");
+          indicators[index].classList.add("active");
+
+          currentSlide = index;
+        }
+
+        function nextSlide() {
+          const next = (currentSlide + 1) % totalSlides;
+          showSlide(next);
+        }
+
+        function startCarousel() {
+          carouselInterval = setInterval(nextSlide, 4000); // Change slide every 4 seconds
+        }
+
+        function stopCarousel() {
+          clearInterval(carouselInterval);
+        }
+
+        // Add click event listeners to indicators
+        indicators.forEach((indicator, index) => {
+          indicator.addEventListener("click", () => {
+            showSlide(index);
+            stopCarousel();
+            startCarousel(); // Restart the auto carousel
+          });
+        });
+
+        // Pause carousel on hover, resume on mouse leave
+        const heroSection = document.getElementById("home");
+        heroSection.addEventListener("mouseenter", stopCarousel);
+        heroSection.addEventListener("mouseleave", startCarousel);
+
+        // Start the carousel
+        startCarousel();
+
+        // Theme toggle event listeners
+        document
+          .getElementById("theme-toggle")
+          .addEventListener("click", toggleTheme);
+
+        document
+          .getElementById("mobile-theme-toggle-btn")
+          .addEventListener("click", toggleTheme);
+
+        document
+          .getElementById("mobile-theme-toggle")
+          .addEventListener("click", toggleTheme);
+      });
+    </script>
+  </body>
+</html>
