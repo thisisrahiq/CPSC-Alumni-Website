@@ -346,8 +346,17 @@
               class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li><a href="#home">Home</a></li>
+              <li><a href="#introduction">Introduction</a></li>
               <li><a href="#members">Members</a></li>
-              <li><a href="#gallery">Gallery</a></li>
+              <li>
+                <details>
+                  <summary>Gallery</summary>
+                  <ul>
+                    <li><a href="#photos">Photos</a></li>
+                    <li><a href="#videos">Videos</a></li>
+                  </ul>
+                </details>
+              </li>
               <li class="divider"></li>
               <li>
                 <button
@@ -397,8 +406,20 @@
           <div class="hidden lg:flex">
             <ul class="menu menu-horizontal px-1 font-semibold">
               <li><a href="#home">Home</a></li>
+              <li><a href="#introduction">Introduction</a></li>
               <li><a href="#members">Members</a></li>
-              <li><a href="#gallery">Gallery</a></li>
+              <li class="dropdown dropdown-hover">
+                <a tabindex="0" role="button" class="dropdown-toggle"
+                  >Gallery</a
+                >
+                <ul
+                  tabindex="0"
+                  class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+                >
+                  <li><a href="#photos">Photos</a></li>
+                  <li><a href="#videos">Videos</a></li>
+                </ul>
+              </li>
             </ul>
             <!-- Desktop Theme Toggle Button -->
             <button id="theme-toggle" class="btn btn-ghost btn-circle ml-2">
@@ -552,6 +573,119 @@
         </div>
       </section>
 
+      <!-- Introduction Section -->
+      <section id="introduction" class="py-12 md:py-20 px-4 bg-base-200">
+        <div class="container mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">
+            About CPSC Alumni Association
+          </h2>
+
+          <!-- Organization History -->
+          <div class="max-w-4xl mx-auto mb-12">
+            <div class="bg-base-100 rounded-lg shadow-lg p-6 md:p-8">
+              <h3 class="text-2xl font-bold mb-4 text-primary">Our Journey</h3>
+              <p class="text-lg leading-relaxed mb-4">
+                The CPSC Alumni Association was founded in
+                <strong>2018</strong> with a vision to connect and unite all
+                alumni of CDA Public School & College. What started as a small
+                initiative has grown into a thriving community that bridges
+                generations of students who have walked through the halls of our
+                beloved institution.
+              </p>
+              <p class="text-lg leading-relaxed mb-4">
+                Our association has been instrumental in fostering lasting
+                relationships among alumni, creating opportunities for
+                professional networking, and giving back to our alma mater. In
+                <strong>2020</strong>, we proudly organized our
+                <strong>1st Alumni Reunion</strong>, bringing together graduates
+                from different batches to celebrate our shared memories and
+                achievements.
+              </p>
+              <p class="text-lg leading-relaxed">
+                Today, we continue to grow stronger, with active participation
+                from alumni across various professions and walks of life, all
+                united by the common thread of our CPSC heritage.
+              </p>
+            </div>
+          </div>
+
+          <!-- Founders Section -->
+          <div class="max-w-6xl mx-auto">
+            <h3 class="text-2xl md:text-3xl font-bold text-center mb-8">
+              Meet Our Founders
+            </h3>
+            <div class="grid md:grid-cols-2 gap-8">
+              <!-- Founder -->
+              <div
+                class="bg-base-100 rounded-lg shadow-lg p-6 text-center cursor-pointer hover:shadow-xl transition-shadow duration-300"
+                onclick="showFounderDetails('founder')"
+              >
+                <div class="avatar mb-4">
+                  <div class="w-32 h-32 rounded-full mx-auto">
+                    <img
+                      src="https://lh3.googleusercontent.com/d/1lWE6DUsIaFSJ4VyoNjVf726WPU3TFoau"
+                      alt="Photo of Sadman Sakib Rabby"
+                      class="w-full h-full object-cover rounded-full image-loading"
+                      onerror="handleImageError(this)"
+                    />
+                  </div>
+                </div>
+                <h4 class="text-xl font-bold mb-2">Sadman Sakib Rabby</h4>
+                <p class="text-primary font-semibold mb-2">
+                  Founder & President
+                </p>
+                <p class="text-sm text-base-content/70">2nd Batch (SSC 2013)</p>
+              </div>
+
+              <!-- Co-Founder -->
+              <div
+                class="bg-base-100 rounded-lg shadow-lg p-6 text-center cursor-pointer hover:shadow-xl transition-shadow duration-300"
+                onclick="showFounderDetails('cofounder')"
+              >
+                <div class="avatar mb-4">
+                  <div class="w-32 h-32 rounded-full mx-auto">
+                    <img
+                      src="https://lh3.googleusercontent.com/d/1PhgVErsr5xbGq4sQ2eAWswAcQJzZ-13J"
+                      alt="Photo of Mohammed Mosarraf"
+                      class="w-full h-full object-cover rounded-full image-loading"
+                      onerror="handleImageError(this)"
+                    />
+                  </div>
+                </div>
+                <h4 class="text-xl font-bold mb-2">Mohammed Mosarraf</h4>
+                <p class="text-primary font-semibold mb-2">
+                  Founder & General Secretary
+                </p>
+                <p class="text-sm text-base-content/70">2nd Batch (SSC 2013)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- First Reunion Highlight -->
+          <div class="max-w-4xl mx-auto mt-12">
+            <div
+              class="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-6 md:p-8 text-center"
+            >
+              <h3 class="text-2xl font-bold mb-4">
+                First Alumni Reunion - 2020
+              </h3>
+              <p class="text-lg leading-relaxed">
+                Our inaugural reunion in 2020 was a milestone event that brought
+                together alumni from various batches. It was a celebration of
+                our shared experiences, achievements, and the enduring spirit of
+                CPSC. The event featured networking sessions, cultural programs,
+                and memorable moments that strengthened our alumni community.
+              </p>
+              <div class="mt-4">
+                <a href="#photos" class="btn btn-primary"
+                  >View Reunion Photos</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="members" class="py-12 md:py-20 px-4 bg-base-100">
         <div class="container mx-auto">
           <h2 class="text-3xl md:text-4xl font-bold text-center mb-2">
@@ -560,24 +694,6 @@
           <p class="text-center text-base md:text-lg mb-6 text-gray-600 px-4">
             The dedicated individuals leading our association forward.
           </p>
-          <div class="text-center mb-8">
-            <div class="badge badge-primary badge-lg text-base px-6 py-3">
-              <svg
-                class="w-5 h-5 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                ></path>
-              </svg>
-              Validity: July 2025 - June 2028
-            </div>
-          </div>
 
           <!-- Search and Filter Section -->
           <div class="mb-8 p-6 bg-base-200 rounded-lg shadow-md">
@@ -609,6 +725,12 @@
                   class="select select-bordered w-full"
                 >
                   <option value="">All Designations</option>
+                  <option value="Founder & President">
+                    Founder & President
+                  </option>
+                  <option value="Founder & General Secretary">
+                    Founder & General Secretary
+                  </option>
                   <option value="সভাপতি – President">সভাপতি – President</option>
                   <option value="সহ-সভাপতি – Vice President">
                     সহ-সভাপতি – Vice President
@@ -704,6 +826,8 @@
                 </label>
                 <select id="batch-filter" class="select select-bordered w-full">
                   <option value="">All Batches</option>
+                  <option value="2nd / (SSC 2013)">2nd / (SSC 2013)</option>
+                  <option value="3rd / (SSC 2014)">3rd / (SSC 2014)</option>
                   <option value="4th / (SSC 2015)">4th / (SSC 2015)</option>
                   <option value="5th / (SSC 2016)">5th / (SSC 2016)</option>
                   <option value="6th / (SSC 2017)">6th / (SSC 2017)</option>
@@ -729,8 +853,15 @@
                   class="select select-bordered w-full"
                 >
                   <option value="">All Members</option>
-                  <option value="active">Active (Current Term)</option>
-                  <option value="expired">Expired</option>
+                  <option value="July, 2025 - June, 2028">
+                    July, 2025 - June, 2028
+                  </option>
+                  <option value="June, 2021 - May, 2023">
+                    June, 2021 - May, 2023
+                  </option>
+                  <option value="June, 2018 - May, 2021">
+                    June, 2018 - May, 2021
+                  </option>
                 </select>
               </div>
 
@@ -760,7 +891,264 @@
         </div>
       </section>
 
-      <section id="gallery" class="py-12 md:py-20 px-4">
+      <!-- Photos Section -->
+      <section id="photos" class="py-12 md:py-20 px-4 bg-base-100">
+        <div class="container mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-2">
+            Photo Gallery
+          </h2>
+          <p
+            class="text-center text-base md:text-lg mb-8 md:mb-12 text-gray-600 px-4"
+          >
+            A collection of moments from our alumni activities and events.
+          </p>
+
+          <!-- Photo Categories Tabs -->
+          <div class="flex flex-wrap justify-center mb-8">
+            <div class="tabs tabs-boxed">
+              <a class="tab tab-active" onclick="showPhotoCategory('reunion')"
+                >1st CPSC Reunion 2020</a
+              >
+              <a class="tab" onclick="showPhotoCategory('committee')"
+                >2nd CPSC Alumni Committee</a
+              >
+              <a class="tab" onclick="showPhotoCategory('activities')"
+                >Activities</a
+              >
+              <a class="tab" onclick="showPhotoCategory('movement')"
+                >Movement</a
+              >
+            </div>
+          </div>
+
+          <!-- 1st CPSC Reunion Photos Carousel -->
+          <div id="reunion-photos" class="photo-category">
+            <h3 class="text-2xl font-bold text-center mb-6">
+              1st CPSC Reunion 2020
+            </h3>
+            <div class="relative max-w-4xl mx-auto">
+              <!-- Carousel Container -->
+              <div
+                class="carousel w-full rounded-lg overflow-hidden shadow-lg"
+                id="reunion-carousel"
+              >
+                <!-- Slides will be generated by JavaScript -->
+              </div>
+
+              <!-- Navigation Buttons -->
+              <div
+                class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"
+              >
+                <button
+                  onclick="prevReunionSlide()"
+                  class="btn btn-circle btn-primary"
+                >
+                  ❮
+                </button>
+                <button
+                  onclick="nextReunionSlide()"
+                  class="btn btn-circle btn-primary"
+                >
+                  ❯
+                </button>
+              </div>
+
+              <!-- Indicators -->
+              <div
+                class="flex justify-center w-full py-2 gap-2 mt-4"
+                id="reunion-indicators"
+              >
+                <!-- Indicators will be generated by JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <!-- 2nd CPSC Alumni Committee Photos Carousel -->
+          <div id="committee-photos" class="photo-category hidden">
+            <h3 class="text-2xl font-bold text-center mb-6">
+              2nd CPSC Alumni Committee
+            </h3>
+            <div class="relative max-w-4xl mx-auto">
+              <!-- Carousel Container -->
+              <div
+                class="carousel w-full rounded-lg overflow-hidden shadow-lg"
+                id="committee-carousel"
+              >
+                <!-- Slides will be generated by JavaScript -->
+              </div>
+
+              <!-- Navigation Buttons -->
+              <div
+                class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"
+              >
+                <button
+                  onclick="prevCommitteeSlide()"
+                  class="btn btn-circle btn-primary"
+                >
+                  ❮
+                </button>
+                <button
+                  onclick="nextCommitteeSlide()"
+                  class="btn btn-circle btn-primary"
+                >
+                  ❯
+                </button>
+              </div>
+
+              <!-- Indicators -->
+              <div
+                class="flex justify-center w-full py-2 gap-2 mt-4"
+                id="committee-indicators"
+              >
+                <!-- Indicators will be generated by JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Activities Photos Carousel -->
+          <div id="activities-photos" class="photo-category hidden">
+            <h3 class="text-2xl font-bold text-center mb-6">Activities</h3>
+            <div class="relative max-w-4xl mx-auto">
+              <!-- Carousel Container -->
+              <div
+                class="carousel w-full rounded-lg overflow-hidden shadow-lg"
+                id="activities-carousel"
+              >
+                <!-- Slides will be generated by JavaScript -->
+              </div>
+
+              <!-- Navigation Buttons -->
+              <div
+                class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"
+              >
+                <button
+                  onclick="prevActivitiesSlide()"
+                  class="btn btn-circle btn-primary"
+                >
+                  ❮
+                </button>
+                <button
+                  onclick="nextActivitiesSlide()"
+                  class="btn btn-circle btn-primary"
+                >
+                  ❯
+                </button>
+              </div>
+
+              <!-- Indicators -->
+              <div
+                class="flex justify-center w-full py-2 gap-2 mt-4"
+                id="activities-indicators"
+              >
+                <!-- Indicators will be generated by JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Movement Photos Carousel -->
+          <div id="movement-photos" class="photo-category hidden">
+            <h3 class="text-2xl font-bold text-center mb-6">Movement</h3>
+            <div class="relative max-w-4xl mx-auto">
+              <!-- Carousel Container -->
+              <div
+                class="carousel w-full rounded-lg overflow-hidden shadow-lg"
+                id="movement-carousel"
+              >
+                <!-- Slides will be generated by JavaScript -->
+              </div>
+
+              <!-- Navigation Buttons -->
+              <div
+                class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"
+              >
+                <button
+                  onclick="prevMovementSlide()"
+                  class="btn btn-circle btn-primary"
+                >
+                  ❮
+                </button>
+                <button
+                  onclick="nextMovementSlide()"
+                  class="btn btn-circle btn-primary"
+                >
+                  ❯
+                </button>
+              </div>
+
+              <!-- Indicators -->
+              <div
+                class="flex justify-center w-full py-2 gap-2 mt-4"
+                id="movement-indicators"
+              >
+                <!-- Indicators will be generated by JavaScript -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Videos Section -->
+      <section id="videos" class="py-12 md:py-20 px-4 bg-base-200">
+        <div class="container mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-2">
+            Video Gallery
+          </h2>
+          <p
+            class="text-center text-base md:text-lg mb-8 md:mb-12 text-gray-600 px-4"
+          >
+            Watch highlights from our alumni events and activities.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <div class="bg-base-100 rounded-lg shadow-lg p-4">
+              <div class="aspect-video">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/igpo3PFr7gA?si=x4p7MfCrA8LL6DoA"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                  class="rounded-lg"
+                >
+                </iframe>
+              </div>
+              <h3 class="text-lg font-semibold mt-4 text-center">
+                CPSC Alumni Event Highlights
+              </h3>
+            </div>
+
+            <div class="bg-base-100 rounded-lg shadow-lg p-4">
+              <div class="aspect-video">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/CD0lIeL-ps0?si=lKAl2WABX9DG7xbh"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                  class="rounded-lg"
+                >
+                </iframe>
+              </div>
+              <h3 class="text-lg font-semibold mt-4 text-center">
+                Alumni Reunion Memories
+              </h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Legacy Gallery Section (keeping for compatibility) -->
+      <section
+        id="gallery"
+        class="py-12 md:py-20 px-4 bg-base-100"
+        style="display: none"
+      >
         <div class="container mx-auto">
           <h2 class="text-3xl md:text-4xl font-bold text-center mb-2">
             Glimpses of Our Journey
@@ -1084,1007 +1472,1126 @@
       // --- EMBEDDED JSON DATA ---
       const alumniData = {
         data: [
-          {
-            ID: "4001",
-            Name: "Rahiq Al Makhtum",
-            Batch: "4th / (SSC 2015)",
-            Designation: "সভাপতি – President",
-            Contact: "+8801790584856",
-            "Blood Group": "A (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/uc?export=view&id=19P1GyLdBnnsaWO8-cdoctgfc4cUU932T",
-            Profession: "Business Development Engineer",
-            "Institutions/Company/Organisation": "MAMTech Limited",
-            "Current Address":
-              "Chandgaon R/A B-block, 14 No. Road , 341 No. House, 4th floor, flat-D2, Chittagong 4212, Bangladesh ",
-            "Permanent Address": "CHUNTI, LOHAGARA, CHUNTI- 4398, CHATTOGRAM ",
-            "Social Media": "fb/thisisrahiq",
-          },
-          {
-            ID: "4002",
-            Name: "Mohammed Hasanur Rahman Chowdhury",
-            Batch: "4th / (SSC 2015)",
-            Designation: "সহ-সভাপতি – Vice President",
-            Contact: "+8801521532616",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/uc?export=view&id=1KmJe5o_7Y8v2Y7sVNroEAyeAT6lXpoSj",
-            Profession: "Doctor ",
-            "Institutions/Company/Organisation":
-              "People's Hospital Chittagong, Holy Health Chittagong ",
-            "Current Address":
-              "House:301,road:13 block :B Chandgoan Residential Area ",
-            "Permanent Address": "Oshkain Anwara Chittagong ",
-            "Social Media": "https://www.facebook.com/share/16u8ZSh1Lv/",
-          },
-          {
-            ID: "4003",
-            Name: "Md Mainul Hasan ",
-            Batch: "4th / (SSC 2015)",
-            Designation: "সাধারণ সম্পাদক – General Secretary",
-            Contact: "+8801959883061",
-            "Blood Group": "O (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=178n6x3SROh8jKZXFKqcT1e-_fv8TBt_s",
-            Profession: "Engineer (Service) ",
-            "Institutions/Company/Organisation": "CEAS Limited ",
-            "Current Address": "Chandgaon R/A",
-            "Permanent Address": "Raozan Chattogram Bangladesh ",
-            "Social Media": "Mainul Hasan",
-          },
-          {
-            ID: "4004",
-            Name: "Azmain Adon",
-            Batch: "4th / (SSC 2015)",
-            Designation: "সাংগঠনিক সম্পাদক – Organizational Secretary",
-            Contact: "+8801611760766",
-            "Blood Group": "AB (- Negative)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1TZuZP29lD6jFS8288X0ec9PqMtm-_dfj",
-            Profession: "Engineer",
-            "Institutions/Company/Organisation": "Unilever",
-            "Current Address":
-              "X-16, Laila Manjil, Road 2, Block A, Chandgaon r/a, Chattogram",
-            "Permanent Address":
-              "X-16, Laila Manjil, Road 2, Block A, Chandgaon r/a, Chattogram",
-            "Social Media":
-              "https://www.facebook.com/share/1RpvDBjVeb/?mibextid=wwXIfr",
-          },
-          {
-            ID: "4005",
-            Name: "Shafial Azam",
-            Batch: "4th / (SSC 2015)",
-            Designation: "অর্থ সম্পাদক – Finance Secretary",
-            Contact: "+8801936702346",
-            "Blood Group": "O (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1XiOqc7cKSJy7VZaF1oW6ZT0hM-cMCXYi",
-            Profession: "Businessman ",
-            "Institutions/Company/Organisation":
-              "National University - MBA (Accounting)",
-            "Current Address":
-              "Professor Yakub Ali Residence, Hazipara, Bayzid Bostami-4213, Chattogram ",
-            "Permanent Address":
-              "Professor Yakub Ali Residence, Hazipara, Bayzid Bostami-4213, Chattogram",
-            "Social Media": "fb/shafial.azam",
-          },
-          {
-            ID: "4006",
-            Name: "Mohammad Shoyeb Chowdhury",
-            Batch: "4th / (SSC 2015)",
-            Designation: "আইন বিষয়ক সম্পাদক – Legal Affairs Secretary",
-            Contact: "+8801640621669",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/uc?export=view&id=1bIh4263uC8kpEwD0xVUzmgmtNc6t0dFC",
-            Profession: "Lawyer",
-            "Institutions/Company/Organisation":
-              " Session and Judge Court, Chattogram ",
-            "Current Address": "Nondonkanan, Kotwali, Chattogram ",
-            "Permanent Address": "Sathkania, Chattogram ",
-            "Social Media": "https://www.facebook.com/share/1E2kGqRzPs/",
-          },
-          {
-            ID: "4007",
-            Name: "Aqmam Atiq Ullah Muhd Chy Sean ",
-            Batch: "5th / (SSC 2016)",
-            Designation: "সহ-সভাপতি – Vice President",
-            Contact: "+8801314304868",
-            "Blood Group": "A (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/uc?export=view&id=1iDYut9BvhEjTehYoxUqL9crWpOBeswVy",
-            Profession: "University ",
-            "Institutions/Company/Organisation":
-              "World University of Bangladesh ",
-            "Current Address":
-              "Chandgaon R/A, BLOCK - B, ROAD NO -13, House - 314",
-            "Permanent Address": "Rashid bari, North Burishchar, Hathazari.",
-            "Social Media": "Aqmam Atiq Ullah Sean",
-          },
-          {
-            ID: "4008",
-            Name: "Tanvir Irfan",
-            Batch: "5th / (SSC 2016)",
-            Designation: "সহ-সভাপতি – Vice President",
-            Contact: "+8801879722664",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1lcqhteE08M9EURgHvmXZ1eZzz9s9UMNs",
-            Profession: "Officer",
-            "Institutions/Company/Organisation":
-              "Unimoni exchange company (Qatar)",
-            "Current Address": "Changaon R/A road-4 block-b",
-            "Permanent Address": "Hathazari,katirhat",
-            "Social Media": "Fb/Tanvir irfan",
-          },
-          {
-            ID: "4009",
-            Name: "Jannatun Nadia Nur",
-            Batch: "5th / (SSC 2016)",
-            Designation: "সহ-সভাপতি – Vice President",
-            Contact: "+8801537631737",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1fNY2EQU5B2XI8wIuFZs0BW-04-tEWCna",
-            Profession: "Journalist ",
-            "Institutions/Company/Organisation": "Ctg News ",
-            "Current Address":
-              "House-173, Road-08, Block-B, Chandgaon,R/A, Ctg.",
-            "Permanent Address":
-              "Village-North Pomora, Thana-Rangunia, Post-pomora, Ctg. ",
-            "Social Media": "Fb ID: Nadia Nur Erin ",
-          },
-          {
-            ID: "4010",
-            Name: "Ishfaqul Wazed",
-            Batch: "5th / (SSC 2016)",
-            Designation: "যুগ্ম সাধারণ সম্পাদক – Joint General Secretary",
-            Contact: "+880966591587275",
-            "Blood Group": "O (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/uc?export=view&id=1CVqupinp5dYmhSnAFo0XT3Wj8jrL227H",
-            Profession: "Service holder",
-            "Institutions/Company/Organisation":
-              "Interior Firm of Saudi Arabia",
-            "Current Address": "Suadi Arab ",
-            "Permanent Address": "Bashkhali.",
-            "Social Media": "https://www.facebook.com/share/1CWf63EPU9/",
-          },
-          {
-            ID: "4011",
-            Name: "Hasan Mahmud Al Zaber",
-            Batch: "5th / (SSC 2016)",
-            Designation: "দপ্তর সম্পাদক – Office Secretary",
-            Contact: "+8801627273386",
-            "Blood Group": "O (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1C8Ee6BSRj7XJRkBOa3YUkmJJv-hB-fEg",
-            Profession: "Junior Engineer (Ex. BUET WRE'18)",
-            "Institutions/Company/Organisation":
-              "Institute of Water Modelling (IWM)",
-            "Current Address":
-              "Flat 11-A , Dominno Eldorado, 6/7, Topkhana Road, Segunbagicha, Shahbag, Dhaka.",
-            "Permanent Address":
-              "Peyar Mohammed boro bari , Dewan Mohsin Road, Purba Mohora",
-            "Social Media": "",
-          },
-          {
-            ID: "4012",
-            Name: "Sidratul Muntaha",
-            Batch: "5th / (SSC 2016)",
-            Designation:
-              "সহ-সাংগঠনিক সম্পাদক – Assistant Organizational Secretary",
-            Contact: "+8801810148443",
-            "Blood Group": "O (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/uc?export=view&id=161xI4xdzD9ayG9B3Ns1_M289Z1MeFtM9",
-            Profession: "Accounting- 2019/2020",
-            "Institutions/Company/Organisation": "National university ",
-            "Current Address":
-              "Chandgaon abashik road no 7 b block Chittagong ",
-            "Permanent Address":
-              "Chandgaon abashik road no 7 b block Chittagong ",
-            "Social Media": "",
-          },
-          {
-            ID: "4013",
-            Name: "MD. Minhajul Islam",
-            Batch: "6th / (SSC 2017)",
-            Designation: "সহ-সভাপতি – Vice President",
-            Contact: "+8801867648695",
-            "Blood Group": "A (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1B78_MbBJmyGc4hUQ2VMBVgzJFM0ub1vG",
-            Profession: "National University - Economics - 4th Year",
-            "Institutions/Company/Organisation": "Islamia Degree College",
-            "Current Address":
-              "House no: 46, Road no: 03, Block: B, Chandgaon R/A, Chattogram.",
-            "Permanent Address": "Nanupur, Fatikchari, Chattogram.",
-            "Social Media": "Mohammed Minhajul Islam",
-          },
-          {
-            ID: "4014",
-            Name: "MD Nadim Abdullah",
-            Batch: "6th / (SSC 2017)",
-            Designation: "সহ-সভাপতি – Vice President",
-            Contact: "+8801832359940",
-            "Blood Group": "A (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1mx02TW3ZKCgLSdAvbmw1vCuVqFSDO6Hz",
-            Profession: "University - Textile Engineering -4th year",
-            "Institutions/Company/Organisation":
-              "Textile Engineering College Zorarganj Chittagong ",
-            "Current Address":
-              "House -173,road-8,block-B,Chandgoan R/A Chittagong. ",
-            "Permanent Address":
-              "Thana-rangunia,village -pomora,post office -pomora,jila -Chittagong ",
-            "Social Media": "",
-          },
-          {
-            ID: "4015",
-            Name: "Farman Hasnat Chy",
-            Batch: "6th / (SSC 2017)",
-            Designation: "যুগ্ম সাধারণ সম্পাদক – Joint General Secretary",
-            Contact: "+8801830645137",
-            "Blood Group": "A (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1OZXcZ2azTv9wu98Hs5Oqdd1I7rXTg8x9",
-            Profession: "Territory Officer ",
-            "Institutions/Company/Organisation": "Robi Axiata PLC.",
-            "Current Address": "Link Road, Cox's Bazar ",
-            "Permanent Address": "Chandgaon Residential Area, Chattogram",
-            "Social Media": "Farman Hasnat Chowdhury ",
-          },
-          {
-            ID: "4016",
-            Name: "Sarwar Jamal Rian",
-            Batch: "6th / (SSC 2017)",
-            Designation: "যুগ্ম সাধারণ সম্পাদক – Joint General Secretary",
-            Contact: "+8801749180123",
-            "Blood Group": "A (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1_-8IfiovzRHnnO_vX53y3xLpl0pbXXZm",
-            Profession: "Businessmen",
-            "Institutions/Company/Organisation": "Gold Shop",
-            "Current Address":
-              "House No: 72, Road No: 8, Block: B, Chandgoan R/A, Chattogram",
-            "Permanent Address": "Shilok, Rangunia, Chattogram.",
-            "Social Media": "Rian Sarwar",
-          },
-          {
-            ID: "4017",
-            Name: "MD. Shafayat Hossain",
-            Batch: "6th / (SSC 2017)",
-            Designation:
-              "সহ-সাংগঠনিক সম্পাদক – Assistant Organizational Secretary",
-            Contact: "+8801862832014",
-            "Blood Group": "A (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1gpQv3kOENPp87Ix8mQ8YtiI_Zh7VTNCM",
-            Profession: "Student -Statistics -4th year",
-            "Institutions/Company/Organisation":
-              "Chittagong college (National University) ",
-            "Current Address": "Muradpur, Panchlaish, Chattogram. ",
-            "Permanent Address": "Raozan,Chattogram. ",
-            "Social Media": "fb/Shafayat. Hossain.",
-          },
-          {
-            ID: "4018",
-            Name: "MD. Samiul Hoda Babu",
-            Batch: "6th / (SSC 2017)",
-            Designation: "সহ-অর্থ সম্পাদক – Assistant Finance Secretary",
-            Contact: "+8801875646779",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1BTfRwIIv_n90NsxKS8zow1D0I6vGekjM",
-            Profession: "Student ",
-            "Institutions/Company/Organisation": "University of Chittagong ",
-            "Current Address": "Chandgaon R/A, Block-B, Road No-10 ",
-            "Permanent Address": "South maliara, patiya, Chittagong",
-            "Social Media": "https://www.facebook.com/crazysami99",
-          },
-          {
-            ID: "4019",
-            Name: "Kazi Robiul Hassan",
-            Batch: "7th / (SSC 2018)",
-            Designation: "যুগ্ম সাধারণ সম্পাদক – Joint General Secretary",
-            Contact: "+8801829630220",
-            "Blood Group": "O (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1xxHyNnh_PG7K7HGg3bsnHYaSjFGHvj8v",
-            Profession: " Electrical and Electronic Engineering-4year",
-            "Institutions/Company/Organisation":
-              "International Islamic University ",
-            "Current Address": "Chandgoan R/A B-Block",
-            "Permanent Address": "Uttar Rangunia,Dhamairhat",
-            "Social Media": "fb/Robiul Hassan",
-          },
-          {
-            ID: "4020",
-            Name: "Armanul Alam Tamim",
-            Batch: "7th / (SSC 2018)",
-            Designation: "যুগ্ম সাধারণ সম্পাদক – Joint General Secretary",
-            Contact: "+8801633032844",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=14Rxbhe5jLAKJi8zlcTTo6ws5NeN2BgO9",
-            Profession:
-              "Ex:omar gani mes college /omar gani mes college /Med student - accounting - 4th Year  ",
-            "Institutions/Company/Organisation": "Omar gani mes college ",
-            "Current Address":
-              "East Fariderpara, Hazi Fazlul Rahaman Shawdagar Baril,Chandgaon, Chattogram. ",
-            "Permanent Address":
-              "East Fariderpara, Hazi Fazlul Rahaman Shawdagar Baril,Chandgaon, Chattogram. ",
-            "Social Media":
-              "https://www.facebook.com/arman.tamim.369142?mibextid=ZbWKwL",
-          },
-          {
-            ID: "4021",
-            Name: "Fahmidul Islam",
-            Batch: "7th / (SSC 2018)",
-            Designation:
-              "সহ-সাংগঠনিক সম্পাদক – Assistant Organizational Secretary",
-            Contact: "+8801871567213",
-            "Blood Group": "O (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1zg6UdLrn5vt56HRaAfxAzRTiY5FBdcM9",
-            Profession: "EEE - 4th Year",
-            "Institutions/Company/Organisation": "IIUC",
-            "Current Address": "Chandgaon Abashik , B block - Road -13",
-            "Permanent Address": "Ranguniya, pomra",
-            "Social Media":
-              "https://www.facebook.com/share/1AbYLJmzzD/?mibextid=wwXIfr",
-          },
-          {
-            ID: "4022",
-            Name: "MD EYASIR IRFAN",
-            Batch: "7th / (SSC 2018)",
-            Designation: "সহ-অর্থ সম্পাদক – Assistant Finance Secretary",
-            Contact: "+8801974283416",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1K5Jp1sMjgxcoaVtrMHtSzFX_XHs9usF4",
-            Profession: "Business ",
-            "Institutions/Company/Organisation": "Sultana Green Farm ",
-            "Current Address":
-              "Doctor hamid bari, Aman bazar, hathazari road,Chittagong.",
-            "Permanent Address":
-              "Doctor hamid bari, Aman bazar, hathazari road,Chittagong.",
-            "Social Media": "",
-          },
-          {
-            ID: "4023",
-            Name: "Wahidul Alam",
-            Batch: "7th / (SSC 2018)",
-            Designation: "প্রচার সম্পাদক – Publicity Secretary",
-            Contact: "+8801869797465",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1lb2xTnvj5OPIrEAaetMjCsmgzjFIF_Lq",
-            Profession: "Management hons 3rd year",
-            "Institutions/Company/Organisation": "City college ",
-            "Current Address": "Nurul islam BSC bari puran chandgaon ",
-            "Permanent Address": "Chowdhury bari bengura boalkhali ",
-            "Social Media": "",
-          },
-          {
-            ID: "4024",
-            Name: "Adiba Nur Afroj",
-            Batch: "7th / (SSC 2018)",
-            Designation: "সাংস্কৃতিক সম্পাদক – Cultural Secretary",
-            Contact: "+8801792595055",
-            "Blood Group": "A (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=17okgCBXSCK8p23GT3L0IUAWHlRJJHkpN",
-            Profession: "BBA in accounting,4th year",
-            "Institutions/Company/Organisation": "Govt.Commerce College, ctg",
-            "Current Address": "Ss Khaled road, jamal khan, ctg",
-            "Permanent Address": "Satkania, Ctg",
-            "Social Media": "Fb/ Adiba Nur",
-          },
-          {
-            ID: "4025",
-            Name: "Tasnova Tasnim Aurpa",
-            Batch: "7th / (SSC 2018)",
-            Designation: "সহ-দপ্তর সম্পাদক – Assistant Office Secretary",
-            Contact: "+8801834104277",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/uc?export=view&id=1Mv6_YzTCv-Y0SNWQx_JhhHtJOa36HdAO",
-            Profession: "4th year (IHC)",
-            "Institutions/Company/Organisation": "Dhaka University ",
-            "Current Address":
-              "Bangamata sheik Fazitulnessa mujib hall,Dhaka University ",
-            "Permanent Address": "MURADPUR",
-            "Social Media": "Tasnova Tasnim",
-          },
-          {
-            ID: "4026",
-            Name: "Md. Ariful Islam",
-            Batch: "8th / (SSC 2019)",
-            Designation: "যুগ্ম সাধারণ সম্পাদক – Joint General Secretary",
-            Contact: "+8801764745068",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/uc?export=view&id=13mynA-VgDspwUtLhmwp2ijFkqhkZbg8Q",
-            Profession: "BBA 3rd",
-            "Institutions/Company/Organisation": "Student ",
-            "Current Address": "Muslim mia ba,ri akolia, boalkhali Chittagong ",
-            "Permanent Address": "Chandgaon R/A,a a- block ,road no -6",
-            "Social Media": "MUHAMMAD ARIFUL ISLAM TAYYIP ",
-          },
-          {
-            ID: "4027",
-            Name: "Tanjila Akther ",
-            Batch: "8th / (SSC 2019)",
-            Designation: "যুগ্ম সাধারণ সম্পাদক – Joint General Secretary",
-            Contact: "+8801887985878",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1VYr011Pt4EQGdYDQ_pFSpIrA8s9hYzRi",
-            Profession: "DUET-CSE-2nd year ",
-            "Institutions/Company/Organisation":
-              "Dhaka University of Engineering and Technology (DUET)",
-            "Current Address": "Madam currie hall,duet, joydebpur,gazipur ",
-            "Permanent Address": "Shamsher para, chandgaon r/a, Chittagong.",
-            "Social Media": "https://www.facebook.com/share/18Wnc4nWnX/",
-          },
-          {
-            ID: "4028",
-            Name: "Mohammed Nurul Azam Khan",
-            Batch: "8th / (SSC 2019)",
-            Designation: "শিক্ষা বিষয়ক সম্পাদক – Education Secretary",
-            Contact: "+8801995871551",
-            "Blood Group": "A (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1QMIhABiB3VfggEK34WleT9D8tCloxqPs",
-            Profession: "Student-Mathematics -3rd Year ",
-            "Institutions/Company/Organisation": "Govt. Patiya College ",
-            "Current Address": "Jalal khan chy bari ,chandgao,chattogram",
-            "Permanent Address": "Jalal khan chy bari ,chandgao,chattogram",
-            "Social Media": "nuwan0011",
-          },
-          {
-            ID: "4029",
-            Name: "Mohammed Tahsin Samin",
-            Batch: "8th / (SSC 2019)",
-            Designation: "ক্রীড়া সম্পাদক – Sports Secretary",
-            Contact: "+8801882773919",
-            "Blood Group": "A (- Negative)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1_evoWm4f7jAuW5aKDFOgDiyLJx3cq9EA",
-            Profession: "Student-BBA-3rd year",
-            "Institutions/Company/Organisation": "East Delta University ",
-            "Current Address":
-              "292,green lychee hanif,haji chand mia road,Bohoddar hat",
-            "Permanent Address": "Same ",
-            "Social Media": "Fb-Tahsin Samin ",
-          },
-          {
-            ID: "4030",
-            Name: "Md. Tazdik Ayub Sazil",
-            Batch: "8th / (SSC 2019)",
-            Designation:
-              "সহ-সাংগঠনিক সম্পাদক – Assistant Organizational Secretary",
-            Contact: "+8801851787794",
-            "Blood Group": "AB (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1rwKD63Zq1uX736I-ToThgQvyrwCQt6ev",
-            Profession: "CSE - 4th semester ",
-            "Institutions/Company/Organisation": "East Delta University ",
-            "Current Address":
-              "Osmania Puler Gora, Mohora, Chandgaon, Chittagong ",
-            "Permanent Address":
-              "Osmania Puler Gora, Mohora, Chandgaon, Chittagong",
-            "Social Media": "",
-          },
-          {
-            ID: "4031",
-            Name: "Sharar Fahmed Ahmed ",
-            Batch: "8th / (SSC 2019)",
-            Designation: "সহ-প্রচার সম্পাদক – Assistant Publicity Secretary",
-            Contact: "+8801704915629",
-            "Blood Group": "O (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1866N22nZmZwKHSlqOOoCtRrJ0RKizYdZ",
-            Profession: "Uni/Student-BBA-3rd Year",
-            "Institutions/Company/Organisation": "BRAC University",
-            "Current Address":
-              "Ta-168 Badda High School Road Opposite of Badda high school mosjid Middle Badda Gulshan",
-            "Permanent Address": "198 Khatunganj Boxir Hut Kotowali Chattogram",
-            "Social Media":
-              "(facebook.com/shararfahmedahmed) (linkedin.com/in/sharar-fahmed-ahmed/",
-          },
-          {
-            ID: "4032",
-            Name: "Ayman Subah",
-            Batch: "8th / (SSC 2019)",
-            Designation: "সহ সম্পাদক – Assistant Secretary",
-            Contact: "+8801974543786",
-            "Blood Group": "A (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/uc?export=view&id=1qzB-EGMDT3Iw7w1tcRc3v4jlIWFzng3u",
-            Profession:
-              "Chittagong Government Women College - English Language & Literature - honours 3rd year ",
-            "Institutions/Company/Organisation":
-              "Chittagong Government Women College ",
-            "Current Address": "West khulshi R/A, Chittagong ",
-            "Permanent Address": "West khulshi R/A, Chittagong ",
-            "Social Media": "Fb: Ayman Subah ",
-          },
-          {
-            ID: "4033",
-            Name: "Saidur Rahman",
-            Batch: "9th / (SSC 2020)",
-            Designation:
-              "তথ্য ও যোগাযোগ বিষয়ক সম্পাদক – Information and Communication Secretary",
-            Contact: "+8801764745500",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1fnvRe2OpEhCzbVoERP6XaGX1pnk6fft6",
-            Profession: "University Student - BBA - 6th Semester",
-            "Institutions/Company/Organisation": "East Delta University ",
-            "Current Address":
-              "Chandgaon abasik, Block: B, Road: 09, Building: 234",
-            "Permanent Address": "Lohagara, Amirabad, Hajarbigha",
-            "Social Media": "Facebook - Saidur Rahman",
-          },
-          {
-            ID: "4034",
-            Name: "Nafisa Tabassum",
-            Batch: "9th / (SSC 2020)",
-            Designation: "ধর্ম বিষয়ক সম্পাদক – Religious Affairs Secretary",
-            Contact: "+8801975401230",
-            "Blood Group": "O (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/uc?export=view&id=1ldQYJUiYf_JPB7T-wEn60rYdKlr7PziX",
-            Profession: "Uni student -Accounting Dept-2nd year",
-            "Institutions/Company/Organisation": "GHM Mohsin College ",
-            "Current Address": "Chandgoan residential area, Chattogram ",
-            "Permanent Address": "Mirsarai, Chattogram ",
-            "Social Media": "Fb/Nafisa Tabassum ",
-          },
-          {
-            ID: "4035",
-            Name: "Marwa Alam",
-            Batch: "9th / (SSC 2020)",
-            Designation:
-              "গ্রন্থ ও প্রকাশনা বিষয়ক সম্পাদক – Books and Publications Secretary",
-            Contact: "+8801940784149",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1geSJeRA8VPFMMp-qB3apO-bzg_Gi3AsV",
-            Profession: " Bachelor Business of Administration - 2 year",
-            "Institutions/Company/Organisation":
-              "Chittagong Independent University ",
-            "Current Address":
-              "Chandgaon residential area, Block -B, road 1,home 477",
-            "Permanent Address":
-              "Chandgaon residential area, Block -B, road 1,home 477",
-            "Social Media": "Marwa Alam",
-          },
-          {
-            ID: "4036",
-            Name: "Jabir khan",
-            Batch: "9th / (SSC 2020)",
-            Designation: "সহ সম্পাদক – Assistant Secretary",
-            Contact: "+8801999408406",
-            "Blood Group": "AB (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/uc?export=view&id=1qrs7cYJ1guDjscA96KAmb3_--4i44Ypy",
-            Profession: "Department of law ",
-            "Institutions/Company/Organisation": "Jagannath University ",
-            "Current Address": "Dhaka",
-            "Permanent Address": "Chattogram ",
-            "Social Media": "Jabir khan",
-          },
-          {
-            ID: "4037",
-            Name: "HM Arshad",
-            Batch: "9th / (SSC 2020)",
-            Designation:
-              "সহ-সাংগঠনিক সম্পাদক – Assistant Organizational Secretary",
-            Contact: "+8801879230612",
-            "Blood Group": "A (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/uc?export=view&id=1P11RhqoiWxHK6yZXg_xhOEKDpGsBsCro",
-            Profession: "IIUC BBA 4th semester ",
-            "Institutions/Company/Organisation": "IIUC",
-            "Current Address": "Chandgaon abashik",
-            "Permanent Address": "1km",
-            "Social Media":
-              "https://www.facebook.com/share/14G2hH888zm/?mibextid=wwXIfr",
-          },
-          {
-            ID: "4038",
-            Name: "Syed Saobanul Islam",
-            Batch: "9th / (SSC 2020)",
-            Designation:
-              "সহ ক্রীড়া বিষয়ক সম্পাদক – Assistant Sports Affairs Secretary",
-            Contact: "+8801734270151",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/uc?export=view&id=1XCS0UHqVFEfhXcYFW710SzpXRevKQepK",
-            Profession: "IIUC-BBA-2year",
-            "Institutions/Company/Organisation":
-              "international Islamic University of Chittagong ",
-            "Current Address": "Chandgaon r/a,Chittagong,Block-B,road no-1",
-            "Permanent Address": "Chandgaon r/a, Chittagong,block-B,road no-1",
-            "Social Media": "Linkdin-Saoban Islam,Facebook-Syed Saobanul Islam",
-          },
-          {
-            ID: "4039",
-            Name: "Touki Tahmid Chowdhury",
-            Batch: "9th / (SSC 2020)",
-            Designation: "সহ-সাংস্কৃতিক সম্পাদক – Assistant Cultural Secretary",
-            Contact: "+8801608284399",
-            "Blood Group": "A (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1ypE1vc_VoR4JJ15oWuOFjeCfYZz8w63U",
-            Profession:
-              "Studied Bachelor of Apparel Merchandising and Management(AMM) -2nd year ",
-            "Institutions/Company/Organisation":
-              "Chattogram BGMEA University O of Fashion & Technology - CBUFT ",
-            "Current Address": "Chandrima abasik, Road-06. chittagong ",
-            "Permanent Address": "Boalkali,west khudorkil, chittagong ",
-            "Social Media": "Chowdhury Touki",
-          },
-          {
-            ID: "4040",
-            Name: "Emdadul Haq",
-            Batch: "10th / (SSC 2021)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801897837098",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=15bhSwWu_5YD7QnaLC42-Bv0v40PJSHlA",
-            Profession: "BBA-Finance-2nd Year ",
-            "Institutions/Company/Organisation":
-              "Save Our Women Bangladesh(Chittagong Division),Bangladesh Red Creseant Socity-Chottwgram City Red Creseant youth",
-            "Current Address":
-              "Mowlana Monjil Green View R/A Sunnia Madrasha Rd, Road No 01 Bibirhat,Chattogram. Thana:- Panchlaish. Zilla:- Chattagram. P.O:- Amin Zut Mills",
-            "Permanent Address":
-              "Mowlana Monjil Green View R/A Sunnia Madrasha Rd, Road No 01 Bibirhat,Chattogram. Thana:- Panchlaish. Zilla:- Chattagram. P.O:- Amin Zut Mills",
-            "Social Media": "https://www.facebook.com/ariyanmontashir.taimun/",
-          },
-          {
-            ID: "4041",
-            Name: "Sadiatut Arif",
-            Batch: "10th / (SSC 2021)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801886181106",
-            "Blood Group": "O (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1V39nXCFUIKEz-FM_rFz7G4esBI1gqDac",
-            Profession: "BBA-Finance-2nd Year",
-            "Institutions/Company/Organisation":
-              "Bangladesh Red Creseant Socity",
-            "Current Address": "Chandgaon R/A B-Block Road-8A House no. 543",
-            "Permanent Address": "Chandgaon R/A B-Block Road-8A House no. 543",
-            "Social Media": "https://www.facebook.com/taibaarif.taiba#",
-          },
-          {
-            ID: "4042",
-            Name: "Miskatul Islam",
-            Batch: "10th / (SSC 2021)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801880682850",
-            "Blood Group": "O (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1MMN-_1bJ_hp0rzgrfbRVJNU-GT7S06QZ",
-            Profession: "BBA Accounting Dept @nd Year",
-            "Institutions/Company/Organisation":
-              "Quaish Budishchar Sheikh Mohammed City Corporation College",
-            "Current Address": "Chandgaon Abasik A Block Road No 2",
-            "Permanent Address": "Chandgaon Abasik A Block Road No 2",
-            "Social Media": "https://www.facebook.com/miskatul.islam.510787",
-          },
-          {
-            ID: "4043",
-            Name: "Mohammed Mirajur Rahman",
-            Batch: "10th / (SSC 2021)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801886704996",
-            "Blood Group": "A (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/uc?export=view&id=1dE0Vt91kT1Qy1DJctq0W1JVmj0xWuDmo",
-            Profession: "management , honurs 1st yaar ",
-            "Institutions/Company/Organisation": "Govt.Commarce College ",
-            "Current Address": "Chandgao R/A chottogram, block A",
-            "Permanent Address": "Fatikchori, Azadi Bazar, Dharmopur",
-            "Social Media": "https://www.facebook.com/share/1Ax8NiQjQp/",
-          },
-          {
-            ID: "4044",
-            Name: "Hasiba Sharif",
-            Batch: "10th / (SSC 2021)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801404763243",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/uc?export=view&id=1PZ1SScs9IW2It2p-12t5AW2GJ6SqIDEq",
-            Profession: "BBA- 1st year",
-            "Institutions/Company/Organisation":
-              "International Islamic University Chittagong ",
-            "Current Address":
-              "House - 375, Road- 14, Block- B, Chandgaon R/A, Chattogram",
-            "Permanent Address": "Shahbazpur, Thana- Sarail, Brahmanbaria",
-            "Social Media": "fb/hasiba.sharif.2025",
-          },
-          {
-            ID: "4045",
-            Name: "Samin Yeasar Sakib",
-            Batch: "10th / (SSC 2021)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801401281204",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=14hvz_9PTBQ4YmwBJ14CiKxR7gC6LvSOn",
-            Profession: "NA",
-            "Institutions/Company/Organisation": "NA",
-            "Current Address": "Dinajpur, Bangladesh",
-            "Permanent Address": "Dinajpur, Bangladesh",
-            "Social Media": "",
-          },
-          {
-            ID: "4046",
-            Name: "Shafkat Rahman ",
-            Batch: "11th / (SSC 2022)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801826071720",
-            "Blood Group": "O (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=11yKvO0IOJhInKzFMWwT5grMfDZKmxvzO",
-            Profession: "Uni Student- Management 38(session 24-25) ",
-            "Institutions/Company/Organisation": "University of Chittagong",
-            "Current Address": "Chandgoan R/A Chittagong",
-            "Permanent Address": " Anuwara, Chittagong ",
-            "Social Media": " https://www.facebook.com/share/1Wdwboimtd/",
-          },
-          {
-            ID: "4047",
-            Name: "Nahidul Alam Alvi",
-            Batch: "11th / (SSC 2022)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801327133447",
-            "Blood Group": "A (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1yHd38h69WPUf_Gp6ql2O_Zn9RwCce9AM",
-            Profession: "East delta university-BBA-1st year",
-            "Institutions/Company/Organisation": "Institutions ",
-            "Current Address": "Chandgaon abashik,B-block,13 number road,",
-            "Permanent Address": "Raozan Chittagong ",
-            "Social Media": "",
-          },
-          {
-            ID: "4048",
-            Name: "Soummo Barua",
-            Batch: "11th / (SSC 2022)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801972706498",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1qhk0jRfrrY3DeyMKb8TEJFmIg9Drov-W",
-            Profession: " Civil Engineering - 1st year",
-            "Institutions/Company/Organisation": "Macquarie University",
-            "Current Address": "Paragon City, Anderkillah",
-            "Permanent Address": "Paragon City,Anderkillah",
-            "Social Media": "",
-          },
-          {
-            ID: "4049",
-            Name: "Ibnun Sultan khan",
-            Batch: "11th / (SSC 2022)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801604094115",
-            "Blood Group": "A (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1veCMJ-bPMhTgobNIFwsRW2j4-fs6sfp2",
-            Profession: "Student Unistudent -(1st year)",
-            "Institutions/Company/Organisation": "North south university ",
-            "Current Address": "Chadgaon Residential Area b block road no 3",
-            "Permanent Address": "Chowkoria bodorkhali,3no ward",
-            "Social Media": "Ibnun Sultan",
-          },
-          {
-            ID: "4050",
-            Name: "Anindya Dewanjee",
-            Batch: "11th / (SSC 2022)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801830221441",
-            "Blood Group": "O (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=14RANOTr21wxCOIWHB4rAIjpqTnvOi7kx",
-            Profession: "University Student- B.B.A- 1st year",
-            "Institutions/Company/Organisation":
-              "Government College of Commerce",
-            "Current Address": "Road-09, Block-B, Chandgaon R/A, Chattogram",
-            "Permanent Address": "Quaish, Hathazari ",
-            "Social Media": "Fb/Anindya Dewanjee ",
-          },
-          {
-            ID: "4051",
-            Name: "Mehreen Nargis Chowdhury ",
-            Batch: "11th / (SSC 2022)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801826071720",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1UIIR0r0RRwUMshxS4E_MkVBnAGmGDaR7",
-            Profession: "Electronic Telecommunication Engineering -1st year",
-            "Institutions/Company/Organisation":
-              "Chittagong independent university ",
-            "Current Address": "House no 11, road no 1, Block A, Chandgaon R/A",
-            "Permanent Address":
-              "House no 11, road no 1, Block A, Chandgaon R/A",
-            "Social Media": "N/A",
-          },
-          {
-            ID: "4052",
-            Name: "Tasdia Binte Jafar",
-            Batch: "12th / (SSC 2023)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801870782686",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1S0ADDNEm1x7klihlaJSNe0bxmuKKEDkc",
-            Profession: "College student- group science-hsc candidate ",
-            "Institutions/Company/Organisation":
-              "Aparna charan city corporation school and college ",
-            "Current Address": "Chandgaon abashik #Block-B#road-3# house no-41",
-            "Permanent Address":
-              "Chandgaon abashik #Block-B #road- 140# house no-380",
-            "Social Media": "Fb/Tas Dia",
-          },
-          {
-            ID: "4053",
-            Name: "Tajrian Tanvin",
-            Batch: "12th / (SSC 2023)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801973443429",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=150h6Xe9fSJrVP5gJ2H8FmKgXCxpQ6swM",
-            Profession: "Hsc candidate ",
-            "Institutions/Company/Organisation":
-              "Chittagong Govt. Women's College ",
-            "Current Address": "Sholokbohor, chottragram ",
-            "Permanent Address": "Sholokbohor, chottragram ",
-            "Social Media": "https://www.facebook.com/share/19dAjzftWb/",
-          },
-          {
-            ID: "4054",
-            Name: "Fabliha Rumaisa",
-            Batch: "12th / (SSC 2023)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801857669270",
-            "Blood Group": "O (- Negative)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1WbkGL2PElZLCiXN4c7gMvHalyUTaAu6N",
-            Profession: "Hsc candidate ",
-            "Institutions/Company/Organisation":
-              "Govt city college, chattragram ",
-            "Current Address": "B-block ,chandgaon R/A , chattragram ",
-            "Permanent Address": "B-block ,chandgao R/A , chattragram",
-            "Social Media": "",
-          },
-          {
-            ID: "4055",
-            Name: "Abrar Bin Manzur",
-            Batch: "12th / (SSC 2023)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801601029156",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1fos2pjoeY7zLKf_hN86Xp90eo9q5IhUy",
-            Profession: "student",
-            "Institutions/Company/Organisation":
-              "Halishahar Cantonment Public School & College ",
-            "Current Address":
-              "House no:209,road no:09,block:b,Chandgaon Residential Area",
-            "Permanent Address": " Uttar Dhurung,baghkhali,kutubdia",
-            "Social Media":
-              "https://www.facebook.com/share/17Aw5BRqis/?mibextid=wwXIfr",
-          },
-          {
-            ID: "4056",
-            Name: "Syed Mifta",
-            Batch: "12th / (SSC 2023)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801797677167",
-            "Blood Group": "A (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/uc?export=view&id=1fLXndc45lLOtbNoA1HJq0yBhmCfkV305",
-            Profession: "Hsc candidate (businness studies)",
-            "Institutions/Company/Organisation": "Kazem Ali School and College",
-            "Current Address": "Hazi Chand Mia Road, Bohoddarhat. ",
-            "Permanent Address": "Hazi Chand Mia Road, Bohoddarhat.",
-            "Social Media":
-              "https://www.facebook.com/share/14JoVNGc6Vr/?mibextid=wwXIfr",
-          },
-          {
-            ID: "4057",
-            Name: "Yeamin Sadekin",
-            Batch: "13th / (SSC 2024)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801793109778",
-            "Blood Group": "O (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/uc?export=view&id=1TIvEX5FsyFsmxn_9Sxe4UsA9Ik0z7tW1",
-            Profession: "Intermediate 2nd year - business studies ",
-            "Institutions/Company/Organisation": "Hajera taju degree college ",
-            "Current Address":
-              "Cda residential area ,2 no, b-block, chandgaon.",
-            "Permanent Address": "Potiya upozilla.",
-            "Social Media": "Yeamin Sadekin ",
-          },
-          {
-            ID: "4058",
-            Name: "Md.Minhaz Uddin Ridhom",
-            Batch: "13th / (SSC 2024)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801815562053",
-            "Blood Group": "A (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1kPKR8jPxSyloGNFkuzkXlTaEmep5sUH5",
-            Profession:
-              "STUDENT (INTERMEDIATE -26-2ND YEAR - BUSINESS STUDIES)",
-            "Institutions/Company/Organisation":
-              "CDA public school and college ",
-            "Current Address": "Khawza road, chandgaon, chattogram.",
-            "Permanent Address": "Khawza road, chandgaon, chattogram.",
-            "Social Media": "Minhaz Uddin ",
-          },
-          {
-            ID: "4059",
-            Name: "Joinuddin Chowdhury Jidan",
-            Batch: "13th / (SSC 2024)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801533455404",
-            "Blood Group": "A (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/uc?export=view&id=1dkOe5ouRvgfVyq2dMoploo1wQW2A74yW",
-            Profession: "Student",
-            "Institutions/Company/Organisation": "Omorgani mes college",
-            "Current Address": "Chandgaon abashik/RA",
-            "Permanent Address": "Boalkhali,west kadhurkil",
-            "Social Media": "https://www.facebook.com/joynuddin.jidan",
-          },
-          {
-            ID: "4060",
-            Name: "Tasnia Marzan",
-            Batch: "13th / (SSC 2024)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801973879893",
-            "Blood Group": "B (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=1CPZlso6Xbx_7Xj-djfOLDp56RV_FjNrK",
-            Profession: "College student-science-2nd Year",
-            "Institutions/Company/Organisation": "Omorgoni MES College",
-            "Current Address":
-              "Chandgaon Abashik R/A,B-block,road-5,Chottogram",
-            "Permanent Address":
-              "Chandgaon Abashik R/A, B-block,road 5, Chottogram ",
-            "Social Media": "Tasnia Marzan ",
-          },
-          {
-            ID: "4061",
-            Name: "Subahee Anwar Maisha ",
-            Batch: "13th / (SSC 2024)",
-            Designation: "কার্যকরী সদস্য - Executive Member",
-            Contact: "+8801884066300",
-            "Blood Group": "O (+ Positive)",
-            "ID Photo":
-              "https://drive.google.com/open?id=17E9iKoQDneTZvx22CNJYpfhRs7A5WL4F",
-            Profession: "Business Studies-2nd Year",
-            "Institutions/Company/Organisation":
-              "Government College of Commerce ",
-            "Current Address":
-              "5th floor,Mosmera Mension,Momenbag Abasik,Hamgarbag,Muradpur,Chattogram ",
-            "Permanent Address":
-              "House of Foruk Chairman, Kanchana,Satkania, Chattogram ",
-            "Social Media": "https://www.facebook.com/share/16dbi3aU2x/",
-          },
+         {
+      "ID": "2001",
+      "Name": "Sadman Sakib Rabby",
+      "Batch": "2nd / (SSC 2013)",
+      "Designation": "Founder & President",
+      "Contact": "+8801841716977",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo": "https://drive.google.com/open?id=1lWE6DUsIaFSJ4VyoNjVf726WPU3TFoau",
+      "Profession": "Businessman",
+      "Institutions/Company/Organisation": "Multi-purpose business ",
+      "Current Address": "Chandgoan abashik, block b, road 8, house 169",
+      "Permanent Address": "Shovondondi, Potiya , Chittagong",
+      "Social Media": "https://web.facebook.com/sadman.sakib.1232760",
+      "committee Validity": "June, 2018 - May, 2021"
+    },
+    {
+      "ID": "2002",
+      "Name": "Mohammed Mosarraf",
+      "Batch": "2nd / (SSC 2013)",
+      "Designation": "Founder & General Secretary",
+      "Contact": "+8801979022353",
+      "Blood Group": "O (+ Positive)",
+      "ID Photo": "https://drive.google.com/open?id=1PhgVErsr5xbGq4sQ2eAWswAcQJzZ-13J",
+      "Profession": "Accounts& Finance(Manager)",
+      "Institutions/Company/Organisation": "Buildcom",
+      "Current Address": "Shamser para chandgaon Chattogram",
+      "Permanent Address": "Shamser para chandgaon Chattogram",
+      "Social Media": "https://web.facebook.com/md.mosarraf.716",
+      "committee Validity": "June, 2018 - May, 2021"
+    },
+    {
+      "ID": "3001",
+      "Name": "Shakawat Hossen",
+      "Batch": "3rd / (SSC 2014)",
+      "Designation": "সভাপতি – President",
+      "Contact": "+8801871010604",
+      "Blood Group": "O (+ Positive)",
+      "ID Photo": "https://drive.google.com/open?id=1FmNBAJqMyyz_PwY3eGfFD5YUZGMroGng",
+      "Profession": "CEO of SK Garments",
+      "Institutions/Company/Organisation": "Sk Garments",
+      "Current Address": " Chandgaon r/a Road - 08 b block Chittagong ",
+      "Permanent Address": "Business Sk garments Rangunia , chowdhury bari Sharaf bhata Chittagong",
+      "Social Media": "https://web.facebook.com/sadaf.chowdhury.39",
+      "committee Validity": "June, 2021 - May, 2023"
+    },
+    {
+      "ID": "3002",
+      "Name": "S M Shihab",
+      "Batch": "3rd / (SSC 2014)",
+      "Designation": "সাধারণ সম্পাদক – General Secretary",
+      "Contact": "+8801975643949",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo": "https://drive.google.com/open?id=14O9jjDU2eOCixKVyMUfiTsMU9E1MPD5v",
+      "Profession": "Business ",
+      "Institutions/Company/Organisation": "Mr phone",
+      "Current Address": "chandgoan r/a block b road 4 kpdl member palace",
+      "Permanent Address": "potiya Thana ziri Anu mia showdogor bari",
+      "Social Media": "https://web.facebook.com/syedm.shihab.7",
+      "committee Validity": "June, 2021 - May, 2023"
+    },
+    {
+      "ID": "4001",
+      "Name": "Rahiq Al Makhtum",
+      "Batch": "4th / (SSC 2015)",
+      "Designation": "সভাপতি – President",
+      "Contact": "+8801790584856",
+      "Blood Group": "A (+ Positive)",
+      "ID Photo": "https://drive.google.com/uc?export=view&id=19P1GyLdBnnsaWO8-cdoctgfc4cUU932T",
+      "Profession": "Business Development Engineer",
+      "Institutions/Company/Organisation": "MAMTech Limited",
+      "Current Address": "Chandgaon R/A B-block, 14 No. Road , 341 No. House, 4th floor, flat-D2, Chittagong 4212, Bangladesh ",
+      "Permanent Address": "CHUNTI, LOHAGARA, CHUNTI- 4398, CHATTOGRAM ",
+      "Social Media": "fb/thisisrahiq",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4002",
+      Name: "Mohammed Hasanur Rahman Chowdhury",
+      Batch: "4th / (SSC 2015)",
+      Designation: "সহ-সভাপতি – Vice President",
+      Contact: "+8801521532616",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/uc?export=view&id=1KmJe5o_7Y8v2Y7sVNroEAyeAT6lXpoSj",
+      Profession: "Doctor ",
+      "Institutions/Company/Organisation":
+        "People's Hospital Chittagong, Holy Health Chittagong ",
+      "Current Address":
+        "House:301,road:13 block :B Chandgoan Residential Area ",
+      "Permanent Address": "Oshkain Anwara Chittagong ",
+      "Social Media": "https://www.facebook.com/share/16u8ZSh1Lv/",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4003",
+      Name: "Md Mainul Hasan ",
+      Batch: "4th / (SSC 2015)",
+      Designation: "সাধারণ সম্পাদক – General Secretary",
+      Contact: "+8801959883061",
+      "Blood Group": "O (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=178n6x3SROh8jKZXFKqcT1e-_fv8TBt_s",
+      Profession: "Engineer (Service) ",
+      "Institutions/Company/Organisation": "CEAS Limited ",
+      "Current Address": "Chandgaon R/A",
+      "Permanent Address": "Raozan Chattogram Bangladesh ",
+      "Social Media": "Mainul Hasan",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4004",
+      Name: "Azmain Adon",
+      Batch: "4th / (SSC 2015)",
+      Designation: "সাংগঠনিক সম্পাদক – Organizational Secretary",
+      Contact: "+8801611760766",
+      "Blood Group": "AB (- Negative)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1TZuZP29lD6jFS8288X0ec9PqMtm-_dfj",
+      Profession: "Engineer",
+      "Institutions/Company/Organisation": "Unilever",
+      "Current Address":
+        "X-16, Laila Manjil, Road 2, Block A, Chandgaon r/a, Chattogram",
+      "Permanent Address":
+        "X-16, Laila Manjil, Road 2, Block A, Chandgaon r/a, Chattogram",
+      "Social Media":
+        "https://www.facebook.com/share/1RpvDBjVeb/?mibextid=wwXIfr",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4005",
+      Name: "Shafial Azam",
+      Batch: "4th / (SSC 2015)",
+      Designation: "অর্থ সম্পাদক – Finance Secretary",
+      Contact: "+8801936702346",
+      "Blood Group": "O (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1XiOqc7cKSJy7VZaF1oW6ZT0hM-cMCXYi",
+      Profession: "Businessman ",
+      "Institutions/Company/Organisation":
+        "National University - MBA (Accounting)",
+      "Current Address":
+        "Professor Yakub Ali Residence, Hazipara, Bayzid Bostami-4213, Chattogram ",
+      "Permanent Address":
+        "Professor Yakub Ali Residence, Hazipara, Bayzid Bostami-4213, Chattogram",
+      "Social Media": "fb/shafial.azam",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4006",
+      Name: "Mohammad Shoyeb Chowdhury",
+      Batch: "4th / (SSC 2015)",
+      Designation: "আইন বিষয়ক সম্পাদক – Legal Affairs Secretary",
+      Contact: "+8801640621669",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/uc?export=view&id=1bIh4263uC8kpEwD0xVUzmgmtNc6t0dFC",
+      Profession: "Lawyer",
+      "Institutions/Company/Organisation":
+        " Session and Judge Court, Chattogram ",
+      "Current Address": "Nondonkanan, Kotwali, Chattogram ",
+      "Permanent Address": "Sathkania, Chattogram ",
+      "Social Media": "https://www.facebook.com/share/1E2kGqRzPs/",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4007",
+      Name: "Aqmam Atiq Ullah Muhd Chy Sean ",
+      Batch: "5th / (SSC 2016)",
+      Designation: "সহ-সভাপতি – Vice President",
+      Contact: "+8801314304868",
+      "Blood Group": "A (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/uc?export=view&id=1iDYut9BvhEjTehYoxUqL9crWpOBeswVy",
+      Profession: "University ",
+      "Institutions/Company/Organisation":
+        "World University of Bangladesh ",
+      "Current Address":
+        "Chandgaon R/A, BLOCK - B, ROAD NO -13, House - 314",
+      "Permanent Address": "Rashid bari, North Burishchar, Hathazari.",
+      "Social Media": "Aqmam Atiq Ullah Sean",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4008",
+      Name: "Tanvir Irfan",
+      Batch: "5th / (SSC 2016)",
+      Designation: "সহ-সভাপতি – Vice President",
+      Contact: "+8801879722664",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1lcqhteE08M9EURgHvmXZ1eZzz9s9UMNs",
+      Profession: "Officer",
+      "Institutions/Company/Organisation":
+        "Unimoni exchange company (Qatar)",
+      "Current Address": "Changaon R/A road-4 block-b",
+      "Permanent Address": "Hathazari,katirhat",
+      "Social Media": "Fb/Tanvir irfan",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4009",
+      Name: "Jannatun Nadia Nur",
+      Batch: "5th / (SSC 2016)",
+      Designation: "সহ-সভাপতি – Vice President",
+      Contact: "+8801537631737",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1fNY2EQU5B2XI8wIuFZs0BW-04-tEWCna",
+      Profession: "Journalist ",
+      "Institutions/Company/Organisation": "Ctg News ",
+      "Current Address":
+        "House-173, Road-08, Block-B, Chandgaon,R/A, Ctg.",
+      "Permanent Address":
+        "Village-North Pomora, Thana-Rangunia, Post-pomora, Ctg. ",
+      "Social Media": "Fb ID: Nadia Nur Erin ",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4010",
+      Name: "Ishfaqul Wazed",
+      Batch: "5th / (SSC 2016)",
+      Designation: "যুগ্ম সাধারণ সম্পাদক – Joint General Secretary",
+      Contact: "+880966591587275",
+      "Blood Group": "O (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/uc?export=view&id=1CVqupinp5dYmhSnAFo0XT3Wj8jrL227H",
+      Profession: "Service holder",
+      "Institutions/Company/Organisation":
+        "Interior Firm of Saudi Arabia",
+      "Current Address": "Suadi Arab ",
+      "Permanent Address": "Bashkhali.",
+      "Social Media": "https://www.facebook.com/share/1CWf63EPU9/",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4011",
+      Name: "Hasan Mahmud Al Zaber",
+      Batch: "5th / (SSC 2016)",
+      Designation: "দপ্তর সম্পাদক – Office Secretary",
+      Contact: "+8801627273386",
+      "Blood Group": "O (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1C8Ee6BSRj7XJRkBOa3YUkmJJv-hB-fEg",
+      Profession: "Junior Engineer (Ex. BUET WRE'18)",
+      "Institutions/Company/Organisation":
+        "Institute of Water Modelling (IWM)",
+      "Current Address":
+        "Flat 11-A , Dominno Eldorado, 6/7, Topkhana Road, Segunbagicha, Shahbag, Dhaka.",
+      "Permanent Address":
+        "Peyar Mohammed boro bari , Dewan Mohsin Road, Purba Mohora",
+      "Social Media": "",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4012",
+      Name: "Sidratul Muntaha",
+      Batch: "5th / (SSC 2016)",
+      Designation:
+        "সহ-সাংগঠনিক সম্পাদক – Assistant Organizational Secretary",
+      Contact: "+8801810148443",
+      "Blood Group": "O (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/uc?export=view&id=161xI4xdzD9ayG9B3Ns1_M289Z1MeFtM9",
+      Profession: "Accounting- 2019/2020",
+      "Institutions/Company/Organisation": "National university ",
+      "Current Address":
+        "Chandgaon abashik road no 7 b block Chittagong ",
+      "Permanent Address":
+        "Chandgaon abashik road no 7 b block Chittagong ",
+      "Social Media": "",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4013",
+      Name: "MD. Minhajul Islam",
+      Batch: "6th / (SSC 2017)",
+      Designation: "সহ-সভাপতি – Vice President",
+      Contact: "+8801867648695",
+      "Blood Group": "A (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1B78_MbBJmyGc4hUQ2VMBVgzJFM0ub1vG",
+      Profession: "National University - Economics - 4th Year",
+      "Institutions/Company/Organisation": "Islamia Degree College",
+      "Current Address":
+        "House no: 46, Road no: 03, Block: B, Chandgaon R/A, Chattogram.",
+      "Permanent Address": "Nanupur, Fatikchari, Chattogram.",
+      "Social Media": "Mohammed Minhajul Islam",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4014",
+      Name: "MD Nadim Abdullah",
+      Batch: "6th / (SSC 2017)",
+      Designation: "সহ-সভাপতি – Vice President",
+      Contact: "+8801832359940",
+      "Blood Group": "A (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1mx02TW3ZKCgLSdAvbmw1vCuVqFSDO6Hz",
+      Profession: "University - Textile Engineering -4th year",
+      "Institutions/Company/Organisation":
+        "Textile Engineering College Zorarganj Chittagong ",
+      "Current Address":
+        "House -173,road-8,block-B,Chandgoan R/A Chittagong. ",
+      "Permanent Address":
+        "Thana-rangunia,village -pomora,post office -pomora,jila -Chittagong ",
+      "Social Media": "",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4015",
+      Name: "Farman Hasnat Chy",
+      Batch: "6th / (SSC 2017)",
+      Designation: "যুগ্ম সাধারণ সম্পাদক – Joint General Secretary",
+      Contact: "+8801830645137",
+      "Blood Group": "A (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1OZXcZ2azTv9wu98Hs5Oqdd1I7rXTg8x9",
+      Profession: "Territory Officer ",
+      "Institutions/Company/Organisation": "Robi Axiata PLC.",
+      "Current Address": "Link Road, Cox's Bazar ",
+      "Permanent Address": "Chandgaon Residential Area, Chattogram",
+      "Social Media": "Farman Hasnat Chowdhury ",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4016",
+      Name: "Sarwar Jamal Rian",
+      Batch: "6th / (SSC 2017)",
+      Designation: "যুগ্ম সাধারণ সম্পাদক – Joint General Secretary",
+      Contact: "+8801749180123",
+      "Blood Group": "A (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1_-8IfiovzRHnnO_vX53y3xLpl0pbXXZm",
+      Profession: "Businessmen",
+      "Institutions/Company/Organisation": "Gold Shop",
+      "Current Address":
+        "House No: 72, Road No: 8, Block: B, Chandgoan R/A, Chattogram",
+      "Permanent Address": "Shilok, Rangunia, Chattogram.",
+      "Social Media": "Rian Sarwar",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4017",
+      Name: "MD. Shafayat Hossain",
+      Batch: "6th / (SSC 2017)",
+      Designation:
+        "সহ-সাংগঠনিক সম্পাদক – Assistant Organizational Secretary",
+      Contact: "+8801862832014",
+      "Blood Group": "A (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1gpQv3kOENPp87Ix8mQ8YtiI_Zh7VTNCM",
+      Profession: "Student -Statistics -4th year",
+      "Institutions/Company/Organisation":
+        "Chittagong college (National University) ",
+      "Current Address": "Muradpur, Panchlaish, Chattogram. ",
+      "Permanent Address": "Raozan,Chattogram. ",
+      "Social Media": "fb/Shafayat. Hossain.",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4018",
+      Name: "MD. Samiul Hoda Babu",
+      Batch: "6th / (SSC 2017)",
+      Designation: "সহ-অর্থ সম্পাদক – Assistant Finance Secretary",
+      Contact: "+8801875646779",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1BTfRwIIv_n90NsxKS8zow1D0I6vGekjM",
+      Profession: "Student ",
+      "Institutions/Company/Organisation": "University of Chittagong ",
+      "Current Address": "Chandgaon R/A, Block-B, Road No-10 ",
+      "Permanent Address": "South maliara, patiya, Chittagong",
+      "Social Media": "https://www.facebook.com/crazysami99",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4019",
+      Name: "Kazi Robiul Hassan",
+      Batch: "7th / (SSC 2018)",
+      Designation: "যুগ্ম সাধারণ সম্পাদক – Joint General Secretary",
+      Contact: "+8801829630220",
+      "Blood Group": "O (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1xxHyNnh_PG7K7HGg3bsnHYaSjFGHvj8v",
+      Profession: " Electrical and Electronic Engineering-4year",
+      "Institutions/Company/Organisation":
+        "International Islamic University ",
+      "Current Address": "Chandgoan R/A B-Block",
+      "Permanent Address": "Uttar Rangunia,Dhamairhat",
+      "Social Media": "fb/Robiul Hassan",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4020",
+      Name: "Armanul Alam Tamim",
+      Batch: "7th / (SSC 2018)",
+      Designation: "যুগ্ম সাধারণ সম্পাদক – Joint General Secretary",
+      Contact: "+8801633032844",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=14Rxbhe5jLAKJi8zlcTTo6ws5NeN2BgO9",
+      Profession:
+        "Ex:omar gani mes college /omar gani mes college /Med student - accounting - 4th Year  ",
+      "Institutions/Company/Organisation": "Omar gani mes college ",
+      "Current Address":
+        "East Fariderpara, Hazi Fazlul Rahaman Shawdagar Baril,Chandgaon, Chattogram. ",
+      "Permanent Address":
+        "East Fariderpara, Hazi Fazlul Rahaman Shawdagar Baril,Chandgaon, Chattogram. ",
+      "Social Media":
+        "https://www.facebook.com/arman.tamim.369142?mibextid=ZbWKwL",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4021",
+      Name: "Fahmidul Islam",
+      Batch: "7th / (SSC 2018)",
+      Designation:
+        "সহ-সাংগঠনিক সম্পাদক – Assistant Organizational Secretary",
+      Contact: "+8801871567213",
+      "Blood Group": "O (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1zg6UdLrn5vt56HRaAfxAzRTiY5FBdcM9",
+      Profession: "EEE - 4th Year",
+      "Institutions/Company/Organisation": "IIUC",
+      "Current Address": "Chandgaon Abashik , B block - Road -13",
+      "Permanent Address": "Ranguniya, pomra",
+      "Social Media":
+        "https://www.facebook.com/share/1AbYLJmzzD/?mibextid=wwXIfr",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4022",
+      Name: "MD EYASIR IRFAN",
+      Batch: "7th / (SSC 2018)",
+      Designation: "সহ-অর্থ সম্পাদক – Assistant Finance Secretary",
+      Contact: "+8801974283416",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1K5Jp1sMjgxcoaVtrMHtSzFX_XHs9usF4",
+      Profession: "Business ",
+      "Institutions/Company/Organisation": "Sultana Green Farm ",
+      "Current Address":
+        "Doctor hamid bari, Aman bazar, hathazari road,Chittagong.",
+      "Permanent Address":
+        "Doctor hamid bari, Aman bazar, hathazari road,Chittagong.",
+      "Social Media": "",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4023",
+      Name: "Wahidul Alam",
+      Batch: "7th / (SSC 2018)",
+      Designation: "প্রচার সম্পাদক – Publicity Secretary",
+      Contact: "+8801869797465",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1lb2xTnvj5OPIrEAaetMjCsmgzjFIF_Lq",
+      Profession: "Management hons 3rd year",
+      "Institutions/Company/Organisation": "City college ",
+      "Current Address": "Nurul islam BSC bari puran chandgaon ",
+      "Permanent Address": "Chowdhury bari bengura boalkhali ",
+      "Social Media": "",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4024",
+      Name: "Adiba Nur Afroj",
+      Batch: "7th / (SSC 2018)",
+      Designation: "সাংস্কৃতিক সম্পাদক – Cultural Secretary",
+      Contact: "+8801792595055",
+      "Blood Group": "A (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=17okgCBXSCK8p23GT3L0IUAWHlRJJHkpN",
+      Profession: "BBA in accounting,4th year",
+      "Institutions/Company/Organisation": "Govt.Commerce College, ctg",
+      "Current Address": "Ss Khaled road, jamal khan, ctg",
+      "Permanent Address": "Satkania, Ctg",
+      "Social Media": "Fb/ Adiba Nur",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4025",
+      Name: "Tasnova Tasnim Aurpa",
+      Batch: "7th / (SSC 2018)",
+      Designation: "সহ-দপ্তর সম্পাদক – Assistant Office Secretary",
+      Contact: "+8801834104277",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/uc?export=view&id=1Mv6_YzTCv-Y0SNWQx_JhhHtJOa36HdAO",
+      Profession: "4th year (IHC)",
+      "Institutions/Company/Organisation": "Dhaka University ",
+      "Current Address":
+        "Bangamata sheik Fazitulnessa mujib hall,Dhaka University ",
+      "Permanent Address": "MURADPUR",
+      "Social Media": "Tasnova Tasnim",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4026",
+      Name: "Md. Ariful Islam",
+      Batch: "8th / (SSC 2019)",
+      Designation: "যুগ্ম সাধারণ সম্পাদক – Joint General Secretary",
+      Contact: "+8801764745068",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/uc?export=view&id=13mynA-VgDspwUtLhmwp2ijFkqhkZbg8Q",
+      Profession: "BBA 3rd",
+      "Institutions/Company/Organisation": "Student ",
+      "Current Address": "Muslim mia ba,ri akolia, boalkhali Chittagong ",
+      "Permanent Address": "Chandgaon R/A,a a- block ,road no -6",
+      "Social Media": "MUHAMMAD ARIFUL ISLAM TAYYIP ",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4027",
+      Name: "Tanjila Akther ",
+      Batch: "8th / (SSC 2019)",
+      Designation: "যুগ্ম সাধারণ সম্পাদক – Joint General Secretary",
+      Contact: "+8801887985878",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1VYr011Pt4EQGdYDQ_pFSpIrA8s9hYzRi",
+      Profession: "DUET-CSE-2nd year ",
+      "Institutions/Company/Organisation":
+        "Dhaka University of Engineering and Technology (DUET)",
+      "Current Address": "Madam currie hall,duet, joydebpur,gazipur ",
+      "Permanent Address": "Shamsher para, chandgaon r/a, Chittagong.",
+      "Social Media": "https://www.facebook.com/share/18Wnc4nWnX/",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4028",
+      Name: "Mohammed Nurul Azam Khan",
+      Batch: "8th / (SSC 2019)",
+      Designation: "শিক্ষা বিষয়ক সম্পাদক – Education Secretary",
+      Contact: "+8801995871551",
+      "Blood Group": "A (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1QMIhABiB3VfggEK34WleT9D8tCloxqPs",
+      Profession: "Student-Mathematics -3rd Year ",
+      "Institutions/Company/Organisation": "Govt. Patiya College ",
+      "Current Address": "Jalal khan chy bari ,chandgao,chattogram",
+      "Permanent Address": "Jalal khan chy bari ,chandgao,chattogram",
+      "Social Media": "nuwan0011",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4029",
+      Name: "Mohammed Tahsin Samin",
+      Batch: "8th / (SSC 2019)",
+      Designation: "ক্রীড়া সম্পাদক – Sports Secretary",
+      Contact: "+8801882773919",
+      "Blood Group": "A (- Negative)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1_evoWm4f7jAuW5aKDFOgDiyLJx3cq9EA",
+      Profession: "Student-BBA-3rd year",
+      "Institutions/Company/Organisation": "East Delta University ",
+      "Current Address":
+        "292,green lychee hanif,haji chand mia road,Bohoddar hat",
+      "Permanent Address": "Same ",
+      "Social Media": "Fb-Tahsin Samin ",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4030",
+      Name: "Md. Tazdik Ayub Sazil",
+      Batch: "8th / (SSC 2019)",
+      Designation:
+        "সহ-সাংগঠনিক সম্পাদক – Assistant Organizational Secretary",
+      Contact: "+8801851787794",
+      "Blood Group": "AB (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1rwKD63Zq1uX736I-ToThgQvyrwCQt6ev",
+      Profession: "CSE - 4th semester ",
+      "Institutions/Company/Organisation": "East Delta University ",
+      "Current Address":
+        "Osmania Puler Gora, Mohora, Chandgaon, Chittagong ",
+      "Permanent Address":
+        "Osmania Puler Gora, Mohora, Chandgaon, Chittagong",
+      "Social Media": "",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4031",
+      Name: "Sharar Fahmed Ahmed ",
+      Batch: "8th / (SSC 2019)",
+      Designation: "সহ-প্রচার সম্পাদক – Assistant Publicity Secretary",
+      Contact: "+8801704915629",
+      "Blood Group": "O (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1866N22nZmZwKHSlqOOoCtRrJ0RKizYdZ",
+      Profession: "Uni/Student-BBA-3rd Year",
+      "Institutions/Company/Organisation": "BRAC University",
+      "Current Address":
+        "Ta-168 Badda High School Road Opposite of Badda high school mosjid Middle Badda Gulshan",
+      "Permanent Address": "198 Khatunganj Boxir Hut Kotowali Chattogram",
+      "Social Media":
+        "(facebook.com/shararfahmedahmed) (linkedin.com/in/sharar-fahmed-ahmed/",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4032",
+      Name: "Ayman Subah",
+      Batch: "8th / (SSC 2019)",
+      Designation: "সহ সম্পাদক – Assistant Secretary",
+      Contact: "+8801974543786",
+      "Blood Group": "A (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/uc?export=view&id=1qzB-EGMDT3Iw7w1tcRc3v4jlIWFzng3u",
+      Profession:
+        "Chittagong Government Women College - English Language & Literature - honours 3rd year ",
+      "Institutions/Company/Organisation":
+        "Chittagong Government Women College ",
+      "Current Address": "West khulshi R/A, Chittagong ",
+      "Permanent Address": "West khulshi R/A, Chittagong ",
+      "Social Media": "Fb: Ayman Subah ",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4033",
+      Name: "Saidur Rahman",
+      Batch: "9th / (SSC 2020)",
+      Designation:
+        "তথ্য ও যোগাযোগ বিষয়ক সম্পাদক – Information and Communication Secretary",
+      Contact: "+8801764745500",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1fnvRe2OpEhCzbVoERP6XaGX1pnk6fft6",
+      Profession: "University Student - BBA - 6th Semester",
+      "Institutions/Company/Organisation": "East Delta University ",
+      "Current Address":
+        "Chandgaon abasik, Block: B, Road: 09, Building: 234",
+      "Permanent Address": "Lohagara, Amirabad, Hajarbigha",
+      "Social Media": "Facebook - Saidur Rahman",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4034",
+      Name: "Nafisa Tabassum",
+      Batch: "9th / (SSC 2020)",
+      Designation: "ধর্ম বিষয়ক সম্পাদক – Religious Affairs Secretary",
+      Contact: "+8801975401230",
+      "Blood Group": "O (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/uc?export=view&id=1ldQYJUiYf_JPB7T-wEn60rYdKlr7PziX",
+      Profession: "Uni student -Accounting Dept-2nd year",
+      "Institutions/Company/Organisation": "GHM Mohsin College ",
+      "Current Address": "Chandgoan residential area, Chattogram ",
+      "Permanent Address": "Mirsarai, Chattogram ",
+      "Social Media": "Fb/Nafisa Tabassum ",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4035",
+      Name: "Marwa Alam",
+      Batch: "9th / (SSC 2020)",
+      Designation:
+        "গ্রন্থ ও প্রকাশনা বিষয়ক সম্পাদক – Books and Publications Secretary",
+      Contact: "+8801940784149",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1geSJeRA8VPFMMp-qB3apO-bzg_Gi3AsV",
+      Profession: " Bachelor Business of Administration - 2 year",
+      "Institutions/Company/Organisation":
+        "Chittagong Independent University ",
+      "Current Address":
+        "Chandgaon residential area, Block -B, road 1,home 477",
+      "Permanent Address":
+        "Chandgaon residential area, Block -B, road 1,home 477",
+      "Social Media": "Marwa Alam",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4036",
+      Name: "Jabir khan",
+      Batch: "9th / (SSC 2020)",
+      Designation: "সহ সম্পাদক – Assistant Secretary",
+      Contact: "+8801999408406",
+      "Blood Group": "AB (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/uc?export=view&id=1qrs7cYJ1guDjscA96KAmb3_--4i44Ypy",
+      Profession: "Department of law ",
+      "Institutions/Company/Organisation": "Jagannath University ",
+      "Current Address": "Dhaka",
+      "Permanent Address": "Chattogram ",
+      "Social Media": "Jabir khan",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4037",
+      Name: "HM Arshad",
+      Batch: "9th / (SSC 2020)",
+      Designation:
+        "সহ-সাংগঠনিক সম্পাদক – Assistant Organizational Secretary",
+      Contact: "+8801879230612",
+      "Blood Group": "A (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/uc?export=view&id=1P11RhqoiWxHK6yZXg_xhOEKDpGsBsCro",
+      Profession: "IIUC BBA 4th semester ",
+      "Institutions/Company/Organisation": "IIUC",
+      "Current Address": "Chandgaon abashik",
+      "Permanent Address": "1km",
+      "Social Media":
+        "https://www.facebook.com/share/14G2hH888zm/?mibextid=wwXIfr",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4038",
+      Name: "Syed Saobanul Islam",
+      Batch: "9th / (SSC 2020)",
+      Designation:
+        "সহ ক্রীড়া বিষয়ক সম্পাদক – Assistant Sports Affairs Secretary",
+      Contact: "+8801734270151",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/uc?export=view&id=1XCS0UHqVFEfhXcYFW710SzpXRevKQepK",
+      Profession: "IIUC-BBA-2year",
+      "Institutions/Company/Organisation":
+        "international Islamic University of Chittagong ",
+      "Current Address": "Chandgaon r/a,Chittagong,Block-B,road no-1",
+      "Permanent Address": "Chandgaon r/a, Chittagong,block-B,road no-1",
+      "Social Media": "Linkdin-Saoban Islam,Facebook-Syed Saobanul Islam",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4039",
+      Name: "Touki Tahmid Chowdhury",
+      Batch: "9th / (SSC 2020)",
+      Designation: "সহ-সাংস্কৃতিক সম্পাদক – Assistant Cultural Secretary",
+      Contact: "+8801608284399",
+      "Blood Group": "A (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1ypE1vc_VoR4JJ15oWuOFjeCfYZz8w63U",
+      Profession:
+        "Studied Bachelor of Apparel Merchandising and Management(AMM) -2nd year ",
+      "Institutions/Company/Organisation":
+        "Chattogram BGMEA University O of Fashion & Technology - CBUFT ",
+      "Current Address": "Chandrima abasik, Road-06. chittagong ",
+      "Permanent Address": "Boalkali,west khudorkil, chittagong ",
+      "Social Media": "Chowdhury Touki",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4040",
+      Name: "Emdadul Haq",
+      Batch: "10th / (SSC 2021)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801897837098",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=15bhSwWu_5YD7QnaLC42-Bv0v40PJSHlA",
+      Profession: "BBA-Finance-2nd Year ",
+      "Institutions/Company/Organisation":
+        "Save Our Women Bangladesh(Chittagong Division),Bangladesh Red Creseant Socity-Chottwgram City Red Creseant youth",
+      "Current Address":
+        "Mowlana Monjil Green View R/A Sunnia Madrasha Rd, Road No 01 Bibirhat,Chattogram. Thana:- Panchlaish. Zilla:- Chattagram. P.O:- Amin Zut Mills",
+      "Permanent Address":
+        "Mowlana Monjil Green View R/A Sunnia Madrasha Rd, Road No 01 Bibirhat,Chattogram. Thana:- Panchlaish. Zilla:- Chattagram. P.O:- Amin Zut Mills",
+      "Social Media": "https://www.facebook.com/ariyanmontashir.taimun/",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4041",
+      Name: "Sadiatut Arif",
+      Batch: "10th / (SSC 2021)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801886181106",
+      "Blood Group": "O (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1V39nXCFUIKEz-FM_rFz7G4esBI1gqDac",
+      Profession: "BBA-Finance-2nd Year",
+      "Institutions/Company/Organisation":
+        "Bangladesh Red Creseant Socity",
+      "Current Address": "Chandgaon R/A B-Block Road-8A House no. 543",
+      "Permanent Address": "Chandgaon R/A B-Block Road-8A House no. 543",
+      "Social Media": "https://www.facebook.com/taibaarif.taiba#",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4042",
+      Name: "Miskatul Islam",
+      Batch: "10th / (SSC 2021)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801880682850",
+      "Blood Group": "O (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1MMN-_1bJ_hp0rzgrfbRVJNU-GT7S06QZ",
+      Profession: "BBA Accounting Dept @nd Year",
+      "Institutions/Company/Organisation":
+        "Quaish Budishchar Sheikh Mohammed City Corporation College",
+      "Current Address": "Chandgaon Abasik A Block Road No 2",
+      "Permanent Address": "Chandgaon Abasik A Block Road No 2",
+      "Social Media": "https://www.facebook.com/miskatul.islam.510787",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4043",
+      Name: "Mohammed Mirajur Rahman",
+      Batch: "10th / (SSC 2021)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801886704996",
+      "Blood Group": "A (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/uc?export=view&id=1dE0Vt91kT1Qy1DJctq0W1JVmj0xWuDmo",
+      Profession: "management , honurs 1st yaar ",
+      "Institutions/Company/Organisation": "Govt.Commarce College ",
+      "Current Address": "Chandgao R/A chottogram, block A",
+      "Permanent Address": "Fatikchori, Azadi Bazar, Dharmopur",
+      "Social Media": "https://www.facebook.com/share/1Ax8NiQjQp/",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4044",
+      Name: "Hasiba Sharif",
+      Batch: "10th / (SSC 2021)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801404763243",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/uc?export=view&id=1PZ1SScs9IW2It2p-12t5AW2GJ6SqIDEq",
+      Profession: "BBA- 1st year",
+      "Institutions/Company/Organisation":
+        "International Islamic University Chittagong ",
+      "Current Address":
+        "House - 375, Road- 14, Block- B, Chandgaon R/A, Chattogram",
+      "Permanent Address": "Shahbazpur, Thana- Sarail, Brahmanbaria",
+      "Social Media": "fb/hasiba.sharif.2025",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4045",
+      Name: "Samin Yeasar Sakib",
+      Batch: "10th / (SSC 2021)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801401281204",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=14hvz_9PTBQ4YmwBJ14CiKxR7gC6LvSOn",
+      Profession: "NA",
+      "Institutions/Company/Organisation": "NA",
+      "Current Address": "Dinajpur, Bangladesh",
+      "Permanent Address": "Dinajpur, Bangladesh",
+      "Social Media": "",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4046",
+      Name: "Shafkat Rahman ",
+      Batch: "11th / (SSC 2022)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801826071720",
+      "Blood Group": "O (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=11yKvO0IOJhInKzFMWwT5grMfDZKmxvzO",
+      Profession: "Uni Student- Management 38(session 24-25) ",
+      "Institutions/Company/Organisation": "University of Chittagong",
+      "Current Address": "Chandgoan R/A Chittagong",
+      "Permanent Address": " Anuwara, Chittagong ",
+      "Social Media": " https://www.facebook.com/share/1Wdwboimtd/",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4047",
+      Name: "Nahidul Alam Alvi",
+      Batch: "11th / (SSC 2022)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801327133447",
+      "Blood Group": "A (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1yHd38h69WPUf_Gp6ql2O_Zn9RwCce9AM",
+      Profession: "East delta university-BBA-1st year",
+      "Institutions/Company/Organisation": "Institutions ",
+      "Current Address": "Chandgaon abashik,B-block,13 number road,",
+      "Permanent Address": "Raozan Chittagong ",
+      "Social Media": "",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4048",
+      Name: "Soummo Barua",
+      Batch: "11th / (SSC 2022)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801972706498",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1qhk0jRfrrY3DeyMKb8TEJFmIg9Drov-W",
+      Profession: " Civil Engineering - 1st year",
+      "Institutions/Company/Organisation": "Macquarie University",
+      "Current Address": "Paragon City, Anderkillah",
+      "Permanent Address": "Paragon City,Anderkillah",
+      "Social Media": "",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4049",
+      Name: "Ibnun Sultan khan",
+      Batch: "11th / (SSC 2022)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801604094115",
+      "Blood Group": "A (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1veCMJ-bPMhTgobNIFwsRW2j4-fs6sfp2",
+      Profession: "Student Unistudent -(1st year)",
+      "Institutions/Company/Organisation": "North south university ",
+      "Current Address": "Chadgaon Residential Area b block road no 3",
+      "Permanent Address": "Chowkoria bodorkhali,3no ward",
+      "Social Media": "Ibnun Sultan",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4050",
+      Name: "Anindya Dewanjee",
+      Batch: "11th / (SSC 2022)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801830221441",
+      "Blood Group": "O (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=14RANOTr21wxCOIWHB4rAIjpqTnvOi7kx",
+      Profession: "University Student- B.B.A- 1st year",
+      "Institutions/Company/Organisation":
+        "Government College of Commerce",
+      "Current Address": "Road-09, Block-B, Chandgaon R/A, Chattogram",
+      "Permanent Address": "Quaish, Hathazari ",
+      "Social Media": "Fb/Anindya Dewanjee ",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4051",
+      Name: "Mehreen Nargis Chowdhury ",
+      Batch: "11th / (SSC 2022)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801826071720",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1UIIR0r0RRwUMshxS4E_MkVBnAGmGDaR7",
+      Profession: "Electronic Telecommunication Engineering -1st year",
+      "Institutions/Company/Organisation":
+        "Chittagong independent university ",
+      "Current Address": "House no 11, road no 1, Block A, Chandgaon R/A",
+      "Permanent Address":
+        "House no 11, road no 1, Block A, Chandgaon R/A",
+      "Social Media": "N/A",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4052",
+      Name: "Tasdia Binte Jafar",
+      Batch: "12th / (SSC 2023)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801870782686",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1S0ADDNEm1x7klihlaJSNe0bxmuKKEDkc",
+      Profession: "College student- group science-hsc candidate ",
+      "Institutions/Company/Organisation":
+        "Aparna charan city corporation school and college ",
+      "Current Address": "Chandgaon abashik #Block-B#road-3# house no-41",
+      "Permanent Address":
+        "Chandgaon abashik #Block-B #road- 140# house no-380",
+      "Social Media": "Fb/Tas Dia",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4053",
+      Name: "Tajrian Tanvin",
+      Batch: "12th / (SSC 2023)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801973443429",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=150h6Xe9fSJrVP5gJ2H8FmKgXCxpQ6swM",
+      Profession: "Hsc candidate ",
+      "Institutions/Company/Organisation":
+        "Chittagong Govt. Women's College ",
+      "Current Address": "Sholokbohor, chottragram ",
+      "Permanent Address": "Sholokbohor, chottragram ",
+      "Social Media": "https://www.facebook.com/share/19dAjzftWb/",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4054",
+      Name: "Fabliha Rumaisa",
+      Batch: "12th / (SSC 2023)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801857669270",
+      "Blood Group": "O (- Negative)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1WbkGL2PElZLCiXN4c7gMvHalyUTaAu6N",
+      Profession: "Hsc candidate ",
+      "Institutions/Company/Organisation":
+        "Govt city college, chattragram ",
+      "Current Address": "B-block ,chandgaon R/A , chattragram ",
+      "Permanent Address": "B-block ,chandgao R/A , chattragram",
+      "Social Media": "",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4055",
+      Name: "Abrar Bin Manzur",
+      Batch: "12th / (SSC 2023)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801601029156",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1fos2pjoeY7zLKf_hN86Xp90eo9q5IhUy",
+      Profession: "student",
+      "Institutions/Company/Organisation":
+        "Halishahar Cantonment Public School & College ",
+      "Current Address":
+        "House no:209,road no:09,block:b,Chandgaon Residential Area",
+      "Permanent Address": " Uttar Dhurung,baghkhali,kutubdia",
+      "Social Media":
+        "https://www.facebook.com/share/17Aw5BRqis/?mibextid=wwXIfr",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4056",
+      Name: "Syed Mifta",
+      Batch: "12th / (SSC 2023)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801797677167",
+      "Blood Group": "A (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/uc?export=view&id=1fLXndc45lLOtbNoA1HJq0yBhmCfkV305",
+      Profession: "Hsc candidate (businness studies)",
+      "Institutions/Company/Organisation": "Kazem Ali School and College",
+      "Current Address": "Hazi Chand Mia Road, Bohoddarhat. ",
+      "Permanent Address": "Hazi Chand Mia Road, Bohoddarhat.",
+      "Social Media":
+        "https://www.facebook.com/share/14JoVNGc6Vr/?mibextid=wwXIfr",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4057",
+      Name: "Yeamin Sadekin",
+      Batch: "13th / (SSC 2024)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801793109778",
+      "Blood Group": "O (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/uc?export=view&id=1TIvEX5FsyFsmxn_9Sxe4UsA9Ik0z7tW1",
+      Profession: "Intermediate 2nd year - business studies ",
+      "Institutions/Company/Organisation": "Hajera taju degree college ",
+      "Current Address":
+        "Cda residential area ,2 no, b-block, chandgaon.",
+      "Permanent Address": "Potiya upozilla.",
+      "Social Media": "Yeamin Sadekin ",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4058",
+      Name: "Md.Minhaz Uddin Ridhom",
+      Batch: "13th / (SSC 2024)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801815562053",
+      "Blood Group": "A (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1kPKR8jPxSyloGNFkuzkXlTaEmep5sUH5",
+      Profession:
+        "STUDENT (INTERMEDIATE -26-2ND YEAR - BUSINESS STUDIES)",
+      "Institutions/Company/Organisation":
+        "CDA public school and college ",
+      "Current Address": "Khawza road, chandgaon, chattogram.",
+      "Permanent Address": "Khawza road, chandgaon, chattogram.",
+      "Social Media": "Minhaz Uddin ",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4059",
+      Name: "Joinuddin Chowdhury Jidan",
+      Batch: "13th / (SSC 2024)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801533455404",
+      "Blood Group": "A (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/uc?export=view&id=1dkOe5ouRvgfVyq2dMoploo1wQW2A74yW",
+      Profession: "Student",
+      "Institutions/Company/Organisation": "Omorgani mes college",
+      "Current Address": "Chandgaon abashik/RA",
+      "Permanent Address": "Boalkhali,west kadhurkil",
+      "Social Media": "https://www.facebook.com/joynuddin.jidan",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4060",
+      Name: "Tasnia Marzan",
+      Batch: "13th / (SSC 2024)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801973879893",
+      "Blood Group": "B (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=1CPZlso6Xbx_7Xj-djfOLDp56RV_FjNrK",
+      Profession: "College student-science-2nd Year",
+      "Institutions/Company/Organisation": "Omorgoni MES College",
+      "Current Address":
+        "Chandgaon Abashik R/A,B-block,road-5,Chottogram",
+      "Permanent Address":
+        "Chandgaon Abashik R/A, B-block,road 5, Chottogram ",
+      "Social Media": "Tasnia Marzan ",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
+    {
+      ID: "4061",
+      Name: "Subahee Anwar Maisha ",
+      Batch: "13th / (SSC 2024)",
+      Designation: "কার্যকরী সদস্য - Executive Member",
+      Contact: "+8801884066300",
+      "Blood Group": "O (+ Positive)",
+      "ID Photo":
+        "https://drive.google.com/open?id=17E9iKoQDneTZvx22CNJYpfhRs7A5WL4F",
+      Profession: "Business Studies-2nd Year",
+      "Institutions/Company/Organisation":
+        "Government College of Commerce ",
+      "Current Address":
+        "5th floor,Mosmera Mension,Momenbag Abasik,Hamgarbag,Muradpur,Chattogram ",
+      "Permanent Address":
+        "House of Foruk Chairman, Kanchana,Satkania, Chattogram ",
+      "Social Media": "https://www.facebook.com/share/16dbi3aU2x/",
+      "committee Validity": "July, 2025 - June, 2028"
+    },
         ],
       };
 
@@ -2261,13 +2768,18 @@
         const modalContent = document.getElementById("modal-content");
         const members = alumniData.data;
 
+        console.log("Members data:", members);
+        console.log("Members container:", membersContainer);
+
         // Function to generate member cards on the main page
         function generateMemberCards() {
           let cardsHTML = "";
           members.forEach((member) => {
             const directPhotoUrl = getDirectGoogleDriveLink(member["ID Photo"]);
             cardsHTML += `
-                        <div class="card bg-base-100 shadow-xl border border-gray-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer" onclick="showMemberDetails('${member.ID}')">
+                        <div class="card bg-base-100 shadow-xl border border-gray-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer" onclick="showMemberDetails('${
+                          member.ID
+                        }')">
                             <figure class="px-10 pt-10">
                                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Crect width='160' height='160' fill='%23f0f0f0'/%3E%3C/svg%3E" 
                                      alt="Photo of ${member.Name}" 
@@ -2277,8 +2789,17 @@
                             </figure>
                                                         <div class="card-body items-center text-center">
                               <h2 class="card-title text-lg">${member.Name}</h2>
-                              <p class="text-sm text-gray-500">${member.Designation}</p>
-                              <p class="text-xs text-gray-400">${member.Batch}</p>
+                              <p class="text-sm text-gray-500">${
+                                member.Designation
+                              }</p>
+                              <p class="text-xs text-gray-400">${
+                                member.Batch
+                              }</p>
+                              ${
+                                member["committee Validity"]
+                                  ? `<p class="text-xs text-primary font-medium mt-1">${member["committee Validity"]}</p>`
+                                  : ""
+                              }
                             </div>
                         </div>
                     `;
@@ -2298,18 +2819,39 @@
                                     id="modal-image" />
                           </div>
                           <div class="flex-grow">
-                               <h3 class="font-bold text-2xl">${member.Name}</h3>
-                               <p class="py-1 text-lg text-primary">${member.Designation}</p>
+                               <h3 class="font-bold text-2xl">${
+                                 member.Name
+                               }</h3>
+                               <p class="py-1 text-lg text-primary">${
+                                 member.Designation
+                               }</p>
                                <div class="divider my-2"></div>
                                <div class="space-y-2 text-sm">
                                   <p><strong>ID:</strong> ${member.ID}</p>
                                   <p><strong>Batch:</strong> ${member.Batch}</p>
-                                  <p><strong>Profession:</strong> ${member.Profession}</p>
-                                  <p><strong>Organisation:</strong> ${member["Institutions/Company/Organisation"]}</p>
-                                  <p><strong>Blood Group:</strong> <span class="badge badge-secondary">${member["Blood Group"]}</span></p>
-                                  <p><strong>Contact:</strong> ${member.Contact}</p>
-                                  <p><strong>Current Address:</strong> ${member["Current Address"]}</p>
-                                  <p><strong>Permanent Address:</strong> ${member["Permanent Address"]}</p>
+                                  ${
+                                    member["committee Validity"]
+                                      ? `<p><strong>Committee Validity:</strong> <span class="badge badge-primary">${member["committee Validity"]}</span></p>`
+                                      : ""
+                                  }
+                                  <p><strong>Profession:</strong> ${
+                                    member.Profession
+                                  }</p>
+                                  <p><strong>Organisation:</strong> ${
+                                    member["Institutions/Company/Organisation"]
+                                  }</p>
+                                  <p><strong>Blood Group:</strong> <span class="badge badge-secondary">${
+                                    member["Blood Group"]
+                                  }</span></p>
+                                  <p><strong>Contact:</strong> ${
+                                    member.Contact
+                                  }</p>
+                                  <p><strong>Current Address:</strong> ${
+                                    member["Current Address"]
+                                  }</p>
+                                  <p><strong>Permanent Address:</strong> ${
+                                    member["Permanent Address"]
+                                  }</p>
                                </div>
                           </div>
                       `;
@@ -2329,7 +2871,25 @@
         };
 
         // Initial call to populate the page
-        generateMemberCards();
+        if (membersContainer && members && members.length > 0) {
+          generateMemberCards();
+          console.log("Members cards generated successfully");
+        } else {
+          console.error("Failed to generate member cards:", {
+            membersContainer: !!membersContainer,
+            members: !!members,
+            membersLength: members ? members.length : 0,
+          });
+        }
+
+        // Initialize all carousels after a short delay
+        setTimeout(() => {
+          initReunionCarousel();
+          initCommitteeCarousel();
+          initActivitiesCarousel();
+          initMovementCarousel();
+          console.log("All carousels initialized");
+        }, 100);
 
         // Preload all images after cards are generated
         setTimeout(() => {
@@ -2371,12 +2931,8 @@
 
             // Validity filtering logic
             let matchesValidity = true;
-            if (validityFilter === "active") {
-              // All current members are considered active for the term 2025-2028
-              matchesValidity = true;
-            } else if (validityFilter === "expired") {
-              // This would be used for future expired members
-              matchesValidity = false;
+            if (validityFilter) {
+              matchesValidity = member["committee Validity"] === validityFilter;
             }
 
             return (
@@ -2421,7 +2977,9 @@
                 member["ID Photo"]
               );
               cardsHTML += `
-                <div class="card bg-base-100 shadow-xl border border-gray-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer" onclick="showMemberDetails('${member.ID}')">
+                <div class="card bg-base-100 shadow-xl border border-gray-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer" onclick="showMemberDetails('${
+                  member.ID
+                }')">
                   <figure class="px-10 pt-10">
                     <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Crect width='160' height='160' fill='%23f0f0f0'/%3E%3C/svg%3E" 
                          alt="Photo of ${member.Name}" 
@@ -2433,6 +2991,11 @@
                     <h2 class="card-title text-lg">${member.Name}</h2>
                     <p class="text-sm text-gray-500">${member.Designation}</p>
                     <p class="text-xs text-gray-400">${member.Batch}</p>
+                    ${
+                      member["committee Validity"]
+                        ? `<p class="text-xs text-primary font-medium mt-1">${member["committee Validity"]}</p>`
+                        : ""
+                    }
                   </div>
                 </div>
               `;
@@ -2563,6 +3126,517 @@
 
           modal.showModal();
         };
+
+        // Photo category switching functionality
+        window.showPhotoCategory = function (category) {
+          // Hide all photo categories
+          const categories = document.querySelectorAll(".photo-category");
+          categories.forEach((cat) => cat.classList.add("hidden"));
+
+          // Show selected category
+          const selectedCategory = document.getElementById(
+            category + "-photos"
+          );
+          if (selectedCategory) {
+            selectedCategory.classList.remove("hidden");
+
+            // Initialize carousel for the selected category if not already done
+            setTimeout(() => {
+              if (
+                category === "committee" &&
+                !document.querySelector("#committee-carousel .carousel-item")
+              ) {
+                initCommitteeCarousel();
+              } else if (
+                category === "activities" &&
+                !document.querySelector("#activities-carousel .carousel-item")
+              ) {
+                initActivitiesCarousel();
+              } else if (
+                category === "movement" &&
+                !document.querySelector("#movement-carousel .carousel-item")
+              ) {
+                initMovementCarousel();
+              }
+            }, 50);
+          }
+
+          // Update tab active state
+          const tabs = document.querySelectorAll(".tab");
+          tabs.forEach((tab) => tab.classList.remove("tab-active"));
+
+          // Find and activate the clicked tab
+          const clickedTab = event.target;
+          clickedTab.classList.add("tab-active");
+        };
+
+        // Founder details modal functionality
+        window.showFounderDetails = function (founderType) {
+          const modal = document.getElementById("member_modal");
+          const modalContent = document.getElementById("modal-content");
+
+          let founderData = {};
+          if (founderType === "founder") {
+            founderData = {
+              name: "Sadman Sakib Rabby",
+              designation: "Founder & President",
+              batch: "2nd Batch (SSC 2013)",
+              profession: "Businessman",
+              organization: "Multi-purpose business",
+              contact: "+8801841716977",
+              validity: "June, 2018 - May, 2021",
+              photo:
+                "https://lh3.googleusercontent.com/d/1lWE6DUsIaFSJ4VyoNjVf726WPU3TFoau",
+              quote:
+                "Our founder envisioned a platform where CPSC alumni could reconnect, support each other, and contribute to the growth of our alma mater.",
+            };
+          } else {
+            founderData = {
+              name: "Mohammed Mosarraf",
+              designation: "Founder & General Secretary",
+              batch: "2nd Batch (SSC 2013)",
+              profession: "Accounts & Finance Manager",
+              organization: "Buildcom",
+              contact: "+8801979022353",
+              validity: "June, 2018 - May, 2021",
+              photo:
+                "https://lh3.googleusercontent.com/d/1PhgVErsr5xbGq4sQ2eAWswAcQJzZ-13J",
+              quote:
+                "Together with our founder, we built this association to create lasting bonds and opportunities for all CPSC alumni.",
+            };
+          }
+
+          modalContent.innerHTML = `
+            <div class="flex flex-col items-center justify-center text-center max-w-2xl mx-auto p-6">
+              <div class="avatar mb-6">
+                <div class="w-40 h-40 rounded-full">
+                  <img src="${founderData.photo}" alt="Photo of ${founderData.name}" class="w-full h-full object-cover rounded-full" onerror="handleImageError(this)" />
+                </div>
+              </div>
+              <h3 class="text-3xl font-bold mb-3">${founderData.name}</h3>
+              <p class="text-primary font-semibold text-lg mb-2">${founderData.designation}</p>
+              <p class="text-base-content/70 mb-6">${founderData.batch}</p>
+              
+              <div class="bg-base-200 rounded-lg p-6 w-full mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+                  <div>
+                    <p class="text-sm font-semibold text-base-content/60 uppercase tracking-wide mb-1">Profession</p>
+                    <p class="text-base">${founderData.profession}</p>
+                  </div>
+                  <div>
+                    <p class="text-sm font-semibold text-base-content/60 uppercase tracking-wide mb-1">Organization</p>
+                    <p class="text-base">${founderData.organization}</p>
+                  </div>
+                  <div>
+                    <p class="text-sm font-semibold text-base-content/60 uppercase tracking-wide mb-1">Contact</p>
+                    <p class="text-base">${founderData.contact}</p>
+                  </div>
+                  <div>
+                    <p class="text-sm font-semibold text-base-content/60 uppercase tracking-wide mb-1">Committee Validity</p>
+                    <p class="text-base">${founderData.validity}</p>
+                  </div>
+                </div>
+              </div>
+              
+              <blockquote class="text-lg italic text-base-content/80 border-l-4 border-primary pl-4 max-w-lg">
+                "${founderData.quote}"
+              </blockquote>
+            </div>
+          `;
+
+          modal.showModal();
+        };
+
+        // Photo carousel functionality
+        let currentReunionSlide = 0;
+        let currentCommitteeSlide = 0;
+        let currentActivitiesSlide = 0;
+        let currentMovementSlide = 0;
+
+        const reunionImages = [
+          "image1.jpeg",
+          "image2.jpeg",
+          "image3.jpeg",
+          "image4.jpeg",
+          "image5.jpeg",
+          "image6.jpeg",
+          "image7.jpeg",
+          "image8.jpeg",
+          "image9.jpeg",
+          "image10.jpeg",
+          "image11.jpeg",
+          "image12.jpeg",
+          "image13.jpeg",
+          "image14.jpeg",
+          "image15.jpeg",
+          "image16.jpeg",
+          "image17.jpeg",
+          "image18.jpeg",
+          "image19.JPEG",
+          "image20.JPEG",
+          "image21.JPEG",
+          "image22.JPEG",
+          "image23.JPEG",
+          "image24.JPEG",
+          "image25.jpeg",
+          "image26.jpeg",
+          "image27.jpeg",
+          "image28.jpeg",
+          "image29.jpeg",
+          "image30.jpeg",
+          "image31.jpeg",
+          "image32.jpeg",
+          "image33.jpeg",
+          "image34.jpeg",
+          "image35.jpeg",
+          "image36.jpeg",
+          "image37.jpeg",
+          "image38.jpeg",
+          "image39.jpeg",
+          "image40.jpeg",
+          "image41.jpeg",
+          "image42.jpeg",
+          "image43.jpeg",
+          "image44.jpeg",
+          "image45.jpeg",
+        ];
+
+        const committeeImages = [
+          "image1.JPEG",
+          "image3.JPEG",
+          "image4.JPEG",
+          "image5.jpeg",
+          "image6.jpeg",
+          "image7.jpeg",
+          "image8.jpeg",
+          "image9.jpeg",
+          "image10.jpeg",
+        ];
+
+        const activitiesImages = [
+          "image1.jpeg",
+          "image2.jpeg",
+          "image3.jpeg",
+          "image4.jpeg",
+          "image5.jpeg",
+          "image6.jpeg",
+          "image7.jpeg",
+          "image8.jpeg",
+          "image9.jpeg",
+          "image10.jpeg",
+          "image11.jpeg",
+          "image12.jpeg",
+        ];
+
+        const movementImages = [
+          "image1.jpeg",
+          "image2.jpeg",
+          "image3.jpeg",
+          "image4.jpeg",
+        ];
+
+        function initReunionCarousel() {
+          const carousel = document.getElementById("reunion-carousel");
+          const indicators = document.getElementById("reunion-indicators");
+
+          console.log("Initializing reunion carousel...", {
+            carousel: !!carousel,
+            indicators: !!indicators,
+            imagesCount: reunionImages.length,
+          });
+
+          if (!carousel || !indicators) {
+            console.error("Carousel elements not found:", {
+              carousel: !!carousel,
+              indicators: !!indicators,
+            });
+            return;
+          }
+
+          // Generate slides
+          let slidesHTML = "";
+          reunionImages.forEach((image, index) => {
+            slidesHTML += `
+              <div id="reunion-slide${index + 1}" class="carousel-item w-full">
+                <img src="assests/1st Reunion 2020/${image}" 
+                     class="w-full h-96 object-cover cursor-pointer" 
+                     alt="1st CPSC Reunion 2020 - Image ${index + 1}"
+                     onclick="openGalleryModal('assests/1st Reunion 2020/${image}', '1st CPSC Reunion 2020 - Image ${
+              index + 1
+            }')"
+                     onerror="console.error('Failed to load reunion image:', '${image}')" />
+              </div>
+            `;
+          });
+          carousel.innerHTML = slidesHTML;
+
+          // Generate indicators (dots without numbers)
+          let indicatorsHTML = "";
+          reunionImages.forEach((_, index) => {
+            indicatorsHTML += `
+              <button onclick="goToReunionSlide(${index})" 
+                      class="w-3 h-3 rounded-full ${
+                        index === 0 ? "bg-primary" : "bg-base-300"
+                      } hover:bg-primary transition-colors" 
+                      id="reunion-indicator-${index}">
+              </button>
+            `;
+          });
+          indicators.innerHTML = indicatorsHTML;
+
+          console.log(
+            "Reunion carousel initialized with",
+            reunionImages.length,
+            "images"
+          );
+        }
+
+        // Committee carousel functions
+        function initCommitteeCarousel() {
+          const carousel = document.getElementById("committee-carousel");
+          const indicators = document.getElementById("committee-indicators");
+
+          console.log("Initializing committee carousel...", {
+            carousel: !!carousel,
+            indicators: !!indicators,
+            imagesCount: committeeImages.length,
+          });
+
+          if (!carousel || !indicators) {
+            console.error("Committee carousel elements not found");
+            return;
+          }
+
+          let slidesHTML = "";
+          committeeImages.forEach((image, index) => {
+            slidesHTML += `
+              <div class="carousel-item w-full">
+                <img src="assests/2nd committee/${image}" 
+                     class="w-full h-96 object-cover cursor-pointer" 
+                     alt="2nd CPSC Alumni Committee - Image ${index + 1}"
+                     onclick="openGalleryModal('assests/2nd committee/${image}', '2nd CPSC Alumni Committee')"
+                     onerror="console.error('Failed to load committee image:', '${image}')" />
+              </div>
+            `;
+          });
+          carousel.innerHTML = slidesHTML;
+
+          let indicatorsHTML = "";
+          committeeImages.forEach((_, index) => {
+            indicatorsHTML += `
+              <button onclick="goToCommitteeSlide(${index})" 
+                      class="w-3 h-3 rounded-full ${
+                        index === 0 ? "bg-primary" : "bg-base-300"
+                      } hover:bg-primary transition-colors">
+              </button>
+            `;
+          });
+          indicators.innerHTML = indicatorsHTML;
+
+          console.log(
+            "Committee carousel initialized with",
+            committeeImages.length,
+            "images"
+          );
+        }
+
+        // Activities carousel functions
+        function initActivitiesCarousel() {
+          const carousel = document.getElementById("activities-carousel");
+          const indicators = document.getElementById("activities-indicators");
+
+          console.log("Initializing activities carousel...", {
+            carousel: !!carousel,
+            indicators: !!indicators,
+            imagesCount: activitiesImages.length,
+          });
+
+          if (!carousel || !indicators) {
+            console.error("Activities carousel elements not found");
+            return;
+          }
+
+          let slidesHTML = "";
+          activitiesImages.forEach((image, index) => {
+            slidesHTML += `
+              <div class="carousel-item w-full">
+                <img src="assests/Activites/${image}" 
+                     class="w-full h-96 object-cover cursor-pointer" 
+                     alt="Activities - Image ${index + 1}"
+                     onclick="openGalleryModal('assests/Activites/${image}', 'Activities')"
+                     onerror="console.error('Failed to load activities image:', '${image}')" />
+              </div>
+            `;
+          });
+          carousel.innerHTML = slidesHTML;
+
+          let indicatorsHTML = "";
+          activitiesImages.forEach((_, index) => {
+            indicatorsHTML += `
+              <button onclick="goToActivitiesSlide(${index})" 
+                      class="w-3 h-3 rounded-full ${
+                        index === 0 ? "bg-primary" : "bg-base-300"
+                      } hover:bg-primary transition-colors">
+              </button>
+            `;
+          });
+          indicators.innerHTML = indicatorsHTML;
+
+          console.log(
+            "Activities carousel initialized with",
+            activitiesImages.length,
+            "images"
+          );
+        }
+
+        // Movement carousel functions
+        function initMovementCarousel() {
+          const carousel = document.getElementById("movement-carousel");
+          const indicators = document.getElementById("movement-indicators");
+
+          console.log("Initializing movement carousel...", {
+            carousel: !!carousel,
+            indicators: !!indicators,
+            imagesCount: movementImages.length,
+          });
+
+          if (!carousel || !indicators) {
+            console.error("Movement carousel elements not found");
+            return;
+          }
+
+          let slidesHTML = "";
+          movementImages.forEach((image, index) => {
+            slidesHTML += `
+              <div class="carousel-item w-full">
+                <img src="assests/Movement/${image}" 
+                     class="w-full h-96 object-cover cursor-pointer" 
+                     alt="Movement - Image ${index + 1}"
+                     onclick="openGalleryModal('assests/Movement/${image}', 'Movement')"
+                     onerror="console.error('Failed to load movement image:', '${image}')" />
+              </div>
+            `;
+          });
+          carousel.innerHTML = slidesHTML;
+
+          let indicatorsHTML = "";
+          movementImages.forEach((_, index) => {
+            indicatorsHTML += `
+              <button onclick="goToMovementSlide(${index})" 
+                      class="w-3 h-3 rounded-full ${
+                        index === 0 ? "bg-primary" : "bg-base-300"
+                      } hover:bg-primary transition-colors">
+              </button>
+            `;
+          });
+          indicators.innerHTML = indicatorsHTML;
+
+          console.log(
+            "Movement carousel initialized with",
+            movementImages.length,
+            "images"
+          );
+        }
+
+        // Navigation functions for all carousels
+        window.nextReunionSlide = function () {
+          currentReunionSlide =
+            (currentReunionSlide + 1) % reunionImages.length;
+          updateCarousel("reunion", currentReunionSlide);
+        };
+
+        window.prevReunionSlide = function () {
+          currentReunionSlide =
+            currentReunionSlide === 0
+              ? reunionImages.length - 1
+              : currentReunionSlide - 1;
+          updateCarousel("reunion", currentReunionSlide);
+        };
+
+        window.goToReunionSlide = function (index) {
+          currentReunionSlide = index;
+          updateCarousel("reunion", currentReunionSlide);
+        };
+
+        window.nextCommitteeSlide = function () {
+          currentCommitteeSlide =
+            (currentCommitteeSlide + 1) % committeeImages.length;
+          updateCarousel("committee", currentCommitteeSlide);
+        };
+
+        window.prevCommitteeSlide = function () {
+          currentCommitteeSlide =
+            currentCommitteeSlide === 0
+              ? committeeImages.length - 1
+              : currentCommitteeSlide - 1;
+          updateCarousel("committee", currentCommitteeSlide);
+        };
+
+        window.goToCommitteeSlide = function (index) {
+          currentCommitteeSlide = index;
+          updateCarousel("committee", currentCommitteeSlide);
+        };
+
+        window.nextActivitiesSlide = function () {
+          currentActivitiesSlide =
+            (currentActivitiesSlide + 1) % activitiesImages.length;
+          updateCarousel("activities", currentActivitiesSlide);
+        };
+
+        window.prevActivitiesSlide = function () {
+          currentActivitiesSlide =
+            currentActivitiesSlide === 0
+              ? activitiesImages.length - 1
+              : currentActivitiesSlide - 1;
+          updateCarousel("activities", currentActivitiesSlide);
+        };
+
+        window.goToActivitiesSlide = function (index) {
+          currentActivitiesSlide = index;
+          updateCarousel("activities", currentActivitiesSlide);
+        };
+
+        window.nextMovementSlide = function () {
+          currentMovementSlide =
+            (currentMovementSlide + 1) % movementImages.length;
+          updateCarousel("movement", currentMovementSlide);
+        };
+
+        window.prevMovementSlide = function () {
+          currentMovementSlide =
+            currentMovementSlide === 0
+              ? movementImages.length - 1
+              : currentMovementSlide - 1;
+          updateCarousel("movement", currentMovementSlide);
+        };
+
+        window.goToMovementSlide = function (index) {
+          currentMovementSlide = index;
+          updateCarousel("movement", currentMovementSlide);
+        };
+
+        // Universal carousel update function
+        function updateCarousel(type, currentSlide) {
+          const carousel = document.getElementById(`${type}-carousel`);
+          const slideWidth = carousel.offsetWidth;
+          carousel.scrollTo({
+            left: slideWidth * currentSlide,
+            behavior: "smooth",
+          });
+
+          // Update indicators
+          document
+            .querySelectorAll(`[onclick*="${type}Slide"]`)
+            .forEach((indicator, index) => {
+              if (index === currentSlide) {
+                indicator.classList.remove("bg-base-300");
+                indicator.classList.add("bg-primary");
+              } else {
+                indicator.classList.remove("bg-primary");
+                indicator.classList.add("bg-base-300");
+              }
+            });
+        }
 
         // Carousel functionality
         let currentSlide = 0;
