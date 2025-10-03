@@ -781,19 +781,18 @@ const alumniData = {
     },
     {
       ID: "4042",
-      Name: "Miskatul Islam",
+      Name: "Saira Nowsin ",
       Batch: "10th / (SSC 2021)",
       Designation: "কার্যকরী সদস্য - Executive Member",
-      Contact: "+8801880682850",
-      "Blood Group": "O (+ Positive)",
+      Contact: "+8801876656896",
+      "Blood Group": "A (+ Positive)",
       "ID Photo":
-        "https://drive.google.com/open?id=1MMN-_1bJ_hp0rzgrfbRVJNU-GT7S06QZ",
-      Profession: "BBA Accounting Dept @nd Year",
-      "Institutions/Company/Organisation":
-        "Quaish Budishchar Sheikh Mohammed City Corporation College",
-      "Current Address": "Chandgaon Abasik A Block Road No 2",
-      "Permanent Address": "Chandgaon Abasik A Block Road No 2",
-      "Social Media": "https://www.facebook.com/miskatul.islam.510787",
+        "https://drive.google.com/uc?export=view&id=1rVIqgsJ_OWraoY3COWe7QI8jZZ9rjDMX",
+      Profession: " Accounting department-2023",
+      "Institutions/Company/Organisation": "Government City college ",
+      "Current Address": "Chondrima R/A, Chandgaon Chottogram ",
+      "Permanent Address": "Chondrima R/A, Chandgaon Chottogram ",
+      "Social Media": "https://www.facebook.com/share/1B57tapBjz/",
       "committee Validity": "July, 2025 - June, 2028"
     },
     {
@@ -832,18 +831,18 @@ const alumniData = {
     },
     {
       ID: "4045",
-      Name: "Samin Yeasar Sakib",
+      Name: "Mudabbir Hossain ",
       Batch: "10th / (SSC 2021)",
       Designation: "কার্যকরী সদস্য - Executive Member",
-      Contact: "+8801401281204",
-      "Blood Group": "B (+ Positive)",
+      Contact: "+8801818961954",
+      "Blood Group": "AB (+ Positive)",
       "ID Photo":
-        "https://drive.google.com/open?id=14hvz_9PTBQ4YmwBJ14CiKxR7gC6LvSOn",
-      Profession: "NA",
-      "Institutions/Company/Organisation": "NA",
-      "Current Address": "Dinajpur, Bangladesh",
-      "Permanent Address": "Dinajpur, Bangladesh",
-      "Social Media": "",
+        "https://drive.google.com/uc?export=view&id=1CVjoDpPYo8DSVFU_yCG7wH_PTIGS-fco",
+      Profession: "University Student- Finance(BBA)-2nd Year ",
+      "Institutions/Company/Organisation": "University of Chittagong ",
+      "Current Address": "BK Mansion, 14 no garage, Chandgaon, Chattogram ",
+      "Permanent Address": "Awal Villa, Badurtala, Chattogram ",
+      "Social Media": "https://www.facebook.com/share/19vrYjjk3X/",
       "committee Validity": "July, 2025 - June, 2028"
     },
     {
